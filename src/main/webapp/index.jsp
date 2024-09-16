@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Адаптивная форма регистрации и авторизации</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
+    <title>Вход</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js" defer></script>
 </head>
 
 <body>
@@ -41,19 +41,19 @@
                 </p>
             </form>
 
-            <form action="#" class="form form_signup">
+            <form action="/user-servlet" method="post" class="form form_signup">
                 <h3 class="form_title">Регистрация</h3>
                 <p>
-                    <input type="text" placeholder="Логин" class="form_input">
+                    <input type="text" name="login" placeholder="Логин" class="form_input">
                 </p>
                 <p>
-                    <input type="email" placeholder="Email" class="form_input">
+                    <input type="email" name="email" placeholder="Email" class="form_input">
                 </p>
                 <p>
-                    <input type="password" placeholder="Пароль" class="form_input">
+                    <input type="password" name="password" placeholder="Пароль" class="form_input">
                 </p>
                 <p>
-                    <input type="password" placeholder="Повторите пароль" class="form_input">
+                    <input type="password" name="repassword" placeholder="Повторите пароль" class="form_input">
                 </p>
                 <p>
                     <button class="form_btn form_btn_signup">Зарегистрироваться</button>
