@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public class User {
@@ -8,8 +9,8 @@ public class User {
     private String password;
 
     public User(String login, String email, String password) {
-        this.login = login;
-        this.email = email;
+        this.login = login.toLowerCase();
+        this.email = email.toLowerCase();
         this.password = password;
     }
     public String getLogin() {

@@ -1,0 +1,37 @@
+
+body {
+    background: #ffffff;
+    color: #333;
+}
+
+.title_1 {
+    font-size: 50px;
+    text-align: center;
+}
+
+.title_2 {
+    font-size: 50px;
+    text-align: center;
+}
+
+.gifs {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.bully {
+    width: 400px;
+    height: 400px;
+}
+
+.travolta {
+    width: 400px;
+    height: 400px;
+}
+
+.timur {
+    width: 400px;
+    height: 400px;
+}
