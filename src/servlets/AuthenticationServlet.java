@@ -1,7 +1,48 @@
 package servlets;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.User;
+import model.UserDAO;
+import java.io.IOException;
 
+@WebServlet("/auth-servlet")
 public class AuthenticationServlet extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        HttpSession session = req.getSession();
+
+        String code = session.getAttribute("code").toString();
+        String input_code = req.getParameter("input_code");
+
+        if (code.equals(input_code)) {
+            UserDAO userDAO = new UserDAO();
+            String type_auth = session.getAttribute("type_auth").toString();
+
+            if (type_auth.equals("register")) {
+                String login = session.getAttribute("login").toString();
+                String email = session.getAttribute("email").toString();
+                String password = session.getAttribute("password").toString();
+
+                userDAO.registerUser(new User(login, email, password));
+
+                RequestDispatcher dispatcher = req.getRequestDispatcher("html/congrat.html");
+                dispatcher.forward(req, resp);
+            } else if (type_auth.equals("login")) {
+                // переход на страницу
+            }
+
+        } else {
+            String message = "Неправильный код";
+            req.setAttribute("errorMessage", message);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/authentication.jsp");
+            dispatcher.forward(req, resp);
+        }
+    }
 }

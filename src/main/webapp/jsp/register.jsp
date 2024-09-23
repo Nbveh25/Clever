@@ -18,14 +18,14 @@
     <div class="block">
         <div class="block_item">
             <h2 class="block_item_title">У вас уже есть аккаунт?</h2>
-            <form action="login.jsp">
+            <form action="/login-jsp">
                 <button class="block_item_btn">Войти</button>
             </form>
         </div>
     </div>
 
     <div class="form_box">
-        <form action="/register-servlet" method="post" class="form form_signup">
+        <form action="/register-servlet" method="post" class="form">
             <h3 class="form_title">Регистрация</h3>
             <p>
                 <input type="text" name="login" placeholder="Логин" class="form_input" required>
@@ -40,11 +40,13 @@
                 <input type="password" name="repassword" placeholder="Повторите пароль" class="form_input" required>
             </p>
             <p>
-                <button type="submit" class="form_btn form_btn_signup modal_open_btn">Зарегистрироваться</button>
+                <button type="submit" class="form_btn">Зарегистрироваться</button>
             </p>
             <p>
                 <c:if test="${not empty errorMessage}">
-                    <c:out value="${errorMessage}"/>
+                    <div class="error_message">
+                        <c:out value="${errorMessage}"/>
+                    </div>
                 </c:if>
             </p>
         </form>

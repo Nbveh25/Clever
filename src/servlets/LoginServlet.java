@@ -10,59 +10,44 @@ import jakarta.servlet.http.HttpSession;
 import model.EmailSender;
 import model.UserDAO;
 import model.Utils;
+
 import java.io.IOException;
 
-@WebServlet("/register-servlet")
-public class RegisterServlet extends HttpServlet {
-
+@WebServlet("/login-servlet")
+public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public RegisterServlet() {
-        super();
-    }
+    public LoginServlet() {super();}
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         HttpSession session = req.getSession();
 
         String login = req.getParameter("login");
-        String email = req.getParameter("email");
         String password = req.getParameter("password");
-        String repassword = req.getParameter("repassword");
-
         String message;
-
         UserDAO userDAO = new UserDAO();
-
-        //TODO (Добавить проверку на простоту пароля и валидацию email)
-        if (!(password.equals(repassword))) {
-            message = "Пароли не совпадают";
+        if (userDAO.containsUser(login, "login") == 1) {
+            message = "Пользователь с таким логином отсутствует";
             req.setAttribute("errorMessage", message);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/register.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/login.jsp");
             dispatcher.forward(req, resp);
-        } else if(userDAO.containsUser(login, "login") == -1) {
-            message = "Пользователь с таким логином уже существует";
+        } else if (userDAO.containsUser(password, "password") == 1) {
+            message = "Неверный пароль";
             req.setAttribute("errorMessage", message);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/register.jsp");
-            dispatcher.forward(req, resp);
-        } else if (userDAO.containsUser(email, "email") == -1) {
-            message = "Пользователь с таким email уже существует";
-            req.setAttribute("errorMessage", message);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/register.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/login.jsp");
             dispatcher.forward(req, resp);
         } else {
-
             EmailSender emailSender = new EmailSender();
             String code = Utils.generateCode();
-
+            String email = userDAO.getUserEmail(login);
             emailSender.sendEmail(code, email);
 
-            session.setAttribute("login", login);
-            session.setAttribute("email", email);
-            session.setAttribute("password", password);
             session.setAttribute("code", code);
-            session.setAttribute("type_auth", "register");
+            session.setAttribute("login", login);
+            session.setAttribute("password", password);
+            session.setAttribute("email", email);
+            session.setAttribute("type_auth", "login");
 
             RequestDispatcher dispatcher = req.getRequestDispatcher("/auth-jsp");
             dispatcher.forward(req, resp);

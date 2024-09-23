@@ -13,34 +13,41 @@
 </head>
 
 <body>
-    <article class="container">
+    <article class="container_login">
 
-        <div class="block">
+        <div class="block_login">
 
-            <div class="block_item">
-                <h2 class="block_item_title">У вас нет аккаунта?</h2>
-                <form action="register.jsp">
-                    <button class="block_item_btn">Зарегистрироваться?</button>
+            <div class="block_item_login">
+                <h2 class="block_item_title_login">У вас нет аккаунта?</h2>
+                <form action="/register-jsp">
+                    <button class="block_item_btn_login">Зарегистрироваться?</button>
                 </form>
             </div>
 
         </div>
 
-        <div class="form_box">
+        <div class="form_box_login">
 
-            <form action="#" class="form form_signin">
-                <h3 class="form_title">Вход</h3>
+            <form action="/login-servlet" method="post" class="form_login form_signin_login">
+                <h3 class="form_title_login">Вход</h3>
                 <p>
-                    <input type="text" placeholder="Логин" class="form_input" required>
+                    <input name="login" type="text" placeholder="Логин" class="form_input_login" required>
                 </p>
                 <p>
-                    <input type="password" placeholder="Пароль" class="form_input" required>
+                    <input name="password" type="password" placeholder="Пароль" class="form_input_login" required>
                 </p>
                 <p>
-                    <button class="form_btn">Войти</button>
+                    <button type="submit" class="form_btn_login">Войти</button>
                 </p>
                 <p>
-                    <a href="#" class="form_forgot">Забыли пароль?</a>
+                    <a href="#" class="form_forgot_login">Забыли пароль?</a>
+                </p>
+                <p>
+                    <c:if test="${not empty errorMessage}">
+                        <div class="error_message">
+                            <c:out value="${errorMessage}"/>
+                        </div>
+                    </c:if>
                 </p>
             </form>
 
