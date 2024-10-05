@@ -40,7 +40,7 @@
                     <button type="submit" class="form_btn_login">Войти</button>
                 </p>
                 <p>
-                    <a href="#" class="form_forgot_login">Забыли пароль?</a>
+                    <a href="/forgot-pass-jsp" class="form_forgot_login">Забыли пароль?</a>
                 </p>
                 <p>
                     <c:if test="${not empty errorMessage}">

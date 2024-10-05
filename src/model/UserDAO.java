@@ -6,10 +6,14 @@ import java.sql.*;
 
 public class UserDAO {
 
+    String DATABASE_NAME = "cleverdb";
+    String USER_NAME = "postgres";
+    String PASSWORD = "12345";
+
     public int containsUser(String arg, String par) {
         String SELECT_USERS_SQL = "SELECT * FROM users WHERE " + par + " = ?";
         DBFunctions db = new DBFunctions();
-        Connection connection = db.connect_to_db("users", "postgres", "12345");
+        Connection connection = db.connect_to_db(DATABASE_NAME, USER_NAME, PASSWORD);
         PreparedStatement preparedStatement = null;
 
         int result = 0;
@@ -42,7 +46,7 @@ public class UserDAO {
 
         DBFunctions db = new DBFunctions();
 
-        Connection connection = db.connect_to_db("users", "postgres", "12345");
+        Connection connection = db.connect_to_db(DATABASE_NAME, USER_NAME, PASSWORD);
 
         PreparedStatement preparedStatement = null;
 
@@ -69,20 +73,43 @@ public class UserDAO {
         String email = null;
         DBFunctions db = new DBFunctions();
 
-        try (Connection conn = db.connect_to_db("users", "postgres", "12345")) {
-            try (PreparedStatement pstmt = conn.prepareStatement(SELECT_EMAIL_SQL)) {
-                pstmt.setString(1, login); // Установка значения параметра
+        try (Connection conn = db.connect_to_db(DATABASE_NAME, USER_NAME, PASSWORD);
+             PreparedStatement pstmt = conn.prepareStatement(SELECT_EMAIL_SQL)) {
+            pstmt.setString(1, login); // Установка значения параметра
 
-                try (ResultSet rs = pstmt.executeQuery()) {
-                    while (rs.next()) {
-                        email = rs.getString("email");
-                    }
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    email = rs.getString("email");
                 }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return email;
+    }
+
+    public void updateUserPassword(String email, String newPassword) {
+        String UPDATE_PASSWORD_SQL = "UPDATE users SET password = ? WHERE email = ?";
+        DBFunctions db = new DBFunctions();
+
+        try (Connection connection = db.connect_to_db(DATABASE_NAME, USER_NAME, PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PASSWORD_SQL)) {
+
+            preparedStatement.setString(1, newPassword);
+            preparedStatement.setString(2, email);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Password updated");
+            } else {
+                    System.out.println("User not found");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
     }
 }

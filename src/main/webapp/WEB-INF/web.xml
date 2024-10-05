@@ -8,7 +8,7 @@
             https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
   
-  <!-- Регистрация Сервлет-->
+  <!-- Регистрация Servlet-->
   
   <servlet>
     <servlet-name>RegisterServlet</servlet-name>
@@ -30,7 +30,7 @@
     <url-pattern>/register-jsp</url-pattern>
   </servlet-mapping>
 
-  <!-- Логин Сервлет -->
+  <!-- Логин Servlet -->
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>servlets.LoginServlet</servlet-class>
@@ -50,7 +50,7 @@
     <url-pattern>/login-jsp</url-pattern>
   </servlet-mapping>
 
-  <!-- Аутентифиикация Сервлет -->
+  <!-- Аутентификация Servlet -->
   <servlet>
     <servlet-name>AuthServlet</servlet-name>
     <servlet-class>servlets.AuthenticationServlet</servlet-class>
@@ -70,4 +70,76 @@
     <url-pattern>/auth-jsp</url-pattern>
   </servlet-mapping>
 
+  <!-- Забыли пароль Servlet -->
+
+  <servlet>
+    <servlet-name>ForgotPassServlet</servlet-name>
+    <servlet-class>servlets.ForgotPasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ForgotPassServlet</servlet-name>
+    <url-pattern>/forgot-pass-servlet</url-pattern>
+  </servlet-mapping>
+
+  <!-- Забыли пароль JSP -->
+
+  <servlet>
+    <servlet-name>ForgotPassJSP</servlet-name>
+    <jsp-file>/jsp/forgot_password.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ForgotPassJSP</servlet-name>
+    <url-pattern>/forgot-pass-jsp</url-pattern>
+  </servlet-mapping>
+
+  <!-- Создание квиза Servlet -->
+
+  <servlet>
+    <servlet-name>CreateQuizServlet</servlet-name>
+    <servlet-class>servlets.CreateQuizServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateQuizServlet</servlet-name>
+    <url-pattern>/create-quiz-servlet</url-pattern>
+  </servlet-mapping>
+
+  <!-- Создание квиза JSP -->
+
+  <servlet>
+    <servlet-name>CreateQuizJSP</servlet-name>
+    <jsp-file>/jsp/create_quiz.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateQuizJSP</servlet-name>
+    <url-pattern>/create-quiz-jsp</url-pattern>
+  </servlet-mapping>
+
+  <!-- Создание вопросов Servlet -->
+
+  <servlet>
+    <servlet-name>CreateQuestionServlet</servlet-name>
+    <servlet-class>servlets.CreateQuestionServlet</servlet-class>
+    <multipart-config>
+      <location>/media</location>
+      <max-file-size>20848820</max-file-size>
+      <max-request-size>418018841</max-request-size>
+      <file-size-threshold>1048576</file-size-threshold>
+    </multipart-config>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateQuestionServlet</servlet-name>
+    <url-pattern>/create-question-servlet</url-pattern>
+  </servlet-mapping>
+
+  <!--  Создание Вопросов JSP -->
+
+  <servlet>
+    <servlet-name>CreateQuestionJSP</servlet-name>
+    <jsp-file>/jsp/create_question.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateQuestionJSP</servlet-name>
+    <url-pattern>/create-question-jsp</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

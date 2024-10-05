@@ -15,9 +15,6 @@ import java.io.IOException;
 
 @WebServlet("/login-servlet")
 public class LoginServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
-    public LoginServlet() {super();}
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,6 +24,7 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
         String message;
         UserDAO userDAO = new UserDAO();
+
         if (userDAO.containsUser(login, "login") == 1) {
             message = "Пользователь с таким логином отсутствует";
             req.setAttribute("errorMessage", message);

@@ -36,6 +36,15 @@ public class AuthenticationServlet extends HttpServlet {
                 dispatcher.forward(req, resp);
             } else if (type_auth.equals("login")) {
                 // переход на страницу
+            } else if (type_auth.equals("forgot-password")) {
+                // Вызываю функцию изменения пароля в бд
+                UserDAO dao = new UserDAO();
+                String email = session.getAttribute("email").toString();
+                String password = session.getAttribute("password").toString();
+                dao.updateUserPassword(email, password);
+
+                RequestDispatcher dispatcher = req.getRequestDispatcher("html/password_updated.html");
+                dispatcher.forward(req, resp);
             }
 
         } else {

@@ -9,7 +9,7 @@ public class User {
     private String password;
 
     public User(String login, String email, String password) {
-        this.login = login.toLowerCase();
+        this.login = login.toLowerCase();// TODO (Про ник только с нижним регистром надо подумать...)
         this.email = email.toLowerCase();
         this.password = password;
     }

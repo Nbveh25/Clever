@@ -52,7 +52,6 @@ public class RegisterServlet extends HttpServlet {
             RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/register.jsp");
             dispatcher.forward(req, resp);
         } else {
-
             EmailSender emailSender = new EmailSender();
             String code = Utils.generateCode();
 

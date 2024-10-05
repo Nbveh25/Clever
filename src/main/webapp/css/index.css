@@ -67,3 +67,39 @@ body {
 .info_container {
     margin-top: 200px;
 }
+
+.box_container {
+    display: flex;
+    padding: 2rem 0;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+.box_container .box {
+    flex: 1 1 25rem;
+    background: cornflowerblue;
+    text-align: center;
+    padding: 2.5rem 2rem;
+    color: white;
+    border-radius: 2.5rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.img {
+    width: 13rem;
+    height: 13rem;
+    border-radius: 50%;
+    object-fit: cover;
+    background: white;
+    padding: 0.5rem;
+}
+
+.star {
+    width: 2rem;
+    height: 2rem;
+    color: orange;
+}
