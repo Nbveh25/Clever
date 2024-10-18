@@ -119,12 +119,12 @@
   <servlet>
     <servlet-name>CreateQuestionServlet</servlet-name>
     <servlet-class>servlets.CreateQuestionServlet</servlet-class>
-    <multipart-config>
-      <location>/media</location>
+    <!--<multipart-config>
+      <location>/main.webapp.media</location>
       <max-file-size>20848820</max-file-size>
       <max-request-size>418018841</max-request-size>
       <file-size-threshold>1048576</file-size-threshold>
-    </multipart-config>
+    </multipart-config>-->
   </servlet>
   <servlet-mapping>
     <servlet-name>CreateQuestionServlet</servlet-name>
@@ -142,4 +142,24 @@
     <url-pattern>/create-question-jsp</url-pattern>
   </servlet-mapping>
   
+<!--  Выбрать Квиз Servlet -->
+
+  <servlet>
+    <servlet-name>ChooseQuizServlet</servlet-name>
+    <servlet-class>servlets.ChooseQuizServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChooseQuizServlet</servlet-name>
+    <url-pattern>/choose-quiz-servlet</url-pattern>
+  </servlet-mapping>
+
+<!--  Выбрать Квиз JSP -->
+  <servlet>
+    <servlet-name>ChooseQuizJSP</servlet-name>
+    <jsp-file>/jsp/choose_quiz.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChooseQuizJSP</servlet-name>
+    <url-pattern>/choose-quiz-jsp</url-pattern>
+  </servlet-mapping>
 </web-app>

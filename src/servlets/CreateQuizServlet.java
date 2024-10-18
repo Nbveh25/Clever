@@ -2,17 +2,21 @@ package servlets;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 import model.Quiz;
 import model.QuizDAO;
+import services.UploadFilesService;
 
 import java.io.IOException;
 
 @WebServlet("/create-quiz-servlet")
+@MultipartConfig(
+        location="C:\\Users\\timur\\IdeaProjects\\Clever\\src\\main\\webapp\\source\\quiz_icons",
+        fileSizeThreshold=1024*1024,
+        maxFileSize=1024*1024*1024, maxRequestSize=1024*1024*5*5
+)
 public class CreateQuizServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,8 +25,17 @@ public class CreateQuizServlet extends HttpServlet {
         String quiz_type = req.getParameter("quiz_type");
 
         HttpSession session = req.getSession();
+        UploadFilesService uploadFilesService = new UploadFilesService();
 
-        Quiz quiz = new Quiz(name_quiz, description_quiz, quiz_type);
+        Part part = req.getPart("quiz_icon");
+        String filename = part.getSubmittedFileName();
+
+        String uploadPath = "C:\\Users\\timur\\IdeaProjects\\Clever\\src\\main\\webapp\\source\\quiz_icons\\" + filename;
+        String quizIconPath = "http://localhost:8080/source/quiz_icons/" + filename;
+
+        uploadFilesService.uploadMediaFile(part.getInputStream(), uploadPath);
+
+        Quiz quiz = new Quiz(name_quiz, description_quiz, quiz_type, quizIconPath);
         QuizDAO quizDAO = new QuizDAO();
 
         int quizId = quizDAO.addQuiz(quiz);

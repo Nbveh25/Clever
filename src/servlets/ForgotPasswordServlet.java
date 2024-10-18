@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.EmailSender;
+import services.EmailSenderService;
 import model.Utils;
 
 import java.io.IOException;
@@ -26,10 +26,10 @@ public class ForgotPasswordServlet extends HttpServlet {
             session.setAttribute("email", email);
             session.setAttribute("password", password);
 
-            EmailSender emailSender = new EmailSender();
+            EmailSenderService emailSenderService = new EmailSenderService();
             String code = Utils.generateCode();
 
-            emailSender.sendEmail(code ,email);
+            emailSenderService.sendEmail(code ,email);
 
             session.setAttribute("type_auth", "forgot-password");
             session.setAttribute("code", code);

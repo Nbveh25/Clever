@@ -12,7 +12,8 @@ body {
 .container {
     background-color: white;
     border-radius: 10px;
-    padding: 40px;
+    padding: 48px;
+    margin: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     text-align: center;
 }
@@ -28,7 +29,7 @@ h1 {
 }
 
 .button {
-    background-color: #4CAF50;
+    background-color: #03a9f4;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -43,5 +44,40 @@ h1 {
 }
 
 .button:hover {
-    background-color: #45a049;
+    background-color: #0373f4;
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: #03a9f4;
+    top: 0;
+    display: flex;
+    z-index: 1001;
+}
+
+.header_link_container {
+    display: inline-block;
+    list-style: none;
+    position: absolute;
+    margin-top: 16px;
+    right: 0;
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+    margin: 0 20px;
+}
+
+.ic_profile {
+    width: 40px;
+    height: 40px;
+    margin: 0 20px;
+    color: white;
+}
+
+.main_img {
+    width: 200px;
+    height: 200px;
 }

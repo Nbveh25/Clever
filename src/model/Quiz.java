@@ -6,11 +6,13 @@ public class Quiz {
     private String quizName;
     private String quizDescription;
     private String quizType;
+    private String quizIconPath;
 
-    public Quiz(String quizName, String quizDescription, String quizType) {
+    public Quiz(String quizName, String quizDescription, String quizType, String quizIconPath) {
         this.quizName = quizName;
         this.quizDescription = quizDescription;
         this.quizType = quizType;
+        this.quizIconPath = quizIconPath;
     }
 
     public String getQuizName() {
@@ -35,6 +37,15 @@ public class Quiz {
 
     public void setQuizType(String quizType) {
         this.quizType = quizType;
+    }
+
+
+    public String getQuizIconPath() {
+        return quizIconPath;
+    }
+
+    public void setQuizIconPath(String quizIconPath) {
+        this.quizIconPath = quizIconPath;
     }
 
     @Override

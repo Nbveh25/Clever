@@ -76,3 +76,16 @@ body {
     background-color: #0056b3;
 }
 
+.media-file {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333333;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.label_icon {
+    color: #333333;
+    font-size: 20px;
+}
+

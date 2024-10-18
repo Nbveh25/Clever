@@ -14,7 +14,7 @@
 <body>
 
 <div class="create-container">
-    <form action="/create-question-servlet" method="post" enctype="multipart/form-data">
+    <form action="<c:url value="/create-question-servlet"/>" method="post" enctype="multipart/form-data">
         <h2 class="header-create">Создание вопросов</h2>
 
         <p id="question-number" class="number-of-question">Номер вопроса: 0</p>

@@ -14,22 +14,39 @@ body {
 header {
     text-align: center;
     margin-bottom: 20px;
+    font-family: "Matemasie", sans-serif;
 }
 
 .quiz-list {
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Отступ между элементами */
+    gap: 20px;
 }
 
-.quiz-item {
+.quiz-tag {
+    display: flex;
+    align-items: center;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 15px;
 }
 
-.quiz-item h2 {
+.quiz-icon {
+    width: 140px;
+    height: 140px;
+    margin-right: 20px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.quiz-content {
+    flex: 1;
+}
+
+.quiz-tag h2 {
+    font-family: "Matemasie", sans-serif;
     margin-top: 0;
 }
 
@@ -44,6 +61,33 @@ header {
 
 .quiz-button:hover {
     background-color: #0056b3;
+}
+
+.filter-container {
+    width: 760px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.06);
+    padding: 20px;
+    display: flex;
+}
+
+.seach-item {
+    width: 50%;
+    border: 1px solid;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 8px;
+    text-align: center;
+}
+
+.filter-selector {
+    width: 50%;
+    border: 1px solid;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 8px;
+    text-align: center;
 }
 
 footer {

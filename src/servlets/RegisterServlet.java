@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.EmailSender;
+import services.EmailSenderService;
 import model.UserDAO;
 import model.Utils;
 import java.io.IOException;
@@ -52,10 +52,10 @@ public class RegisterServlet extends HttpServlet {
             RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/register.jsp");
             dispatcher.forward(req, resp);
         } else {
-            EmailSender emailSender = new EmailSender();
+            EmailSenderService emailSenderService = new EmailSenderService();
             String code = Utils.generateCode();
 
-            emailSender.sendEmail(code, email);
+            emailSenderService.sendEmail(code, email);
 
             session.setAttribute("login", login);
             session.setAttribute("email", email);

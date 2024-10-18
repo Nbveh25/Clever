@@ -13,7 +13,11 @@ import services.UploadFilesService;
 import java.io.*;
 
 @WebServlet("/create-question-servlet")
-@MultipartConfig
+@MultipartConfig(
+        location="C:\\Users\\timur\\IdeaProjects\\Clever\\src\\main\\webapp\\media",
+        fileSizeThreshold=1024*1024,
+        maxFileSize=1024*1024*1024, maxRequestSize=1024*1024*5*5
+)
 public class CreateQuestionServlet extends HttpServlet {
 
     @Override
@@ -34,9 +38,9 @@ public class CreateQuestionServlet extends HttpServlet {
 
         Part part = req.getPart("mediaFile");
         String fileName = part.getSubmittedFileName();
-        String path = uploadFilesService.getPath(fileName, quiz_type);
+        String path = uploadFilesService.getPathForMedia(fileName, quiz_type);
 
-        uploadFilesService.uploadFile(part.getInputStream(), fileName, quiz_type, path);
+        uploadFilesService.uploadMediaFile(part.getInputStream(), path);
 
         Question question = new Question(quiz_id, question_quiz, quiz_type, path);
 

@@ -12,16 +12,20 @@
 <body>
 
 <div class="create-container">
-    <form action="/create-quiz-servlet" method="post">
+    <form action="<c:url value="/create-quiz-servlet"/>" method="post" enctype="multipart/form-data">
+
         <p>
             <h2 class="header-create">Создание квиза</h2>
         </p>
+
         <p>
             <input name="name_quiz" class="input-text" type="text" placeholder="Название квиза" required>
         </p>
+
         <p>
             <textarea name="description_quiz" class="textarea" placeholder="Описание квиза"></textarea>
         </p>
+
         <p>
             <select name="quiz_type" class="quiz-category">
                 <option class="option-category">Наука</option>
@@ -30,6 +34,12 @@
                 <option class="option-category">Искусство</option>
             </select>
         </p>
+
+        <p>
+            <label for="quizIcon" class="label_icon">Иконка квиза:</label>
+            <input class="media-file" type="file" id="quizIcon" name="quiz_icon" accept="image/*" >
+        </p>
+
         <p>
             <button class="create-quiz-btn" type="submit">Создать квиз</button>
         </p>
