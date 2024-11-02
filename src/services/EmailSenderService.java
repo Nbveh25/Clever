@@ -36,12 +36,10 @@ public class EmailSenderService {
             message.setFrom(new InternetAddress(from));
             message.addRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setSubject("Clever");
-            message.setText("Кайнар-салам! Вот твой код: " + code); // сверстать html и сделать красиво а пока так сойдет
+            message.setText("Кайнар-салам! Вот твой код: " + code); // сверстать html и сделать красиво, а пока так сойдет
             Transport.send(message);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 }

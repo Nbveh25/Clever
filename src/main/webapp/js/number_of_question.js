@@ -6,7 +6,7 @@ function addQuestion() {
     questionCount++;
 
     const questionNumberDisplay = document.getElementById("question-number");
-    questionNumberDisplay.textContent = "Номер вопроса: " + questionCount;
+    questionNumberDisplay.textContent = "Вопрос №" + questionCount;
 
     sessionStorage.setItem("number", questionCount);
 }

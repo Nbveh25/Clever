@@ -1,18 +1,28 @@
 package model;
 
-import java.util.Locale;
 import java.util.Objects;
 
 public class User {
+    private int id;
     private String login;
     private String email;
     private String password;
+
+    public User(int id, String login, String email, String password) {
+        this.id = id;
+        this.login = login;
+        this.email = email;
+        this.password = password;
+    }
 
     public User(String login, String email, String password) {
         this.login = login.toLowerCase();// TODO (Про ник только с нижним регистром надо подумать...)
         this.email = email.toLowerCase();
         this.password = password;
     }
+
+    public int getId() { return id; }
+
     public String getLogin() {
         return login;
     }
@@ -24,6 +34,8 @@ public class User {
     public String getPassword() {
         return password;
     }
+
+    public void setId(int id) { this.id = id; }
 
     public void setLogin(String login) {
         this.login = login;

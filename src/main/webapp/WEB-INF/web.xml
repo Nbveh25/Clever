@@ -162,4 +162,66 @@
     <servlet-name>ChooseQuizJSP</servlet-name>
     <url-pattern>/choose-quiz-jsp</url-pattern>
   </servlet-mapping>
+
+<!--  Страницы хоста со списком игроков Servlet  -->
+  <servlet>
+    <servlet-name>GameServlet</servlet-name>
+    <servlet-class>servlets.GameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GameServlet</servlet-name>
+    <url-pattern>/game-servlet</url-pattern>
+  </servlet-mapping>
+
+  <!--  Страницы хоста со списком игроков JSP  -->
+  <servlet>
+    <servlet-name>GameJSP</servlet-name>
+    <jsp-file>/jsp/game.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GameJSP</servlet-name>
+    <url-pattern>/game-jsp</url-pattern>
+  </servlet-mapping>
+
+  <!--  Главный экран Servlet  -->
+  <servlet>
+    <servlet-name>MainServlet</servlet-name>
+    <servlet-class>servlets.MainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MainServlet</servlet-name>
+    <url-pattern>/main-servlet</url-pattern>
+  </servlet-mapping>
+  
+  <!--  Главный экран JSP  -->
+  <servlet>
+    <servlet-name>MainJSP</servlet-name>
+    <jsp-file>/jsp/main.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MainJSP</servlet-name>
+    <url-pattern>/main-jsp</url-pattern>
+  </servlet-mapping>
+
+  <!--  Начало квиза Servlet  -->
+  <servlet>
+    <servlet-name>QuizStartServlet</servlet-name>
+    <servlet-class>servlets.QuizStartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QuizStartServlet</servlet-name>
+    <url-pattern>/quiz-start-servlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>QuizStartJSP</servlet-name>
+    <jsp-file>/jsp/quiz_start.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QuizStartJSP</servlet-name>
+    <url-pattern>/quiz-start-jsp</url-pattern>
+  </servlet-mapping>
 </web-app>
+
+  
+

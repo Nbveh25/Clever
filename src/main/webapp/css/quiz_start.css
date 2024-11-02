@@ -1,0 +1,123 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.question_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    min-height: 420px;
+    border-radius: 10px;
+    background-color: #03a9f4;
+    /*padding: 24px;*/
+}
+
+.number_of_question {
+    color: white;
+    text-align: center;
+}
+
+.question_container h3 {
+    color: white;
+    text-align: center;
+    margin: 12px 40px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.button_container {
+    margin-top: 8px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Две колонки, равные по ширине */
+    grid-template-rows: repeat(2, auto); /* Два ряда, высота зависит от содержимого */
+    gap: 20px; /* Промежуток между кнопками */
+}
+
+.button_answer {
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px; /* Внутренние отступы */
+
+    min-width: 150px; /* Минимальная ширина кнопки */
+    min-height: 60px; /* Минимальная высота кнопки */
+
+    background-color: #007bff; /* Цвет фона кнопки */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+    white-space: normal; /* Позволяет тексту переноситься на новую строку */
+    text-align: center; /* Центрируем текст */
+    word-wrap: break-word; /* Переносим длинные слова на новую строку */
+}
+
+.music_bar {
+    margin: 16px 0;
+}
+
+.question_image {
+    width: 250px;
+    height: 250px;
+    border-radius: 8px;
+}
+
+.question_video {
+    border-radius: 8px;
+}
+
+.red {
+    background-color: red;
+}
+
+.red:hover {
+    background-color: darkred;
+}
+
+.purple {
+    background-color: mediumpurple;
+}
+
+.purple:hover {
+    background-color: purple;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.orange:hover {
+    background-color: darkorange;
+}
+
+.green {
+    background-color: green;
+}
+
+.green:hover {
+    background-color: darkgreen;
+}
+
+.timer {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background-color: limegreen;
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    border: 2px solid #f00;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

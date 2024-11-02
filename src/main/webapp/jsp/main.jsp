@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -28,15 +30,19 @@
 <div class="container">
     <h1>Играть с друзьями</h1>
     <img class="main_img" src="../img/connect_to_quiz.png"><br>
-    <form>
+    <form action="<c:url value="/main-servlet"/>" method="POST">
         <input name="input_code" class="input_code" type="text" placeholder="Введите код">
         <div class="button-container">
-            <a href="#" class="button">Подключиться к игре</a>
+            <button type="submit" class="button">Подключиться к игре</button>
         </div>
     </form>
-
 </div>
 
 </body>
 
 </html>
+
+<!--
+Illustration by <a href="https://icons8.com/illustrations/author/lZpGtGw5182N">Elisabet Guba</a> from <a href="https://icons8.com/illustrations">Ouch!</a>-->
+
+

@@ -38,11 +38,12 @@ public class CreateQuestionServlet extends HttpServlet {
 
         Part part = req.getPart("mediaFile");
         String fileName = part.getSubmittedFileName();
-        String path = uploadFilesService.getPathForMedia(fileName, quiz_type);
+        String path = uploadFilesService.getPathForUpload(fileName, quiz_type);
+        String mediaPath = uploadFilesService.getPathForMedia(fileName, quiz_type);
 
         uploadFilesService.uploadMediaFile(part.getInputStream(), path);
 
-        Question question = new Question(quiz_id, question_quiz, quiz_type, path);
+        Question question = new Question(quiz_id, question_quiz, quiz_type, mediaPath);
 
         if (req.getParameter("add_question") != null) {
 
@@ -64,7 +65,7 @@ public class CreateQuestionServlet extends HttpServlet {
             answerDAO.addAnswer(question_id, wrong_answer2, "wrong_answers");
             answerDAO.addAnswer(question_id, wrong_answer3, "wrong_answers");
 
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/Страница со списком");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/choose-quiz-jsp");
             dispatcher.forward(req, resp);
         }
     }

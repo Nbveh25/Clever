@@ -68,6 +68,26 @@ public class UserDAO {
         return result;
     }
 
+    public int getIdByLogin(String login) {
+        String SELECT_USERS_SQL = "SELECT * FROM users WHERE login = ?";
+        DBFunctions db = new DBFunctions();
+        int id = -1;
+        try (Connection conn = db.connect_to_db(DATABASE_NAME, USER_NAME, PASSWORD)) {
+            try (PreparedStatement preparedStatement = conn.prepareStatement(SELECT_USERS_SQL)) {
+                preparedStatement.setString(1, login);
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    while (rs.next()) {
+                        id = rs.getInt("id");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return id;
+    }
+
     public String getUserEmail(String login) {
         String SELECT_EMAIL_SQL = "SELECT email FROM users WHERE login = ?";
         String email = null;

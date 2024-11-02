@@ -35,11 +35,11 @@ public class CreateQuizServlet extends HttpServlet {
 
         uploadFilesService.uploadMediaFile(part.getInputStream(), uploadPath);
 
-        Quiz quiz = new Quiz(name_quiz, description_quiz, quiz_type, quizIconPath);
+        Quiz quiz = new Quiz(name_quiz, description_quiz, quiz_type, quizIconPath);///
         QuizDAO quizDAO = new QuizDAO();
 
-        int quizId = quizDAO.addQuiz(quiz);
-        session.setAttribute("quiz_id", quizId);
+        int quiz_id = quizDAO.addQuiz(quiz);
+        session.setAttribute("quiz_id", quiz_id);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/create-question-jsp");
         dispatcher.forward(req, resp);

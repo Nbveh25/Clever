@@ -3,6 +3,7 @@ package model;
 import java.util.Objects;
 
 public class Question {
+    private int id;
     private int quizId;
     private String question;
     private String typeQuestion;
@@ -13,6 +14,22 @@ public class Question {
         this.question = question;
         this.typeQuestion = typeQuestion;
         this.mediaPath = mediaPath;
+    }
+
+    public Question(int id, int quizId, String question, String typeQuestion, String mediaPath) {
+        this.id = id;
+        this.quizId = quizId;
+        this.question = question;
+        this.typeQuestion = typeQuestion;
+        this.mediaPath = mediaPath;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getQuizId() {

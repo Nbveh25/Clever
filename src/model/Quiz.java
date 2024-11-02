@@ -3,16 +3,33 @@ package model;
 import java.util.Objects;
 
 public class Quiz {
+    private int id;
     private String quizName;
     private String quizDescription;
     private String quizType;
     private String quizIconPath;
+
+    public Quiz(int id, String quizName, String quizDescription, String quizType, String quizIconPath) {
+        this.id = id;
+        this.quizName = quizName;
+        this.quizDescription = quizDescription;
+        this.quizType = quizType;
+        this.quizIconPath = quizIconPath;
+    }
 
     public Quiz(String quizName, String quizDescription, String quizType, String quizIconPath) {
         this.quizName = quizName;
         this.quizDescription = quizDescription;
         this.quizType = quizType;
         this.quizIconPath = quizIconPath;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getQuizName() {
