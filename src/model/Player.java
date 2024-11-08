@@ -6,11 +6,13 @@ public class Player {
 
     private int user_id;
     private int game_id;
+    private String login;
     private int total_score;
 
-    public Player(int user_id, int game_id, int total_score) {
+    public Player(int user_id, int game_id, String login, int total_score) {
         this.user_id = user_id;
         this.game_id = game_id;
+        this.login = login;
         this.total_score = total_score;
     }
 
@@ -28,6 +30,14 @@ public class Player {
 
     public void setGame_id(int game_id) {
         this.game_id = game_id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public int getTotal_score() {

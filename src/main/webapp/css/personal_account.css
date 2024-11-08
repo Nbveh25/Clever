@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: #03a9f4;
+    top: 0;
+    display: flex;
+    z-index: 1001;
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+    margin: 0 20px;
+}
+
+.header_link_container {
+    display: inline-block;
+    list-style: none;
+    position: absolute;
+    margin-top: 16px;
+    right: 0;
+}
+
+.user_container {
+    display: flex;
+    margin-top: 72px;
+    border: #666666 solid;
+    border-radius: 8px;
+    background-color: #cccccc;
+}
+
+.user_info {
+    display: flex;
+    flex-direction: row;
+}
+
+.icon_of_user {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+}
+
+.header_link_container {
+    display: inline-block;
+    list-style: none;
+    position: absolute;
+    margin-top: 16px;
+    right: 0;
+}
+
+.header_link {
+    margin: 0 20px;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+}
+
+.header_link::after {
+    content: "";
+    width: 0;
+    height: 2px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    transition: 0.7s;
+}
+
+.header_link:hover::after {
+    width: 100%;
+}

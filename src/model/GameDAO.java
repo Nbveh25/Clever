@@ -12,23 +12,27 @@ public class GameDAO {
     String USER_NAME = "postgres";
     String PASSWORD = "12345";
 
-    public void addGame(Game game) {
+    public int addGame(Game game) {
         String INSERT_GAME_SQL = "INSERT INTO games (quiz_id, code) VALUES (?, ?)";
 
         DBFunctions db = new DBFunctions();
-
+        int game_id = -1;
         try (Connection conn = db.connect_to_db(DATABASE_NAME, USER_NAME, PASSWORD)) {
             try (PreparedStatement ps = conn.prepareStatement(INSERT_GAME_SQL, PreparedStatement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, game.getQuizId());
                 ps.setString(2, game.getCode());
-                if (ps.getGeneratedKeys().next()) {
-                    game.setId(ps.getGeneratedKeys().getInt(1));
-                }
+
                 ps.executeUpdate();
+                try (ResultSet rs = ps.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        game_id = rs.getInt(1);
+                    }
+                }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return game_id;
     }
 
     public int getGameId(String code) {

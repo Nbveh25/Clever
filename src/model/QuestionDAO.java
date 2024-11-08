@@ -17,7 +17,7 @@ public class QuestionDAO {
 
     public int addQuestion(Question question) {
         String INSERT_QUESTION_SQL = "INSERT INTO questions (quiz_id, question, type_question, media_path) VALUES (?, ?, ?, ?)";
-        int question_id = -1; // Initialize the question_id
+        int question_id = -1;
 
         DBFunctions db = new DBFunctions();
 
@@ -28,14 +28,11 @@ public class QuestionDAO {
                 ps.setString(3, question.getTypeQuestion());
                 ps.setString(4, question.getMediaPath());
 
-                // Execute the update first
                 ps.executeUpdate();
 
-                // Retrieve the generated keys
                 try (ResultSet rs = ps.getGeneratedKeys()) {
                     if (rs.next()) {
                         question_id = rs.getInt(1);
-                        //question.setId(question_id);
                     }
                 }
 
@@ -49,18 +46,19 @@ public class QuestionDAO {
 
     public List<Question> getQuizQuestions(int quizId) {
         List<Question> questionList = new ArrayList<>();
-        String SELECT_QUESTION_SQL = "SELECT id, quiz_id, question, type_question, media_path FROM questions WHERE quiz_id =" + quizId;
+        String SELECT_QUESTION_SQL = "SELECT id, quiz_id, question, type_question, media_path FROM questions WHERE quiz_id=?";
         DBFunctions db = new DBFunctions();
 
         try (Connection connection = db.connect_to_db(DATABASE_NAME, USER_NAME, PASSWORD)) {
             try(PreparedStatement ps = connection.prepareStatement(SELECT_QUESTION_SQL)) {
+                ps.setInt(1, quizId);
                 try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
                         int id = rs.getInt(1);
                         String question_text = rs.getString(3);
                         String typeQuestion = rs.getString(4);
                         String mediaPath = rs.getString(5);
-                        Question question = new Question(quizId, question_text, typeQuestion, mediaPath);
+                        Question question = new Question(id, quizId, question_text, typeQuestion, mediaPath);
                         questionList.add(question);
                     }
                 }

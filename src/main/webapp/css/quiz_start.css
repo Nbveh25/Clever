@@ -15,7 +15,7 @@ body {
     min-height: 420px;
     border-radius: 10px;
     background-color: #03a9f4;
-    /*padding: 24px;*/
+    padding: 24px;
 }
 
 .number_of_question {
@@ -33,7 +33,7 @@ body {
 
 .button_container {
     margin-top: 8px;
-
+    margin-bottom: 8px;
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Две колонки, равные по ширине */
     grid-template-rows: repeat(2, auto); /* Два ряда, высота зависит от содержимого */
@@ -51,11 +51,15 @@ body {
     min-width: 150px; /* Минимальная ширина кнопки */
     min-height: 60px; /* Минимальная высота кнопки */
 
-    background-color: #007bff; /* Цвет фона кнопки */
+    background-color: #28a745;
     transition: background-color 0.3s; /* Плавный переход цвета фона */
     white-space: normal; /* Позволяет тексту переноситься на новую строку */
     text-align: center; /* Центрируем текст */
     word-wrap: break-word; /* Переносим длинные слова на новую строку */
+}
+
+.button_answer:hover {
+    background-color: #218838;
 }
 
 .music_bar {
@@ -63,45 +67,15 @@ body {
 }
 
 .question_image {
-    width: 250px;
-    height: 250px;
+    /*width: 250px;
+    height: 250px;*/
+    width: 300px;
+    height: 300px;
     border-radius: 8px;
 }
 
 .question_video {
     border-radius: 8px;
-}
-
-.red {
-    background-color: red;
-}
-
-.red:hover {
-    background-color: darkred;
-}
-
-.purple {
-    background-color: mediumpurple;
-}
-
-.purple:hover {
-    background-color: purple;
-}
-
-.orange {
-    background-color: orange;
-}
-
-.orange:hover {
-    background-color: darkorange;
-}
-
-.green {
-    background-color: green;
-}
-
-.green:hover {
-    background-color: darkgreen;
 }
 
 .timer {
@@ -113,7 +87,7 @@ body {
     border-radius: 50%;
     background-color: limegreen;
     color: white;
-    font-size: 24px;
+    font-size: 36px;
     font-weight: 600;
     border: 2px solid #f00;
     padding: 12px;

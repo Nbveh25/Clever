@@ -175,12 +175,12 @@
 
   <!--  Страницы хоста со списком игроков JSP  -->
   <servlet>
-    <servlet-name>GameJSP</servlet-name>
-    <jsp-file>/jsp/game.jsp</jsp-file>
+    <servlet-name>PageWithCodeJSP</servlet-name>
+    <jsp-file>/jsp/page_with_code.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GameJSP</servlet-name>
-    <url-pattern>/game-jsp</url-pattern>
+    <servlet-name>PageWithCodeJSP</servlet-name>
+    <url-pattern>/page-with-code-jsp</url-pattern>
   </servlet-mapping>
 
   <!--  Главный экран Servlet  -->
@@ -213,6 +213,7 @@
     <url-pattern>/quiz-start-servlet</url-pattern>
   </servlet-mapping>
 
+  <!--  Начало квиза  JSP -->
   <servlet>
     <servlet-name>QuizStartJSP</servlet-name>
     <jsp-file>/jsp/quiz_start.jsp</jsp-file>
@@ -221,7 +222,27 @@
     <servlet-name>QuizStartJSP</servlet-name>
     <url-pattern>/quiz-start-jsp</url-pattern>
   </servlet-mapping>
+
+  <!--  Результаты JSP  -->
+  <servlet>
+    <servlet-name>ResultOfQuizJSP</servlet-name>
+    <jsp-file>/jsp/result_of_quiz.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResultOfQuizJSP</servlet-name>
+    <url-pattern>/result-of-quiz-jsp</url-pattern>
+  </servlet-mapping>
+  
+  <!--  Страница ошибки 404 -->
+  <error-page>
+    <error-code>404</error-code>
+    <location>/html/404.html</location>
+  </error-page>
+
 </web-app>
+
+  
+  
 
   
 

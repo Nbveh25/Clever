@@ -5,6 +5,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
+import model.Answer;
 import model.AnswerDAO;
 import model.Question;
 import model.QuestionDAO;
@@ -49,10 +50,10 @@ public class CreateQuestionServlet extends HttpServlet {
 
             int question_id = questionDAO.addQuestion(question);
 
-            answerDAO.addAnswer(question_id, right_answer, "right_answers");
-            answerDAO.addAnswer(question_id, wrong_answer1, "wrong_answers");
-            answerDAO.addAnswer(question_id, wrong_answer2, "wrong_answers");
-            answerDAO.addAnswer(question_id, wrong_answer3, "wrong_answers");
+            answerDAO.addAnswer(new Answer(question_id, right_answer), "right_answers");
+            answerDAO.addAnswer(new Answer(question_id, wrong_answer1), "wrong_answers");
+            answerDAO.addAnswer(new Answer(question_id, wrong_answer2), "wrong_answers");
+            answerDAO.addAnswer(new Answer(question_id, wrong_answer3), "wrong_answers");
 
             RequestDispatcher dispatcher = req.getRequestDispatcher("/create-question-jsp");
             dispatcher.forward(req, resp);
@@ -60,10 +61,10 @@ public class CreateQuestionServlet extends HttpServlet {
             // Сохраняем вопрос в БД, переходим на страницу со списком квизов
             int question_id = questionDAO.addQuestion(question);
 
-            answerDAO.addAnswer(question_id, right_answer, "right_answers");
-            answerDAO.addAnswer(question_id, wrong_answer1, "wrong_answers");
-            answerDAO.addAnswer(question_id, wrong_answer2, "wrong_answers");
-            answerDAO.addAnswer(question_id, wrong_answer3, "wrong_answers");
+            answerDAO.addAnswer(new Answer(question_id, right_answer), "right_answers");
+            answerDAO.addAnswer(new Answer(question_id, wrong_answer1), "wrong_answers");
+            answerDAO.addAnswer(new Answer(question_id, wrong_answer2), "wrong_answers");
+            answerDAO.addAnswer(new Answer(question_id, wrong_answer3), "wrong_answers");
 
             RequestDispatcher dispatcher = req.getRequestDispatcher("/choose-quiz-jsp");
             dispatcher.forward(req, resp);

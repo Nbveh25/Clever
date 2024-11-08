@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function() {
     let currentQuestionIndex = 0;
     let questions = [];
@@ -30,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <h3>${question.question}</h3>
             `;
 
+            // Добавление медиа-контента
             if (question.typeQuestion === 'music_question') {
                 questionHtml += `
                     <audio controls class="music_bar" autoplay="autoplay">
@@ -50,34 +50,54 @@ document.addEventListener("DOMContentLoaded", function() {
                 `;
             }
 
-            questionHtml += `
-                <div class="button_container">
-                    <button class="button_answer red" data-answer="1">Ответ 1</button>
-                    <button class="button_answer purple" data-answer="2">Ответ 2</button>
-                    <button class="button_answer orange" data-answer="3">Ответ 3</button>
-                    <button class="button_answer green" data-answer="4">Ответ 4</button>
-                </div>
-                </div>
-            `;
-
+            questionHtml += `<div class="button_container">`;
             container.insertAdjacentHTML('beforeend', questionHtml);
 
-            document.querySelectorAll('.button_answer').forEach(button => {
-                button.addEventListener('click', function() {
-                    let answer = this.getAttribute('data-answer');
-                    submitAnswer(answer);
+            // Получение ответов для текущего вопроса
+            fetch(`/get-answers-servlet?questionId=${question.id}`)
+                .then(response => response.json())
+                .then(answers => {
+                    const buttonContainer = document.querySelector('.button_container'); // Получаем контейнер кнопок
+                    answers.forEach(answer => {
+                        const answerButton = document.createElement('button');
+                        answerButton.className = 'button_answer';
+                        answerButton.setAttribute('data-answer', answer.id);
+                        answerButton.setAttribute('data-question', question.id);
+                        answerButton.textContent = answer.answer;
+
+                        answerButton.addEventListener('click', function() {
+                            // Отключаем все кнопки после нажатия
+                            const allButtons = buttonContainer.querySelectorAll('button');
+                            allButtons.forEach(btn => btn.disabled = true); // Блокируем все кнопки
+                            allButtons.forEach(btn => btn.hidden = true); // Делаем невидимыми все кнопки
+
+                            // Отправляем ответ
+                            submitAnswer(answer.id, question.id, answer.answer);
+                        });
+
+                        buttonContainer.appendChild(answerButton); // Добавляем кнопку в контейнер
+                    });
+                })
+                .catch(error => {
+                    console.error("Ошибка при получении ответов: ", error);
                 });
-            });
+
         }
     }
 
-    function submitAnswer(answer) {
-        fetch('/submit-answer-servlet', {
+    function submitAnswer(answerId, questionId, answerText) {
+        const data = new URLSearchParams();
+        data.append('answerId', answerId);
+        data.append('questionId', questionId);
+        data.append('answerText', answerText);
+
+        fetch(`/submit-answer-servlet`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: `answer=${encodeURIComponent(answer)}`
+            body: data.toString()
+
         })
             .then(response => response.json())
             .then(data => {
@@ -89,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function startTimer() {
-        timeLeft = 15; // Reset timer
+        timeLeft = 15;
         updateTimerDisplay();
 
         clearInterval(timerInterval);
@@ -105,6 +125,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     startTimer();
                 } else {
                     console.log("Все вопросы были показаны.");
+                    // переход на страницу с результатами
+                    window.location.href = "/main-jsp";
                 }
             }
         }, 1000);
@@ -114,6 +136,5 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('.timer').textContent = timeLeft;
     }
 
-    // Load questions when the page loads
     loadQuestions();
 });

@@ -11,7 +11,7 @@ import model.User;
 import model.UserDAO;
 import java.io.IOException;
 
-@WebServlet("/auth-servlet")
+@WebServlet(name = "AuthServlet", urlPatterns = "/auth-servlet")
 public class AuthenticationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,6 +37,7 @@ public class AuthenticationServlet extends HttpServlet {
             } else if (type_auth.equals("login")) {
                 // переход на страницу
                 session.setAttribute("user_id", userDAO.getIdByLogin(session.getAttribute("login").toString()));
+                session.setAttribute("login", session.getAttribute("login").toString());
                 RequestDispatcher dispatcher = req.getRequestDispatcher("/main-jsp");
                 dispatcher.forward(req, resp);
             } else if (type_auth.equals("forgot-password")) {

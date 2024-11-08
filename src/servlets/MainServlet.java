@@ -21,6 +21,7 @@ public class MainServlet extends HttpServlet {
 
         String code = req.getParameter("input_code");
         int user_id = (int) session.getAttribute("user_id");
+        String login = (String) session.getAttribute("login");
         System.out.println("user_id: " + user_id);
         GameDAO gameDAO = new GameDAO();
         int game_id = gameDAO.getGameId(code);
@@ -28,13 +29,13 @@ public class MainServlet extends HttpServlet {
         // Ищем игру по коду в БД
         if (game_id != -1) {
             int quiz_id = gameDAO.getQuizId(game_id);
-            // Заносим пользователя в таблицу Players
             PlayerDAO playerDAO = new PlayerDAO();
 
-            Player player = new Player(user_id, game_id, 0);
+            Player player = new Player(user_id, game_id, login,0);
             playerDAO.addPlayer(player);
 
             session.setAttribute("quiz_id", quiz_id);
+            session.setAttribute("game_id", game_id);
             RequestDispatcher dispatcher = req.getRequestDispatcher("html/waiting_of_quiz.html");
             dispatcher.forward(req, resp);
         }
