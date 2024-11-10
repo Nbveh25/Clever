@@ -5,10 +5,10 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import model.Answer;
-import model.AnswerDAO;
-import model.Question;
-import model.QuestionDAO;
+import dto.Answer;
+import dao.AnswerDAO;
+import dto.Question;
+import dao.QuestionDAO;
 import services.UploadFilesService;
 
 import java.io.*;

@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import services.EmailSenderService;
-import model.Utils;
+import dto.Utils;
 
 import java.io.IOException;
 

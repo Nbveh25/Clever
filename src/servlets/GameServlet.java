@@ -7,9 +7,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Game;
-import model.GameDAO;
-import model.Utils;
+import dto.Game;
+import dao.GameDAO;
+import dto.Utils;
 import websockets.QuizStartWebSocket;
 
 import java.io.IOException;
