@@ -5,8 +5,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import model.Quiz;
-import model.QuizDAO;
+import dto.Quiz;
+import dao.QuizDAO;
 import services.UploadFilesService;
 
 import java.io.IOException;

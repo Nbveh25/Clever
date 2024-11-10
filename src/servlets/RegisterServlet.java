@@ -8,8 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import services.EmailSenderService;
-import model.UserDAO;
-import model.Utils;
+import dao.UserDAO;
+import dto.Utils;
 import java.io.IOException;
 
 @WebServlet("/register-servlet")

@@ -7,8 +7,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Question;
-import model.QuestionDAO;
+import dto.Question;
+import dao.QuestionDAO;
 
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -13,7 +13,10 @@
 <header class="header">
     <img class="logo" src="../img/logo_brain_1.png">
     <div class="header_link_container">
-        <img class="ic_profile" src="../img/ic_profile.png">
+        <a class="header_link" href="<c:url value="/create-quiz-jsp"/>">Создать квиз</a>
+        <a class="header_link" href="#">Создать тест</a>
+        <a class="header_link" href="#">Профиль</a>
+        <a class="header_link" href="#">Выйти</a>
     </div>
 </header>
 
@@ -30,7 +33,7 @@
 <div class="container">
     <h1>Играть с друзьями</h1>
     <img class="main_img" src="../img/connect_to_quiz.png"><br>
-    <form action="<c:url value="/main-servlet"/>" method="POST">
+    <form action="" method="POST">
         <input name="input_code" class="input_code" type="text" placeholder="Введите код">
         <div class="button-container">
             <button type="submit" class="button">Подключиться к игре</button>
@@ -41,7 +44,6 @@
 </body>
 
 </html>
-
 <!--
 Illustration by <a href="https://icons8.com/illustrations/author/lZpGtGw5182N">Elisabet Guba</a> from <a href="https://icons8.com/illustrations">Ouch!</a>-->
 

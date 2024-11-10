@@ -1,6 +1,4 @@
-package model;
-
-import jakarta.servlet.RequestDispatcher;
+package dto;
 
 import java.util.Random;
 

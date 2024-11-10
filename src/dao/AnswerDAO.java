@@ -1,6 +1,7 @@
-package model;
+package dao;
 
-import db.DBFunctions;
+import services.DataBaseService;
+import dto.Answer;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -8,16 +9,12 @@ import java.util.List;
 
 public class AnswerDAO {
 
-    String DATABASE_NAME = "cleverdb";
-    String USER_NAME = "postgres";
-    String PASSWORD = "12345";
+    private final Connection connection = DataBaseService.getConnection();
 
     public void addAnswer(Answer answer, String table) {
         String INSERT_QUIZ_SQL = "INSERT INTO " + table + " (question_id, answer) VALUES (?,?)";
 
-        DBFunctions db = new DBFunctions();
-
-        try (Connection conn = db.connect_to_db(DATABASE_NAME, USER_NAME, PASSWORD)) {
+        try (Connection conn = DataBaseService.getConnection()) {
             try (PreparedStatement ps = conn.prepareStatement(INSERT_QUIZ_SQL, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, answer.getQuestion_id());
                 ps.setString(2, answer.getAnswer());
@@ -35,10 +32,9 @@ public class AnswerDAO {
 
     public List<Answer> getAnswers(int question_id, String table) {
         String SELECT_ANSWER_SQL = "SELECT id, answer FROM " + table + " WHERE question_id = ?";
-        List<Answer> answers = new ArrayList<Answer>();
-        DBFunctions db = new DBFunctions();
+        List<Answer> answers = new ArrayList<>();
 
-        try(Connection connection = db.connect_to_db(DATABASE_NAME, USER_NAME, PASSWORD)) {
+        try(Connection connection = DataBaseService.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(SELECT_ANSWER_SQL)) {
                 ps.setInt(1, question_id);
                 try (ResultSet rs = ps.executeQuery()) {
@@ -57,9 +53,8 @@ public class AnswerDAO {
 
     public String getAnswerById(int id, String table) {
         String SELECT_ANSWER_SQL = "SELECT answer FROM " + table + " WHERE id = ?";
-        DBFunctions db = new DBFunctions();
         String answer = null;
-        try (Connection connection = db.connect_to_db(DATABASE_NAME, USER_NAME, PASSWORD)) {
+        try (Connection connection = DataBaseService.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(SELECT_ANSWER_SQL)) {
                 ps.setInt(1, id);
                 try (ResultSet rs = ps.executeQuery()) {

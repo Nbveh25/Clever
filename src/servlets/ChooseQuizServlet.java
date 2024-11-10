@@ -6,8 +6,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Quiz;
-import model.QuizDAO;
+import dto.Quiz;
+import dao.QuizDAO;
 
 import java.io.IOException;
 import java.io.PrintWriter;

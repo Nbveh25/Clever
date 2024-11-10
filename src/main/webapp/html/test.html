@@ -3,40 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clever</title>
-    <link rel="shortcut icon" href="../img/logo_without_name_1.png">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/permission.css">
+    <title>Выдача прав модератора</title>
 </head>
-
-<header class="header">
-    <img class="logo" src="../img/logo_brain_1.png">
-    <div class="header_link_container">
-        <img class="ic_profile" src="../img/ic_profile.png">
-    </div>
-</header>
-
 <body>
-
 <div class="container">
-    <h1>Провести квиз</h1>
-    <img class="main_img" src="../img/create_quiz.png">
-    <div class="button-container">
-        <a href="<c:url value="/jsp/choose_quiz.jsp"/>" class="button">Создать игру</a>
-    </div>
-</div>
+    <h1>Выдача прав</h1>
+    <form id="grant-permission-form">
+        <label for="permissions">Выберите права:</label>
+        <select id="permissions" required>
+            <option value="" disabled selected>-- Выберите права --</option>
+            <option value="moderator">Модератор</option>
+        </select>
 
-<div class="container">
-    <h1>Играть с друзьями</h1>
-    <img class="main_img" src="../img/connect_to_quiz.png"><br>
-    <form>
-        <input name="input_code" class="input_code" type="text" placeholder="Введите код">
-        <div class="button-container">
-            <a href="#" class="button">Подключиться к игре</a>
-        </div>
+        <button type="submit" class="grant-permission-button">Выдать права</button>
     </form>
 
+    <div id="message" class="message"></div>
 </div>
 
-</body>
+<script>
+    document.getElementById('grant-permission-form').addEventListener('submit', function(event) {
+        event.preventDefault();
 
+        const permission = document.getElementById('permissions').value;
+
+        // Логика выдачи прав
+        if (permission) {
+            document.getElementById('message').innerText = `Права "${permission}" успешно выданы пользователю.`;
+            document.getElementById('grant-permission-form').reset(); // Сброс формы
+        } else {
+            document.getElementById('message').innerText = 'Пожалуйста, выберите права.';
+        }
+    });
+</script>
+</body>
 </html>

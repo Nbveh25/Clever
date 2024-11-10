@@ -7,9 +7,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.GameDAO;
-import model.Player;
-import model.PlayerDAO;
+import dao.GameDAO;
+import dto.Player;
+import dao.PlayerDAO;
 
 import java.io.IOException;
 

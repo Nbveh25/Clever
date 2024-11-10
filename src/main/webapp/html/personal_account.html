@@ -15,25 +15,37 @@
         </div>
     </header>
 
-    <div class="user_container">
-        <img class="icon_of_user" alt="icon_of_user" src="../img/ana_de_armas.jpg">
+    <div id="user_container" class="user_container">
 
-        <div>
-            <div class="user_info">
-                <label class="label" for="name_of_user">Nickname:</label>
-                <p id="name_of_user" class="name_of_user">Ana de Armas</p>
-            </div>
-            <div class="user_info">
-                <label class="label" for="email_user">Email:</label>
-                <h2 id="email_user">anadearmas@internet.ru</h2>
+        <h2>Данные пользователя</h2>
+
+        <div class="user_meta">
+            <div class="img_and_upload">
+                <img class="icon_of_user" alt="icon_of_user" src="../img/ana_de_armas.jpg">
+                <input type="file" accept="image/*">
             </div>
 
+            <div>
+                <div class="user_info">
+                    <p id="name_of_user" class="name_of_user">Ana de Armas</p>
+                </div>
+                <div class="user_info">
+                    <h2 class="email_user">anadearmas@internet.ru</h2>
+                </div>
+            </div>
         </div>
 
     </div>
 
-<!--    <footer>
-        <p>&copy; 2024 Ваша компания | Политика конфиденциальности | Условия использования</p>
-    </footer>-->
+    <div class="setting_container">
+        <h2>Настройки</h2>
+
+        <a class="link_btn" href="test.html">Права модератора</a>
+        <a class="link_btn" href="#">Изменить логин</a>
+        <a class="link_btn" href="#">Изменить пароль</a>
+        <a class="link_btn" href="#">Удалить профиль</a>
+
+    </div>
+
 </body>
 </html>
