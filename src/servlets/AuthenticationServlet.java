@@ -54,7 +54,7 @@ public class AuthenticationServlet extends HttpServlet {
         } else {
             String message = "Неправильный код";
             req.setAttribute("errorMessage", message);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/authentication.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/auth-jsp");
             dispatcher.forward(req, resp);
         }
     }

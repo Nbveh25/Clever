@@ -13,7 +13,10 @@
 <header class="header">
     <img class="logo" src="../img/logo_brain_1.png">
     <div class="header_link_container">
-        <img class="ic_profile" src="../img/ic_profile.png">
+        <a class="header_link" href="<c:url value="/create-quiz-jsp"/>">Создать квиз</a>
+        <a class="header_link" href="#">Создать тест</a>
+        <a class="header_link" href="#">Профиль</a>
+        <a class="header_link" href="<c:url value="/logout-servlet"/>">Выйти</a>
     </div>
 </header>
 
@@ -41,8 +44,6 @@
 </body>
 
 </html>
-
 <!--
 Illustration by <a href="https://icons8.com/illustrations/author/lZpGtGw5182N">Elisabet Guba</a> from <a href="https://icons8.com/illustrations">Ouch!</a>-->
-
 

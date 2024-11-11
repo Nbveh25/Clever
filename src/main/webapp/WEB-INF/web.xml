@@ -63,7 +63,7 @@
   <!-- Аутентификация JSP -->
   <servlet>
     <servlet-name>AuthJsp</servlet-name>
-    <jsp-file>/jsp/authentication.jsp</jsp-file>
+    <jsp-file>/jsp/auth.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>AuthJsp</servlet-name>
@@ -234,10 +234,10 @@
   </servlet-mapping>
   
   <!--  Страница ошибки 404 -->
-  <error-page>
+<!--  <error-page>
     <error-code>404</error-code>
     <location>/html/404.html</location>
-  </error-page>
+  </error-page>-->
 
 </web-app>
 

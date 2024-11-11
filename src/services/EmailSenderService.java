@@ -8,8 +8,7 @@ import java.util.Properties;
 
 public class EmailSenderService {
     public void sendEmail(String code, String to) {
-        String from = "tima.bikmukhametov@inbox.ru";
-        //String to = "tima.bikmukhametov@inbox.ru";
+        String from = "b.f.g@internet.ru";
         String host = "smtp.mail.ru";
         String smtpPort = "465"; //465 587
 
@@ -24,7 +23,7 @@ public class EmailSenderService {
                 new Authenticator() {
                     @Override
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(from, "ddhfv7gg5Mp7sq9k6anB");
+                        return new PasswordAuthentication(from, "FjttryWvMzVpg3pUYXHj");
                     }
                 }
         );
