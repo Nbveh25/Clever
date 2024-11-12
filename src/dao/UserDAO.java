@@ -24,6 +24,7 @@ public class UserDAO {
                     result = 1; // такого пользователя нет
                 }
             }
+
         } catch (SQLException e) {
             return -1;
         }
@@ -31,21 +32,18 @@ public class UserDAO {
         return result;
     }
 
-    public int registerUser(User user) {
+    public void registerUser(User user) {
         String INSERT_USERS_SQL = "INSERT INTO users (login, email, password) VALUES (?, ?, ?)";
-
-        int result = 0;
 
         try(PreparedStatement ps = connection.prepareStatement(INSERT_USERS_SQL)) {
             ps.setString(1, user.getLogin().toLowerCase());
             ps.setString(2, user.getEmail().toLowerCase());
             ps.setString(3, user.getPassword());
-            result = ps.executeUpdate();
+            ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        return result;
     }
 
     public int getIdByLogin(String login) {

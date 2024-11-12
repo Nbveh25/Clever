@@ -7,7 +7,7 @@ import jakarta.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class EmailSenderService {
-    public void sendEmail(String code, String to) {
+    public static void sendEmail(String code, String to) {
         String from = "b.f.g@internet.ru";
         String host = "smtp.mail.ru";
         String smtpPort = "465"; //465 587

@@ -11,6 +11,7 @@ import services.EmailSenderService;
 import dao.UserDAO;
 import dto.Utils;
 import java.io.IOException;
+import java.util.Random;
 
 @WebServlet("/register-servlet")
 public class RegisterServlet extends HttpServlet {
@@ -52,11 +53,11 @@ public class RegisterServlet extends HttpServlet {
             RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/register.jsp");
             dispatcher.forward(req, resp);
         } else {
-            EmailSenderService emailSenderService = new EmailSenderService();
-            String code = Utils.generateCode();
+            String code = String.valueOf(new Random().nextInt(999999));
 
-            emailSenderService.sendEmail(code, email);
+            EmailSenderService.sendEmail(code, email);
 
+            session.setMaxInactiveInterval(60);
             session.setAttribute("login", login);
             session.setAttribute("email", email);
             session.setAttribute("password", password);

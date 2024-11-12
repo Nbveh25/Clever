@@ -232,6 +232,15 @@
     <servlet-name>ResultOfQuizJSP</servlet-name>
     <url-pattern>/result-of-quiz-jsp</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>PersonalAccountJSP</servlet-name>
+    <jsp-file>/jsp/personal_account.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PersonalAccountJSP</servlet-name>
+    <url-pattern>/personal-account-jsp</url-pattern>
+  </servlet-mapping>
   
   <!--  Страница ошибки 404 -->
 <!--  <error-page>

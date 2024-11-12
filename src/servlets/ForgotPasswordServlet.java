@@ -11,6 +11,8 @@ import services.EmailSenderService;
 import dto.Utils;
 
 import java.io.IOException;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 @WebServlet("/forgot-pass-servlet")
 public class ForgotPasswordServlet extends HttpServlet {
@@ -18,20 +20,33 @@ public class ForgotPasswordServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
+        if (session == null) {
+            // Сессия истекла или не существует
+            req.setAttribute("errorMessage", "Сессия истекла. Пожалуйста, войдите снова.");
+            try {
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/login-jsp");
+            dispatcher.forward(req, resp);
+            return;
+        }
+
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         String repassword = req.getParameter("repassword");
 
         if (password.equals(repassword)) {
+            session.setMaxInactiveInterval(60);
             session.setAttribute("email", email);
             session.setAttribute("password", password);
 
-            EmailSenderService emailSenderService = new EmailSenderService();
-            String code = Utils.generateCode();
+            String code = String.valueOf(new Random().nextInt(999999));
 
-            emailSenderService.sendEmail(code ,email);
+            EmailSenderService.sendEmail(code ,email);
 
-            session.setAttribute("type_auth", "forgot-password");
+            session.setAttribute("type_auth", "forgot_password");
             session.setAttribute("code", code);
 
             RequestDispatcher dispatcher = req.getRequestDispatcher("/auth-jsp");
