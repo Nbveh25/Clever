@@ -18,15 +18,16 @@ public class AuthFilter implements Filter {
         String uri = request.getRequestURI();
 
         // Проверяем, является ли запрос к статическим ресурсам
-        boolean isStaticResource = uri.startsWith("/css/") || uri.startsWith("/js/") || uri.startsWith("/img/") || uri.startsWith("/png/");
+        boolean isStaticResource = uri.startsWith("/css/") || uri.startsWith("/js/") || uri.startsWith("/img/");
 
         // Проверяем, существует ли сессия и есть ли у пользователя роль
         boolean isLoggedIn = (session != null && session.getAttribute("role") != null);
-        boolean isUser = isLoggedIn && session.getAttribute("role").equals("user");
+        boolean isUser = isLoggedIn && (session.getAttribute("role").equals("SIMPLE") || session.getAttribute("role").equals("PRO"));
         boolean isLoginRequest = uri.contains("login") || uri.contains("auth");
         boolean isRegistrationRequest = uri.contains("register");
+        boolean isIndex = !uri.endsWith("/");
 
-        if (!isUser && !isLoginRequest && !isRegistrationRequest && !isStaticResource && !uri.endsWith("/")) {
+        if (!isUser && !isLoginRequest && !isRegistrationRequest && !isStaticResource && isIndex) {
             // Если сессия не существует или роль не "user", перенаправляем на страницу входа
             response.sendRedirect("/login-jsp");
         } else {
