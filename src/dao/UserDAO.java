@@ -1,13 +1,13 @@
 package dao;
 
-import dto.User;
-import services.DataBaseService;
+import model.User;
+import utils.DataBaseUtil;
 
 import java.sql.*;
 
 public class UserDAO {
 
-    private final Connection connection = DataBaseService.getConnection();
+    private final Connection connection = DataBaseUtil.getConnection();
 
     public int containsUser(String arg, String par) {
         String SELECT_USERS_SQL = "SELECT * FROM users WHERE " + par + " = ?";

@@ -241,7 +241,17 @@
     <servlet-name>PersonalAccountJSP</servlet-name>
     <url-pattern>/personal-account-jsp</url-pattern>
   </servlet-mapping>
-  
+
+  <servlet>
+    <servlet-name>UpgradeJSP</servlet-name>
+    <jsp-file>/jsp/upgrade.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpgradeJSP</servlet-name>
+    <url-pattern>/upgrade-jsp</url-pattern>
+  </servlet-mapping>
+
+
   <!--  Страница ошибки 404 -->
 <!--  <error-page>
     <error-code>404</error-code>

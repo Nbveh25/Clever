@@ -1,7 +1,7 @@
 package servlets;
 
 import dao.UserDAO;
-import dto.User;
+import model.User;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 @WebServlet(name = "AuthServlet", urlPatterns = "/auth-servlet")
 public class AuthenticationServlet extends HttpServlet {
@@ -21,13 +20,6 @@ public class AuthenticationServlet extends HttpServlet {
 
         HttpSession session = req.getSession(false); // Получаем текущую сессию, если она существует
         if (session == null) {
-            // Сессия истекла или не существует
-            req.setAttribute("errorMessage", "Сессия истекла. Пожалуйста, войдите снова.");
-            try {
-                TimeUnit.SECONDS.sleep(5);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
             RequestDispatcher dispatcher = req.getRequestDispatcher("/login-jsp");
             dispatcher.forward(req, resp);
             return;
@@ -47,8 +39,9 @@ public class AuthenticationServlet extends HttpServlet {
             if (type_auth.equals("login")) {
 
                 session.setMaxInactiveInterval(60 * 60);
-                session.setAttribute("role", "user");
+                session.setAttribute("role", "SIMPLE"); // TODO(Проверять доступ пользователя)
                 session.setAttribute("login", login);
+                session.setAttribute("email", userDAO.getUserEmail(login));
                 session.setAttribute("user_id", userDAO.getIdByLogin(login));
 
                 RequestDispatcher dispatcher = req.getRequestDispatcher("/main-jsp");

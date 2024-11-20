@@ -11,7 +11,7 @@
 </head>
 
 <header class="header">
-    <img class="logo" src="../img/logo_brain_1.png">
+    <img class="logo" src="../img/logo_brain_1.png" alt="logo">
     <div class="header_link_container">
         <a class="header_link" href="<c:url value="/create-quiz-jsp"/>">Создать квиз</a>
         <a class="header_link" href="<c:url value="/personal-account-jsp"/>">Профиль</a>
@@ -23,7 +23,7 @@
 
 <div class="container">
     <h1>Провести квиз</h1>
-    <img class="main_img" src="../img/create_quiz.png">
+    <img class="main_img" src="../img/flying_man_quiz.png" alt="flying_man">
     <div class="button-container">
         <a href="<c:url value="/jsp/choose_quiz.jsp"/>" class="button">Создать игру</a>
     </div>
@@ -31,7 +31,7 @@
 
 <div class="container">
     <h1>Играть с друзьями</h1>
-    <img class="main_img" src="../img/connect_to_quiz.png"><br>
+    <img class="main_img" src="../img/connect_to_quiz.png" alt="conversation_mens"><br>
     <form action="<c:url value="/main-servlet"/>" method="POST">
         <input name="input_code" class="input_code" type="text" placeholder="Введите код">
         <div class="button-container">

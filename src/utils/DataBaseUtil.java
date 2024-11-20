@@ -1,9 +1,9 @@
-package services;
+package utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class DataBaseService {
+public class DataBaseUtil {
 
     private static final String DATABASE_URL = "jdbc:postgresql://localhost:5432/";
     private static final String DATABASE_DRIVER = "org.postgresql.Driver";

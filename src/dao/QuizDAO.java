@@ -1,7 +1,7 @@
 package dao;
 
-import dto.Quiz;
-import services.DataBaseService;
+import model.Quiz;
+import utils.DataBaseUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class QuizDAO {
 
-    private final Connection connection = DataBaseService.getConnection();
+    private final Connection connection = DataBaseUtil.getConnection();
 
     public int addQuiz(Quiz quiz) {
         String INSERT_QUIZ_SQL = "INSERT INTO quizzes (quiz_title, quiz_description, quiz_type, quiz_icon_path) VALUES (?, ?, ?, ?)";

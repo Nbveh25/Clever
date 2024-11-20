@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import services.EmailSenderService;
+import utils.EmailSenderUtil;
 import utils.UserUtil;
 
 import java.io.IOException;
@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
             String code = String.valueOf(new Random().nextInt(999999));
             String email = userDAO.getUserEmail(login);
 
-            EmailSenderService.sendEmail(code, email);
+            EmailSenderUtil.sendEmail(code, email);
 
             session.setAttribute("code", code);
             session.setAttribute("login", login);

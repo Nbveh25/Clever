@@ -1,4 +1,4 @@
-package services;
+package utils;
 
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
@@ -6,7 +6,7 @@ import jakarta.mail.internet.MimeMessage;
 
 import java.util.Properties;
 
-public class EmailSenderService {
+public class EmailSenderUtil {
     public static void sendEmail(String code, String to) {
         String from = "b.f.g@internet.ru";
         String host = "smtp.mail.ru";

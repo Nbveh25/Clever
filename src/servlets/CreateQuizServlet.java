@@ -5,9 +5,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import dto.Quiz;
+import model.Quiz;
 import dao.QuizDAO;
-import services.UploadFilesService;
+import utils.UploadFilesUtil;
 
 import java.io.IOException;
 
@@ -25,7 +25,7 @@ public class CreateQuizServlet extends HttpServlet {
         String quiz_type = req.getParameter("quiz_type");
 
         HttpSession session = req.getSession();
-        UploadFilesService uploadFilesService = new UploadFilesService();
+        UploadFilesUtil uploadFilesService = new UploadFilesUtil();
 
         Part part = req.getPart("quiz_icon");
         String filename = part.getSubmittedFileName();

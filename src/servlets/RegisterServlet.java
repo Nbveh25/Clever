@@ -7,9 +7,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import services.EmailSenderService;
+import utils.EmailSenderUtil;
 import dao.UserDAO;
-import dto.Utils;
+
 import java.io.IOException;
 import java.util.Random;
 
@@ -55,7 +55,7 @@ public class RegisterServlet extends HttpServlet {
         } else {
             String code = String.valueOf(new Random().nextInt(999999));
 
-            EmailSenderService.sendEmail(code, email);
+            EmailSenderUtil.sendEmail(code, email);
 
             session.setMaxInactiveInterval(60);
             session.setAttribute("login", login);

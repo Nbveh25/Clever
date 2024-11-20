@@ -7,8 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import services.EmailSenderService;
-import dto.Utils;
+import utils.EmailSenderUtil;
 
 import java.io.IOException;
 import java.util.Random;
@@ -44,7 +43,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 
             String code = String.valueOf(new Random().nextInt(999999));
 
-            EmailSenderService.sendEmail(code ,email);
+            EmailSenderUtil.sendEmail(code ,email);
 
             session.setAttribute("type_auth", "forgot_password");
             session.setAttribute("code", code);

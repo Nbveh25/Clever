@@ -5,11 +5,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import dto.Answer;
+import model.Answer;
 import dao.AnswerDAO;
-import dto.Question;
+import model.Question;
 import dao.QuestionDAO;
-import services.UploadFilesService;
+import utils.UploadFilesUtil;
 
 import java.io.*;
 
@@ -24,7 +24,7 @@ public class CreateQuestionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        UploadFilesService uploadFilesService = new UploadFilesService();
+        UploadFilesUtil uploadFilesService = new UploadFilesUtil();
         QuestionDAO questionDAO = new QuestionDAO();
         AnswerDAO answerDAO = new AnswerDAO();
 

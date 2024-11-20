@@ -1,7 +1,7 @@
 package dao;
 
-import dto.Player;
-import services.DataBaseService;
+import model.Player;
+import utils.DataBaseUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class PlayerDAO {
 
-    private final Connection connection = DataBaseService.getConnection();
+    private final Connection connection = DataBaseUtil.getConnection();
 
     public void addPlayer(Player player) {
         String INSERT_PLAYER_SQL = "INSERT INTO players (user_id, game_id, login, total_score) VALUES(?,?,?,?)";
