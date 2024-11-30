@@ -9,7 +9,6 @@
          version="5.0">
   
   <!-- Регистрация Servlet-->
-  
   <servlet>
     <servlet-name>RegisterServlet</servlet-name>
     <servlet-class>servlets.RegisterServlet</servlet-class>
@@ -20,7 +19,6 @@
   </servlet-mapping>
 
   <!--  Регистрация JSP -->
-  
   <servlet>
     <servlet-name>RegisterJsp</servlet-name>
     <jsp-file>/jsp/register.jsp</jsp-file>
@@ -223,16 +221,6 @@
     <url-pattern>/quiz-start-jsp</url-pattern>
   </servlet-mapping>
 
-  <!--  Результаты JSP  -->
-  <servlet>
-    <servlet-name>ResultOfQuizJSP</servlet-name>
-    <jsp-file>/jsp/result_of_quiz.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ResultOfQuizJSP</servlet-name>
-    <url-pattern>/result-of-quiz-jsp</url-pattern>
-  </servlet-mapping>
-
   <servlet>
     <servlet-name>PersonalAccountJSP</servlet-name>
     <jsp-file>/jsp/personal_account.jsp</jsp-file>
@@ -243,14 +231,31 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>UpgradeJSP</servlet-name>
-    <jsp-file>/jsp/upgrade.jsp</jsp-file>
+    <servlet-name>UpgradePermissionJSP</servlet-name>
+    <jsp-file>/jsp/upgrade_permission.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UpgradeJSP</servlet-name>
-    <url-pattern>/upgrade-jsp</url-pattern>
+    <servlet-name>UpgradePermissionJSP</servlet-name>
+    <url-pattern>/upgrade-permission-jsp</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>EndOfQuiz</servlet-name>
+    <jsp-file>/jsp/end_of_quiz.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EndOfQuiz</servlet-name>
+    <url-pattern>/end-of-quiz-jsp</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ResultOfQuizJSP</servlet-name>
+    <jsp-file>/jsp/result_of_quiz.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResultOfQuizJSP</servlet-name>
+    <url-pattern>/result-of-quiz-jsp</url-pattern>
+  </servlet-mapping>
 
   <!--  Страница ошибки 404 -->
 <!--  <error-page>

@@ -1,7 +1,5 @@
 package services;
 
-import model.User;
-
 public interface UserService {
     boolean registerUser(String login, String email, String password);
     boolean userExists(String login, String password);

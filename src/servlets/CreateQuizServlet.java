@@ -1,12 +1,10 @@
 package servlets;
 
 import dto.QuizDTO;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import model.Quiz;
 import dao.QuizDAO;
 import utils.UploadFilesUtil;
 

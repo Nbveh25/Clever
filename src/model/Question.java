@@ -1,5 +1,6 @@
 package model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,6 +8,7 @@ import java.util.Objects;
 
 @Setter
 @Getter
+@AllArgsConstructor
 public class Question {
     private int id;
     private int quizId;
@@ -15,14 +17,6 @@ public class Question {
     private String mediaPath;
 
     public Question(int quizId, String question, String typeQuestion, String mediaPath) {
-        this.quizId = quizId;
-        this.question = question;
-        this.typeQuestion = typeQuestion;
-        this.mediaPath = mediaPath;
-    }
-
-    public Question(int id, int quizId, String question, String typeQuestion, String mediaPath) {
-        this.id = id;
         this.quizId = quizId;
         this.question = question;
         this.typeQuestion = typeQuestion;

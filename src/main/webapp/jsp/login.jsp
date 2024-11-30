@@ -10,6 +10,7 @@
     <link rel="shortcut icon" href="../img/logo_without_name_1.png"/>
     <link rel="stylesheet" href="../css/login.css">
     <script src="../js/login_validator.js"></script>
+    <script src="../js/eye_pass.js"></script>
 </head>
 
 <body>
@@ -30,9 +31,9 @@
             <p>
                 <input id="login" name="login" type="text" placeholder="Логин" class="form_input_login" required>
             </p>
-            <p>
-                <input id="password" name="password" type="password" placeholder="Пароль" class="form_input_login"
-                       required>
+            <p class="password-container">
+                <input id="password" name="password" type="password" placeholder="Пароль" class="form_input_login" required>
+                <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')">👁️</button>
             </p>
             <p>
                 <button type="submit" class="form_btn_login">Войти</button>

@@ -1,5 +1,6 @@
 package model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,20 +8,13 @@ import java.util.Objects;
 
 @Setter
 @Getter
+@AllArgsConstructor
 public class Quiz {
     private int id;
     private String quizName;
     private String quizDescription;
     private String quizType;
     private String quizIconPath;
-
-    public Quiz(int id, String quizName, String quizDescription, String quizType, String quizIconPath) {
-        this.id = id;
-        this.quizName = quizName;
-        this.quizDescription = quizDescription;
-        this.quizType = quizType;
-        this.quizIconPath = quizIconPath;
-    }
 
     public Quiz(String quizName, String quizDescription, String quizType, String quizIconPath) {
         this.quizName = quizName;

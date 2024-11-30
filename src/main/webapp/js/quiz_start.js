@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 } else {
                     console.log("Все вопросы были показаны.");
                     // переход на страницу с результатами
-                    window.location.href = "/main-jsp";
+                    window.location.href = "/end-of-quiz-jsp";
                 }
             }
         }, 1000);

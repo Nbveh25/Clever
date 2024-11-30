@@ -15,7 +15,7 @@ body {
 .container {
     width: 800px;
     height: 500px;
-    padding: 40px 0px;
+    padding: 40px 0;
     position: relative;
 }
 
@@ -103,4 +103,26 @@ body {
 
 .error_message {
     color: red;
+}
+
+
+.password-container {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.password-container input {
+    padding-right: 40px;
+}
+
+.password-container .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    font-size: 1.2em;
 }

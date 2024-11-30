@@ -28,7 +28,7 @@
         </ul>
     </div>
 
-    <form method="post" action="<c:url value="/upgrade-servlet"/>">
+    <form method="post" action="<c:url value="/upgrade-permission-servlet"/>">
         <div class="upgrade_button_container">
             <button class="upgrade_btn">Улучшить до версии ПРО</button>
         </div>

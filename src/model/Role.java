@@ -1,10 +1,12 @@
 package model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
+@AllArgsConstructor
 public class Role {
 
     private int id;
@@ -12,12 +14,6 @@ public class Role {
     private String role;
 
     public Role(int user_id, String role) {
-        this.user_id = user_id;
-        this.role = role;
-    }
-
-    public Role(int id, int user_id, String role) {
-        this.id = id;
         this.user_id = user_id;
         this.role = role;
     }

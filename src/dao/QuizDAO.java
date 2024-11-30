@@ -1,7 +1,6 @@
 package dao;
 
 import dto.QuizDTO;
-import model.Quiz;
 import utils.DataBaseUtil;
 
 import java.sql.Connection;

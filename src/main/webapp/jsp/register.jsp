@@ -10,6 +10,7 @@
     <link rel="shortcut icon" href="../img/logo_without_name_2.png" />
     <link rel="stylesheet" href="../css/register.css">
     <script src="../js/register_validator.js"></script>
+    <script src="../js/eye_pass.js"></script>
 </head>
 
 <body>
@@ -34,17 +35,16 @@
             <p>
                 <input id="email" type="email" name="email" placeholder="Email" class="form_input" required>
             </p>
-            <p>
+            <p class="password-container">
                 <input id="password" type="password" name="password" placeholder="Пароль" class="form_input" required>
+                <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')">👁️</button>
             </p>
-            <p>
+            <p class="password-container">
                 <input id="repassword" type="password" name="repassword" placeholder="Повторите пароль" class="form_input" required>
+                <button type="button" class="toggle-password" onclick="togglePasswordVisibility('repassword')">👁️</button>
             </p>
             <p>
                 <button type="submit" class="form_btn">Зарегистрироваться</button>
-            </p>
-            <p>
-                <div class="error_message" style="display: none; color: red;"></div>
             </p>
             <p>
                 <div class="error_message" style="display: none; color: red;"></div>

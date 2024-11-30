@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class RoleDAO {
     private final Connection connection = DataBaseUtil.getConnection();
 
-    public void updateRoleForUser(int user_id) {
+    public void addRole (int user_id) {
         String UPDATE_ROLE_SQL = "INSERT INTO user_roles (user_id, role_id) VALUES (?, 2) ON CONFLICT (user_id, role_id) DO NOTHING;";
 
         try (PreparedStatement ps = connection.prepareStatement(UPDATE_ROLE_SQL)) {

@@ -1,7 +1,6 @@
 package services;
 
 import dto.QuizDTO;
-import model.Quiz;
 
 import java.util.List;
 

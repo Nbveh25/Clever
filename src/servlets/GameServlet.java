@@ -1,32 +1,35 @@
 package servlets;
 
-import jakarta.servlet.RequestDispatcher;
+import dto.GameDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Game;
-import dao.GameDAO;
-import utils.Utils;
+import services.GameService;
+import services.impl.GameServiceImpl;
 import websockets.QuizStartWebSocket;
 
 import java.io.IOException;
+import java.util.Random;
 
 @WebServlet(name = "GameServlet", urlPatterns = "/game-servlet")
 public class GameServlet extends HttpServlet {
+    private final GameService gameService = new GameServiceImpl();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
+
         String quiz_id = req.getParameter("id");
-        String code = Utils.generateCode();
+        String code = String.format("%06d", new Random().nextInt(1000000));
 
         req.setAttribute("code", code);
 
-        GameDAO gameDAO = new GameDAO();
-        int game_id = gameDAO.addGame(new Game(Integer.parseInt(quiz_id), code));
+        GameDTO gameDTO = new GameDTO(Integer.parseInt(quiz_id), code);
+        int game_id = gameService.addGame(gameDTO);
+
         session.setAttribute("game_id", game_id);
 
         req.getRequestDispatcher("/page-with-code-jsp").forward(req, resp);
