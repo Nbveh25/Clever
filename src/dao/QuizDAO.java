@@ -1,5 +1,6 @@
 package dao;
 
+import dto.QuizDTO;
 import model.Quiz;
 import utils.DataBaseUtil;
 
@@ -14,16 +15,16 @@ public class QuizDAO {
 
     private final Connection connection = DataBaseUtil.getConnection();
 
-    public int addQuiz(Quiz quiz) {
+    public int addQuiz(QuizDTO quizDTO) {
         String INSERT_QUIZ_SQL = "INSERT INTO quizzes (quiz_title, quiz_description, quiz_type, quiz_icon_path) VALUES (?, ?, ?, ?)";
 
         int quiz_id = -1;
 
         try(PreparedStatement ps = connection.prepareStatement(INSERT_QUIZ_SQL, PreparedStatement.RETURN_GENERATED_KEYS)) {
-            ps.setString(1, quiz.getQuizName());
-            ps.setString(2, quiz.getQuizDescription());
-            ps.setString(3, quiz.getQuizType());
-            ps.setString(4, quiz.getQuizIconPath());
+            ps.setString(1, quizDTO.getQuizName());
+            ps.setString(2, quizDTO.getQuizDescription());
+            ps.setString(3, quizDTO.getQuizType());
+            ps.setString(4, quizDTO.getQuizIconPath());
 
             ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {
@@ -37,8 +38,8 @@ public class QuizDAO {
         return quiz_id;
     }
 
-    public List<Quiz> getAllQuiz() {
-        List<Quiz> quizList = new ArrayList<>();
+    public List<QuizDTO> getAllQuiz() {
+        List<QuizDTO> quizList = new ArrayList<>();
         String SELECT_QUIZ_SQL = "SELECT id, quiz_title, quiz_description, quiz_type, quiz_icon_path FROM quizzes";
 
         try (PreparedStatement ps = connection.prepareStatement(SELECT_QUIZ_SQL)) {
@@ -50,8 +51,8 @@ public class QuizDAO {
                     String quizType = rs.getString(4);
                     String quizIconPath = rs.getString(5);
 
-                    Quiz quiz = new Quiz(id, quizName, quizDescription, quizType, quizIconPath);
-                    quizList.add(quiz);
+                    QuizDTO quizDTO = new QuizDTO(id, quizName, quizDescription, quizType, quizIconPath);
+                    quizList.add(quizDTO);
                 }
             }
         } catch (SQLException e) {

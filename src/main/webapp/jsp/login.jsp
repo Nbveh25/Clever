@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html lang="ru">
@@ -7,8 +7,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Вход</title>
-    <link rel="shortcut icon" href="../img/logo_without_name_1.png" />
+    <link rel="shortcut icon" href="../img/logo_without_name_1.png"/>
     <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/login_validator.js"></script>
 </head>
 
 <body>
@@ -30,7 +31,8 @@
                 <input id="login" name="login" type="text" placeholder="Логин" class="form_input_login" required>
             </p>
             <p>
-                <input id="password" name="password" type="password" placeholder="Пароль" class="form_input_login" required>
+                <input id="password" name="password" type="password" placeholder="Пароль" class="form_input_login"
+                       required>
             </p>
             <p>
                 <button type="submit" class="form_btn_login">Войти</button>
@@ -39,11 +41,7 @@
                 <a href="<c:url value="/forgot-pass-jsp"/>" class="form_forgot_login">Забыли пароль?</a>
             </p>
             <p>
-                <c:if test="${not empty errorMessage}">
-                    <div class="error_message">
-                        <c:out value="${errorMessage}"/>
-                    </div>
-                </c:if>
+                <div class="error_message" style="display: none; color: red;"></div>
             </p>
         </form>
     </div>

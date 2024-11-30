@@ -15,8 +15,7 @@ public class AuthorizationFilter implements Filter {
         HttpSession session = ((HttpServletRequest) servletRequest).getSession();
 
         if (uri.contains("create") && session.getAttribute("role") != "PRO") {
-            RequestDispatcher dispatcher = servletRequest.getRequestDispatcher("/main-jsp");
-            dispatcher.forward(servletRequest, servletResponse);
+            servletRequest.getRequestDispatcher("/main-jsp").forward(servletRequest, servletResponse);
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }

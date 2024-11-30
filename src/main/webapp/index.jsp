@@ -15,11 +15,11 @@
 </head>
 
 <header class="header_tab">
-    <img class="logo" src="img/logo_brain_1.png">
+    <img class="logo" src="img/logo_brain_1.png" alt="logo">
     <div class="header_link_container">
-        <a class="header_link" href="jsp/login.jsp">Войти</a>
-        <a class="header_link" href="jsp/register.jsp">Зарегистрироваться</a>
-        <a class="header_link" href="">О нас</a>
+        <a class="header_link" href="<c:url value="/login-jsp"/>">Войти</a>
+        <a class="header_link" href="<c:url value="/register-jsp"/>">Зарегистрироваться</a>
+        <a class="header_link" href="#">О нас</a>
     </div>
 </header>
 
@@ -72,39 +72,39 @@
 
     <div class="box">
         <div class="content">
-            <img class="img" src="img/ana_de_armas.jpg">
+            <img class="img" src="img/ana_de_armas.jpg" alt="ana_de_armas">
             <h4>Ана де Армас</h4>
-            <img class="star" src="img/star.png">
-            <img class="star" src="img/star.png">
-            <img class="star" src="img/star.png">
-            <img class="star" src="img/star.png">
-            <img class="star" src="img/star.png">
+            <img class="star" src="img/star.png" alt="star">
+            <img class="star" src="img/star.png" alt="star">
+            <img class="star" src="img/star.png" alt="star">
+            <img class="star" src="img/star.png" alt="star">
+            <img class="star" src="img/star.png" alt="star">
         </div>
         <p>Я абсолютно зависима от Clever! Сайт стал моим любимым местом для онлайн-викторин, и я не удивлена почему. Вопросы искусно составлены, а разнообразие тем впечатляет. Мне нравится, как я могу проверить себя и узнать что-то новое, при этом получая удовольствие. Интерфейс пользователя также супер интуитивен и визуально привлекателен. Clever испортил меня для других сайтов викторин - я не соглашусь на что-то меньшее!</p>
     </div>
 
     <div class="box">
         <div class="content">
-            <img class="img" src="img/margo_robbie.jpg">
+            <img class="img" src="img/margo_robbie.jpg" alt="margo_robbie">
             <h4>Марго Робби</h4>
-            <img class="star" src="img/star.png">
-            <img class="star" src="img/star.png">
-            <img class="star" src="img/star.png">
-            <img class="star" src="img/star.png">
-            <img class="star" src="img/star.png">
+            <img class="star" src="img/star.png" alt="star">
+            <img class="star" src="img/star.png" alt="star">
+            <img class="star" src="img/star.png" alt="star">
+            <img class="star" src="img/star.png" alt="star">
+            <img class="star" src="img/star.png" alt="star">
         </div>
         <p>Clever - это игрок на рынке онлайн-викторин! Я пробовала многие сайты, но ни один не сравнится с качеством и количеством викторин на Clever. Сайт постоянно обновляется свежим контентом, а функции сообщества просто удивительны. Я нашла друзей среди любителей викторин, и мы получаем удовольствие, соревнуясь друг с другом. Разработчик также супер отзывчивый к обратной связи, что показывает, что он действительно заботится о своих пользователях. Если вы фанат онлайн-викторин, сделайте себе одолжение и присоединитесь к сообществу Clever - вам не придется жалеть!</p>
     </div>
 
     <div class="box">
         <div class="content">
-            <img class="img" src="img/megan_fox.jpeg">
+            <img class="img" src="img/megan_fox.jpeg" alt="megan_fox">
             <h4>Меган Фокс</h4>
-            <img class="star" src="img/star.png">
-            <img class="star" src="img/star.png">
-            <img class="star" src="img/star.png">
-            <img class="star" src="img/star.png">
-            <img class="star" src="img/star.png">
+            <img class="star" src="img/star.png" alt="star">
+            <img class="star" src="img/star.png" alt="star">
+            <img class="star" src="img/star.png" alt="star">
+            <img class="star" src="img/star.png" alt="star">
+            <img class="star" src="img/star.png" alt="star">
         </div>
         <p>Я наткнулась на Clever случайно, и я так рада, что это произошло! Сайт - это кладезь онлайн-викторин, покрывающий все от науки и истории до поп-культуры и развлечений. Вопросы привлекательны, сложны и часто смешны. Мне нравится, как Clever делает обучение веселым и интерактивным. Сайт также невероятно пользовательский, с чистым дизайном и легкой навигацией. Я уже порекомендовала Clever всем своим друзьям и семье - это must-have для любого, кто любит онлайн-викторины!</p>
     </div>
@@ -116,7 +116,7 @@
     <div class="social-media">
         <a href="https://vk.com/nbveh25">VKontakte</a> |
         <a href="https://webk.telegram.org/#@BFG2005">Telegram</a> |
-        <a href="#">Instagram</a>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">F******k</a>
     </div>
 </footer>
 

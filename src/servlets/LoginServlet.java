@@ -1,50 +1,47 @@
 package servlets;
 
-import dao.UserDAO;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import utils.EmailSenderUtil;
-import utils.UserUtil;
+import services.EmailService;
+import services.UserService;
+import services.impl.EmailServiceImpl;
+import services.impl.UserServiceImpl;
+import utils.Constants;
 
 import java.io.IOException;
 import java.util.Random;
 
 @WebServlet(name = "LoginServlet", urlPatterns = "/login-servlet")
 public class LoginServlet extends HttpServlet {
-
+    private final UserService userService = new UserServiceImpl();
+    private final EmailService emailService = new EmailServiceImpl();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        String message = UserUtil.validateUser(login,password);
-        if (message.equals("OK")) {
+        if (userService.userExists(login, password)) {
             HttpSession session = req.getSession();
-            UserDAO userDAO = new UserDAO();
 
-            String code = String.valueOf(new Random().nextInt(999999));
-            String email = userDAO.getUserEmail(login);
+            String code = String.format("%06d", new Random().nextInt(1000000));
+            String email = userService.getUserEmail(login);
 
-            EmailSenderUtil.sendEmail(code, email);
+            emailService.sendVerificationCode(code, email);
 
             session.setAttribute("code", code);
             session.setAttribute("login", login);
             session.setAttribute("code", code);
-            session.setAttribute("type_auth", "login");
+            session.setAttribute("type_auth", Constants.LOGIN);
 
             session.setMaxInactiveInterval(60); // Устанавливаем время жизни сессии в 1 минуту (60 секунд)
 
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/auth-jsp");
-            dispatcher.forward(req, resp);
+            req.getRequestDispatcher("/auth-jsp").forward(req, resp);
         } else {
-            req.setAttribute("errorMessage", message);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/login-jsp");
-            dispatcher.forward(req, resp);
+            req.getRequestDispatcher("/login-jsp").forward(req, resp);
         }
     }
 }

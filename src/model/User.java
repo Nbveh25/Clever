@@ -1,7 +1,12 @@
 package model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Objects;
 
+@Setter
+@Getter
 public class User {
     private int id;
     private String login;
@@ -18,34 +23,6 @@ public class User {
     public User(String login, String email, String password) {
         this.login = login.toLowerCase();// TODO (Про ник только с нижним регистром надо подумать...)
         this.email = email.toLowerCase();
-        this.password = password;
-    }
-
-    public int getId() { return id; }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setId(int id) { this.id = id; }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
         this.password = password;
     }
 

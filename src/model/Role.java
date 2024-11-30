@@ -1,5 +1,10 @@
 package model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class Role {
 
     private int id;
@@ -17,27 +22,4 @@ public class Role {
         this.role = role;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
 }

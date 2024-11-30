@@ -1,7 +1,5 @@
 package servlets;
 
-import dao.UserDAO;
-import model.User;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,23 +7,30 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import services.UserService;
+import services.impl.UserServiceImpl;
+import utils.Constants;
 
 import java.io.IOException;
 
 @WebServlet(name = "AuthServlet", urlPatterns = "/auth-servlet")
 public class AuthenticationServlet extends HttpServlet {
+    private final UserService userService = new UserServiceImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        HttpSession session = req.getSession(false); // Получаем текущую сессию, если она существует
+        HttpSession session = req.getSession(false);
+
         if (session == null) {
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/login-jsp");
-            dispatcher.forward(req, resp);
+
+            req.getRequestDispatcher("/login-jsp").forward(req, resp);
             return;
+
         }
 
         String login = (String) session.getAttribute("login");
+        String email = (String) session.getAttribute("email");
         String password = (String) session.getAttribute("password");
         String code = (String) session.getAttribute("code");
         String type_auth = (String) session.getAttribute("type_auth");
@@ -33,37 +38,39 @@ public class AuthenticationServlet extends HttpServlet {
         String input_code = req.getParameter("input_code");
 
         if (input_code.equals(code)) {
+            switch (type_auth) {
+                case Constants.LOGIN: {
 
-            UserDAO userDAO = new UserDAO();
+                    session.setMaxInactiveInterval(60 * 60);
+                    session.setAttribute("role", Constants.SIMPLE);
+                    session.setAttribute("email", email);
+                    session.setAttribute("user_id", userService.getIdByLogin(login));
 
-            if (type_auth.equals("login")) {
+                    req.getRequestDispatcher("/main-jsp").forward(req, resp);
 
-                session.setMaxInactiveInterval(60 * 60);
-                session.setAttribute("role", "SIMPLE"); // TODO(Проверять доступ пользователя)
-                session.setAttribute("login", login);
-                session.setAttribute("email", userDAO.getUserEmail(login));
-                session.setAttribute("user_id", userDAO.getIdByLogin(login));
+                    break;
+                }
+                case Constants.REGISTER: {
 
-                RequestDispatcher dispatcher = req.getRequestDispatcher("/main-jsp");
-                dispatcher.forward(req, resp);
-            } else if (type_auth.equals("register")) {
-                String email = (String) session.getAttribute("email");
-                userDAO.registerUser(new User(login, email, password));
-                
-                RequestDispatcher dispatcher = req.getRequestDispatcher("html/congrat.html");
-                dispatcher.forward(req, resp);
-            } else if (type_auth.equals("forgot_password")) {
-                String email = (String) session.getAttribute("email");
-                userDAO.updateUserPassword(email, password);
+                    userService.registerUser(login, email, password );
 
-                RequestDispatcher dispatcher = req.getRequestDispatcher("html/password_updated.html");
-                dispatcher.forward(req, resp);
+                    req.getRequestDispatcher("html/congrat.html").forward(req, resp);
+
+                    break;
+                }
+                case Constants.FORGOT_PASSWORD: {
+
+                    userService.updateUserPassword(email, password);
+
+                    req.getRequestDispatcher("html/password_updated.html").forward(req, resp);
+
+                    break;
+                }
             }
-
         } else {
-            req.setAttribute("errorMessage", "Неверный код.");
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/auth-jsp");
-            dispatcher.forward(req, resp);
+
+            req.getRequestDispatcher("/auth-jsp").forward(req, resp);
+
         }
     }
 }

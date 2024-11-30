@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import utils.Constants;
 
 import java.io.IOException;
 
@@ -22,7 +23,7 @@ public class AuthFilter implements Filter {
 
         // Проверяем, существует ли сессия и есть ли у пользователя роль
         boolean isLoggedIn = (session != null && session.getAttribute("role") != null);
-        boolean isUser = isLoggedIn && (session.getAttribute("role").equals("SIMPLE") || session.getAttribute("role").equals("PRO"));
+        boolean isUser = isLoggedIn && (session.getAttribute("role").equals(Constants.SIMPLE) || session.getAttribute("role").equals(Constants.PRO));
         boolean isLoginRequest = uri.contains("login") || uri.contains("auth");
         boolean isRegistrationRequest = uri.contains("register");
         boolean isIndex = !uri.endsWith("/");

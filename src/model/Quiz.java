@@ -1,7 +1,12 @@
 package model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Objects;
 
+@Setter
+@Getter
 public class Quiz {
     private int id;
     private String quizName;
@@ -24,46 +29,6 @@ public class Quiz {
         this.quizIconPath = quizIconPath;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getQuizName() {
-        return quizName;
-    }
-
-    public void setQuizName(String quizName) {
-        this.quizName = quizName;
-    }
-
-    public String getQuizDescription() {
-        return quizDescription;
-    }
-
-    public void setQuizDescription(String quizDescription) {
-        this.quizDescription = quizDescription;
-    }
-
-    public String getQuizType() {
-        return quizType;
-    }
-
-    public void setQuizType(String quizType) {
-        this.quizType = quizType;
-    }
-
-
-    public String getQuizIconPath() {
-        return quizIconPath;
-    }
-
-    public void setQuizIconPath(String quizIconPath) {
-        this.quizIconPath = quizIconPath;
-    }
 
     @Override
     public boolean equals(Object o) {

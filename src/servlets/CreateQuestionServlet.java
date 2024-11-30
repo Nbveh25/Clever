@@ -1,32 +1,33 @@
 package servlets;
 
-import jakarta.servlet.RequestDispatcher;
+import dto.QuestionDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import model.Answer;
-import dao.AnswerDAO;
-import model.Question;
-import dao.QuestionDAO;
+import services.AnswerService;
+import services.QuestionService;
+import services.impl.AnswerServiceImpl;
+import services.impl.QuestionServiceImpl;
+import utils.Constants;
 import utils.UploadFilesUtil;
 
 import java.io.*;
 
-@WebServlet("/create-question-servlet")
+@WebServlet(name = "CreateQuestionServlet", urlPatterns = "/create-question-servlet")
 @MultipartConfig(
         location="C:\\Users\\timur\\IdeaProjects\\Clever\\src\\main\\webapp\\media",
         fileSizeThreshold=1024*1024,
         maxFileSize=1024*1024*1024, maxRequestSize=1024*1024*5*5
 )
 public class CreateQuestionServlet extends HttpServlet {
-
+    private final QuestionService questionService = new QuestionServiceImpl();
+    private final AnswerService answerService = new AnswerServiceImpl();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        UploadFilesUtil uploadFilesService = new UploadFilesUtil();
-        QuestionDAO questionDAO = new QuestionDAO();
-        AnswerDAO answerDAO = new AnswerDAO();
+        UploadFilesUtil uploadFilesUtil = new UploadFilesUtil();
 
         String question_quiz = req.getParameter("question_quiz");
         String quiz_type = req.getParameter("quiz_type");
@@ -39,35 +40,34 @@ public class CreateQuestionServlet extends HttpServlet {
 
         Part part = req.getPart("mediaFile");
         String fileName = part.getSubmittedFileName();
-        String path = uploadFilesService.getPathForUpload(fileName, quiz_type);
-        String mediaPath = uploadFilesService.getPathForMedia(fileName, quiz_type);
+        String path = uploadFilesUtil.getPathForUpload(fileName, quiz_type);
+        String mediaPath = uploadFilesUtil.getPathForMedia(fileName, quiz_type);
 
-        uploadFilesService.uploadMediaFile(part.getInputStream(), path);
+        uploadFilesUtil.uploadMediaFile(part.getInputStream(), path);
 
-        Question question = new Question(quiz_id, question_quiz, quiz_type, mediaPath);
+        QuestionDTO questionDTO = new QuestionDTO(quiz_id, question_quiz, quiz_type, mediaPath);
 
         if (req.getParameter("add_question") != null) {
 
-            int question_id = questionDAO.addQuestion(question);
+            saveQuestion(right_answer, wrong_answer1, wrong_answer2, wrong_answer3, questionDTO);
 
-            answerDAO.addAnswer(new Answer(question_id, right_answer), "right_answers");
-            answerDAO.addAnswer(new Answer(question_id, wrong_answer1), "wrong_answers");
-            answerDAO.addAnswer(new Answer(question_id, wrong_answer2), "wrong_answers");
-            answerDAO.addAnswer(new Answer(question_id, wrong_answer3), "wrong_answers");
-
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/create-question-jsp");
-            dispatcher.forward(req, resp);
+            req.getRequestDispatcher("/create-question-jsp").forward(req, resp);
         } else if (req.getParameter("save_quiz") != null) {
-            // Сохраняем вопрос в БД, переходим на страницу со списком квизов
-            int question_id = questionDAO.addQuestion(question);
 
-            answerDAO.addAnswer(new Answer(question_id, right_answer), "right_answers");
-            answerDAO.addAnswer(new Answer(question_id, wrong_answer1), "wrong_answers");
-            answerDAO.addAnswer(new Answer(question_id, wrong_answer2), "wrong_answers");
-            answerDAO.addAnswer(new Answer(question_id, wrong_answer3), "wrong_answers");
+            saveQuestion(right_answer, wrong_answer1, wrong_answer2, wrong_answer3, questionDTO);
 
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/choose-quiz-jsp");
-            dispatcher.forward(req, resp);
+            req.getRequestDispatcher("/choose-quiz-jsp").forward(req, resp);
         }
     }
+
+    private void saveQuestion(String right_answer, String wrong_answer1, String wrong_answer2, String wrong_answer3, QuestionDTO questionDTO) {
+        int question_id = questionService.addQuestion(questionDTO);
+
+        answerService.addAnswer(new Answer(question_id, right_answer), Constants.RIGHT_ANSWERS);
+        answerService.addAnswer(new Answer(question_id, wrong_answer1), Constants.WRONG_ANSWERS);
+        answerService.addAnswer(new Answer(question_id, wrong_answer2), Constants.WRONG_ANSWERS);
+        answerService.addAnswer(new Answer(question_id, wrong_answer3), Constants.WRONG_ANSWERS);
+    }
+
+
 }

@@ -18,11 +18,6 @@ public class AnswerDAO {
             ps.setInt(1, answer.getQuestion_id());
             ps.setString(2, answer.getAnswer());
             ps.executeUpdate();
-            /*try (ResultSet rs = ps.getGeneratedKeys()) {
-                if (rs.next()) {
-                    answer.setId(rs.getInt(1));
-                }
-            }*/
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

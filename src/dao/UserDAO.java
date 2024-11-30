@@ -9,24 +9,22 @@ public class UserDAO {
 
     private final Connection connection = DataBaseUtil.getConnection();
 
-    public int containsUser(String arg, String par) {
+    public boolean containsUser(String arg, String par) {
         String SELECT_USERS_SQL = "SELECT * FROM users WHERE " + par + " = ?";
 
-        int result = 0;
+        boolean result = false;
 
         try(PreparedStatement ps = connection.prepareStatement(SELECT_USERS_SQL)) {
             ps.setString(1, arg);
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.isBeforeFirst()) {
-                    result = -1; //такой пользователь есть
-                } else {
-                    result = 1; // такого пользователя нет
+                    result = true; //такой пользователь есть
                 }
             }
 
         } catch (SQLException e) {
-            return -1;
+            throw new RuntimeException(e);
         }
 
         return result;

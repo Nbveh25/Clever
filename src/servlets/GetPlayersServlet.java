@@ -23,6 +23,7 @@ public class GetPlayersServlet extends HttpServlet {
         PlayerDAO playerDAO = new PlayerDAO();
 
         resp.setContentType("application/json");
+        resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
 
         int game_id = (int) session.getAttribute("game_id");

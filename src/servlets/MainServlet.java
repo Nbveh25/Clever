@@ -1,20 +1,23 @@
 package servlets;
 
-import jakarta.servlet.RequestDispatcher;
+import dto.PlayerDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import dao.GameDAO;
-import model.Player;
-import dao.PlayerDAO;
+import services.GameService;
+import services.PlayerService;
+import services.impl.GameServiceImpl;
+import services.impl.PlayerServiceImpl;
 
 import java.io.IOException;
 
-@WebServlet("/main-servlet")
+@WebServlet(name = "MainServlet", urlPatterns = "/main-servlet")
 public class MainServlet extends HttpServlet {
+    private final GameService gameService = new GameServiceImpl();
+    private final PlayerService playerService = new PlayerServiceImpl();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -22,22 +25,19 @@ public class MainServlet extends HttpServlet {
         String code = req.getParameter("input_code");
         int user_id = (int) session.getAttribute("user_id");
         String login = (String) session.getAttribute("login");
-        System.out.println("user_id: " + user_id);
-        GameDAO gameDAO = new GameDAO();
-        int game_id = gameDAO.getGameId(code);
+
+        int game_id = gameService.getGameIdByCode(code);
 
         // Ищем игру по коду в БД
         if (game_id != -1) {
-            int quiz_id = gameDAO.getQuizId(game_id);
-            PlayerDAO playerDAO = new PlayerDAO();
+            int quiz_id = gameService.getQuizIdByGameId(game_id);
 
-            Player player = new Player(user_id, game_id, login,0);
-            playerDAO.addPlayer(player);
+            PlayerDTO playerDTO = new PlayerDTO(user_id, game_id, login,0);
+            playerService.addPlayer(playerDTO);
 
             session.setAttribute("quiz_id", quiz_id);
             session.setAttribute("game_id", game_id);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("html/waiting_of_quiz.html");
-            dispatcher.forward(req, resp);
+            req.getRequestDispatcher("html/waiting_of_quiz.html").forward(req, resp);
         }
     }
 }

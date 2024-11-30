@@ -1,7 +1,12 @@
 package model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Objects;
 
+@Setter
+@Getter
 public class Question {
     private int id;
     private int quizId;
@@ -21,46 +26,6 @@ public class Question {
         this.quizId = quizId;
         this.question = question;
         this.typeQuestion = typeQuestion;
-        this.mediaPath = mediaPath;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getQuizId() {
-        return quizId;
-    }
-
-    public void setQuizId(int quizId) {
-        this.quizId = quizId;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    public String getTypeQuestion() {
-        return typeQuestion;
-    }
-
-    public void setTypeQuestion(String typeQuestion) {
-        this.typeQuestion = typeQuestion;
-    }
-
-    public String getMediaPath() {
-        return mediaPath;
-    }
-
-    public void setMediaPath(String mediaPath) {
         this.mediaPath = mediaPath;
     }
 

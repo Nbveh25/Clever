@@ -8,6 +8,7 @@
     <title>Аутентификация</title>
     <link rel="shortcut icon" href="../img/logo_without_name_1.png" />
     <link rel="stylesheet" href="../css/auth.css">
+    <script src="../js/auth_validator.js"></script>
 </head>
 
 <body>
@@ -17,11 +18,7 @@
         <input type="text" name="input_code" placeholder="Введите код" class="input_code" required>
         <button class="send_btn" type="submit">Отправить</button>
         <p>
-            <c:if test="${not empty errorMessage}">
-            <div class="error_message">
-                <c:out value="${errorMessage}"/>
-            </div>
-            </c:if>
+            <div class="error_message" style="display: none; color: red;"></div>
         </p>
     </form>
 </body>

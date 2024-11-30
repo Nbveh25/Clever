@@ -9,12 +9,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Game;
 import dao.GameDAO;
-import model.Utils;
+import utils.Utils;
 import websockets.QuizStartWebSocket;
 
 import java.io.IOException;
 
-@WebServlet("/game-servlet")
+@WebServlet(name = "GameServlet", urlPatterns = "/game-servlet")
 public class GameServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,14 +29,13 @@ public class GameServlet extends HttpServlet {
         int game_id = gameDAO.addGame(new Game(Integer.parseInt(quiz_id), code));
         session.setAttribute("game_id", game_id);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/page-with-code-jsp");
-        dispatcher.forward(req, resp);
+        req.getRequestDispatcher("/page-with-code-jsp").forward(req, resp);
     }
 
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         QuizStartWebSocket.notifyQuizStarted();
-        resp.sendRedirect("result-of-quiz-jsp");
+        resp.sendRedirect("/result-of-quiz-jsp");
     }
 }

@@ -1,7 +1,12 @@
 package model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Objects;
 
+@Setter
+@Getter
 public class Game {
 
     private int id;
@@ -16,30 +21,6 @@ public class Game {
 
     public Game(int quizId, String code) {
         this.quizId = quizId;
-        this.code = code;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getQuizId() {
-        return quizId;
-    }
-
-    public void setQuizId(int quizId) {
-        this.quizId = quizId;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
         this.code = code;
     }
 

@@ -6,13 +6,16 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import dao.AnswerDAO;
 import dao.PlayerDAO;
+import services.AnswerService;
+import services.impl.AnswerServiceImpl;
+import utils.Constants;
 
 import java.io.IOException;
 
-@WebServlet("/submit-answer-servlet")
+@WebServlet(name = "SubmitAnswerServlet", urlPatterns = "/submit-answer-servlet")
 public class SubmitAnswerServlet extends HttpServlet {
+    private final AnswerService answerService = new AnswerServiceImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,14 +27,13 @@ public class SubmitAnswerServlet extends HttpServlet {
         String questionId = req.getParameter("questionId");
         String answerText = req.getParameter("answerText");
 
-        AnswerDAO answerDAO = new AnswerDAO();
-        String answerFromDB =  answerDAO.getAnswerById(Integer.parseInt(answerId), "right_answers");
+        String answerFromDB =  answerService.getAnswerById(Integer.parseInt(answerId), Constants.RIGHT_ANSWERS);
 
         if (answerFromDB.equals(answerText)) {
             PlayerDAO playerDAO = new PlayerDAO();
-            int currentScore = playerDAO.getTotalScore(user_id, game_id); // Получаем текущий счет
-            int newScore = currentScore + 1;
-            playerDAO.updateTotalScore(user_id, game_id, newScore);
+            int current_score = playerDAO.getTotalScore(user_id, game_id); // Получаем текущий счет
+            int new_score = current_score + 1;
+            playerDAO.updateTotalScore(user_id, game_id, new_score);
         }
     }
 }

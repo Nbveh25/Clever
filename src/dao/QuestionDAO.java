@@ -1,5 +1,6 @@
 package dao;
 
+import dto.QuestionDTO;
 import model.Question;
 import utils.DataBaseUtil;
 
@@ -14,16 +15,16 @@ public class QuestionDAO {
 
     private final Connection connection = DataBaseUtil.getConnection();
 
-    public int addQuestion(Question question) {
+    public int addQuestion(QuestionDTO questionDTO) {
         String INSERT_QUESTION_SQL = "INSERT INTO questions (quiz_id, question, type_question, media_path) VALUES (?, ?, ?, ?)";
         int question_id = -1;
 
 
         try (PreparedStatement ps = connection.prepareStatement(INSERT_QUESTION_SQL, PreparedStatement.RETURN_GENERATED_KEYS)) {
-            ps.setInt(1, question.getQuizId());
-            ps.setString(2, question.getQuestion());
-            ps.setString(3, question.getTypeQuestion());
-            ps.setString(4, question.getMediaPath());
+            ps.setInt(1, questionDTO.getQuizId());
+            ps.setString(2, questionDTO.getQuestion());
+            ps.setString(3, questionDTO.getTypeQuestion());
+            ps.setString(4, questionDTO.getMediaPath());
 
             ps.executeUpdate();
 
@@ -43,7 +44,7 @@ public class QuestionDAO {
         List<Question> questionList = new ArrayList<>();
         String SELECT_QUESTION_SQL = "SELECT id, quiz_id, question, type_question, media_path FROM questions WHERE quiz_id=?";
 
-        try(PreparedStatement ps = connection.prepareStatement(SELECT_QUESTION_SQL)) {
+        try (PreparedStatement ps = connection.prepareStatement(SELECT_QUESTION_SQL)) {
             ps.setInt(1, quizId);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
@@ -60,5 +61,4 @@ public class QuestionDAO {
         }
         return questionList;
     }
-
 }
