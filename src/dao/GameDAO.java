@@ -65,4 +65,15 @@ public class GameDAO {
         }
         return quiz_id;
     }
+
+    public void deleteGame(int game_id) {
+        String DELETE_GAME_SQL = "DELETE FROM games WHERE id = ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(DELETE_GAME_SQL)) {
+            ps.setInt(1, game_id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

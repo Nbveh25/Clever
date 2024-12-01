@@ -23,4 +23,14 @@ public class PlayerServiceImpl implements PlayerService {
                 )
         );
     }
+
+    @Override
+    public int getTotalScore(int user_id, int game_id) {
+        return playerDAO.getTotalScore(user_id, game_id);
+    }
+
+    @Override
+    public void updateTotalScore(int user_id, int game_id, int point) {
+        playerDAO.updateTotalScore(user_id, game_id, point);
+    }
 }

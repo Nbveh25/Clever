@@ -22,7 +22,7 @@
         </div>--%>
     </div>
 
-    <form action="#" method="post">
+    <form action="<c:url value="/quiz-servlet"/>" method="post">
         <div class="button-container">
             <button type="submit" class="button">Завершить квиз</button>
         </div>

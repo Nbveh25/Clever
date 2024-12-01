@@ -50,19 +50,6 @@ public class PlayerDAO {
         return players;
     }
 
-    public void updateTotalScore(int user_id, int game_id, int point) {
-        String UPDATE_SCORE_SQL = "UPDATE players SET total_score=? WHERE user_id=? AND game_id=?";
-
-        try (PreparedStatement ps = connection.prepareStatement(UPDATE_SCORE_SQL)) {
-            ps.setInt(1, point);
-            ps.setInt(2, user_id);
-            ps.setInt(3, game_id);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public int getTotalScore(int userId, int gameId) {
         String SELECT_POINTS_SQL = "SELECT * FROM players WHERE user_id=? AND game_id=?";
 
@@ -80,5 +67,18 @@ public class PlayerDAO {
             throw new RuntimeException(e);
         }
         return total_score;
+    }
+
+    public void updateTotalScore(int user_id, int game_id, int point) {
+        String UPDATE_SCORE_SQL = "UPDATE players SET total_score=? WHERE user_id=? AND game_id=?";
+
+        try (PreparedStatement ps = connection.prepareStatement(UPDATE_SCORE_SQL)) {
+            ps.setInt(1, point);
+            ps.setInt(2, user_id);
+            ps.setInt(3, game_id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

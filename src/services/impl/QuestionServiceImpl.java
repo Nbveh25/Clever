@@ -17,7 +17,15 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public int addQuestion(QuestionDTO questionDTO) {
-        return questionDAO.addQuestion(questionDTO);
+        return questionDAO.addQuestion(
+                new Question(
+                        questionDTO.getId(),
+                        questionDTO.getQuizId(),
+                        questionDTO.getQuestion(),
+                        questionDTO.getTypeQuestion(),
+                        questionDTO.getMediaPath()
+                )
+        );
     }
 
     @Override

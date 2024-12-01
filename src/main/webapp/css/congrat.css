@@ -1,19 +1,19 @@
 body {
     display: flex;
-    justify-content: space-between; /* Размещаем элементы по краям */
-    align-items: center; /* Центрируем по вертикали */
-    height: 100vh; /* Задаем высоту на весь экран */
-    margin: 0; /* Убираем отступы */
-    padding: 0 20px; /* Добавляем немного отступов по бокам */
-    box-sizing: border-box; /* Учитываем отступы в ширине */
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .congrat {
-    text-align: left; /* Выравниваем текст по левому краю */
-    max-width: 50%; /* Ограничиваем ширину блока с текстом */
+    text-align: left;
+    max-width: 50%;
 }
 
 img {
-    max-width: 40%; /* Ограничиваем ширину изображения */
-    height: auto; /* Сохраняем пропорции изображения */
+    max-width: 50%;
+    height: auto;
 }

@@ -1,6 +1,7 @@
 package dao;
 
 import dto.QuizDTO;
+import model.Quiz;
 import utils.DataBaseUtil;
 
 import java.sql.Connection;
@@ -14,16 +15,16 @@ public class QuizDAO {
 
     private final Connection connection = DataBaseUtil.getConnection();
 
-    public int addQuiz(QuizDTO quizDTO) {
+    public int addQuiz(Quiz quiz) {
         String INSERT_QUIZ_SQL = "INSERT INTO quizzes (quiz_title, quiz_description, quiz_type, quiz_icon_path) VALUES (?, ?, ?, ?)";
 
         int quiz_id = -1;
 
         try(PreparedStatement ps = connection.prepareStatement(INSERT_QUIZ_SQL, PreparedStatement.RETURN_GENERATED_KEYS)) {
-            ps.setString(1, quizDTO.getQuizName());
-            ps.setString(2, quizDTO.getQuizDescription());
-            ps.setString(3, quizDTO.getQuizType());
-            ps.setString(4, quizDTO.getQuizIconPath());
+            ps.setString(1, quiz.getQuizName());
+            ps.setString(2, quiz.getQuizDescription());
+            ps.setString(3, quiz.getQuizType());
+            ps.setString(4, quiz.getQuizIconPath());
 
             ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {

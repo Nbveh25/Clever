@@ -3,8 +3,8 @@
 <html>
 <head>
     <title>Квиз</title>
-    <link rel="stylesheet" href="../css/quiz_start.css">
-    <script src="../js/quiz_start.js"></script>
+    <link rel="stylesheet" href="../css/quiz.css">
+    <script src="../js/quiz.js"></script>
 </head>
 
 <body>

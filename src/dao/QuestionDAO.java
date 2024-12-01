@@ -15,16 +15,16 @@ public class QuestionDAO {
 
     private final Connection connection = DataBaseUtil.getConnection();
 
-    public int addQuestion(QuestionDTO questionDTO) {
+    public int addQuestion(Question question) {
         String INSERT_QUESTION_SQL = "INSERT INTO questions (quiz_id, question, type_question, media_path) VALUES (?, ?, ?, ?)";
         int question_id = -1;
 
 
         try (PreparedStatement ps = connection.prepareStatement(INSERT_QUESTION_SQL, PreparedStatement.RETURN_GENERATED_KEYS)) {
-            ps.setInt(1, questionDTO.getQuizId());
-            ps.setString(2, questionDTO.getQuestion());
-            ps.setString(3, questionDTO.getTypeQuestion());
-            ps.setString(4, questionDTO.getMediaPath());
+            ps.setInt(1, question.getQuizId());
+            ps.setString(2, question.getQuestion());
+            ps.setString(3, question.getTypeQuestion());
+            ps.setString(4, question.getMediaPath());
 
             ps.executeUpdate();
 

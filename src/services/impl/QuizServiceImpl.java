@@ -2,6 +2,7 @@ package services.impl;
 
 import dao.QuizDAO;
 import dto.QuizDTO;
+import model.Quiz;
 import services.QuizService;
 
 import java.util.List;
@@ -15,7 +16,14 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public int addQuiz(QuizDTO quizDTO) {
-        return quizDAO.addQuiz(quizDTO);
+        return quizDAO.addQuiz(
+                new Quiz(
+                        quizDTO.getQuizName(),
+                        quizDTO.getQuizDescription(),
+                        quizDTO.getQuizType(),
+                        quizDTO.getQuizIconPath()
+                )
+        );
     }
 
     @Override

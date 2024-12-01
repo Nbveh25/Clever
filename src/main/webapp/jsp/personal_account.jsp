@@ -41,7 +41,6 @@
   <h2>Настройки</h2>
   <a class="link_btn" href="<c:url value="/upgrade-permission-jsp"/>">Права модератора</a>
   <a class="link_btn" href="#">Изменить логин</a>
-  <a class="link_btn" href="<c:url value="/forgot-pass-jsp"/>">Изменить пароль</a>
   <a class="link_btn" href="#">Удалить профиль</a>
 </div>
 

@@ -3,6 +3,8 @@ package services.impl;
 import dao.RoleDAO;
 import services.RoleService;
 
+import java.util.Set;
+
 public class RoleServiceImpl implements RoleService {
     private final RoleDAO roleDAO;
 
@@ -11,8 +13,13 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void addRole(int id) {
-        roleDAO.addRole(id);
+    public void addRole(int id, String role) {
+        roleDAO.addRole(id, role);
+    }
+
+    @Override
+    public Set<String> getRoles(int id) {
+        return roleDAO.getRolesByUserId(id);
     }
 
 

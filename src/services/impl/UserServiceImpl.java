@@ -1,6 +1,7 @@
 package services.impl;
 
 import dao.UserDAO;
+import dto.UserDTO;
 import model.User;
 import services.UserService;
 import utils.Constants;
@@ -13,12 +14,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean registerUser(String login, String email, String password) {
-        if (dataOfUserExists(login, "login") || dataOfUserExists(email, "email")) {
-            return false;
+    public void registerUser(UserDTO userDTO) {
+        if (dataOfUserExists(userDTO.getLogin(), Constants.LOGIN) || dataOfUserExists(userDTO.getEmail(), Constants.EMAIL)) {
+            return;
         }
-        userDAO.registerUser(new User(login, email, password));
-        return true;
+        userDAO.registerUser(
+                new User(
+                        userDTO.getLogin(),
+                        userDTO.getEmail(),
+                        userDTO.getPassword()
+                )
+        );
     }
 
     @Override
@@ -27,8 +33,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean userExists(String login, String email, String password) {
-        return userDAO.containsUser(login, Constants.LOGIN) && userDAO.containsUser(email, Constants.EMAIL) && userDAO.containsUser(password, Constants.PASSWORD);
+    public boolean userExists(UserDTO userDTO) {
+        return userDAO.containsUser(userDTO.getLogin(), Constants.LOGIN) && userDAO.containsUser(userDTO.getEmail(), Constants.EMAIL) && userDAO.containsUser(userDTO.getPassword(), Constants.PASSWORD);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package servlets;
 
+import dto.UserDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -28,7 +29,9 @@ public class RegisterServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        if (!userService.userExists(login, email, password)) {
+        UserDTO userDTO = new UserDTO(login, email, password);
+
+        if (!userService.userExists(userDTO)) {
 
             String code = String.valueOf(new Random().nextInt(999999));
             emailService.sendVerificationCode(code, email);

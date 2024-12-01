@@ -16,8 +16,14 @@ public class AnswerServiceImpl implements AnswerService {
     }
 
     @Override
-    public void addAnswer(Answer answer, String table) {
-        answerDAO.addAnswer(answer, table);
+    public void addAnswer(AnswerDTO answerDTO, String table) {
+        answerDAO.addAnswer(
+                new Answer(
+                        answerDTO.getId(),
+                        answerDTO.getQuestion_id(),
+                        answerDTO.getAnswer()
+                ),
+                table);
     }
 
     @Override

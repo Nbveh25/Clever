@@ -5,19 +5,21 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import dao.QuizDAO;
+import services.QuizService;
+import services.impl.QuizServiceImpl;
 import utils.UploadFilesUtil;
 
 import java.io.IOException;
 
 @WebServlet(name = "CreateQuizServlet", urlPatterns = "/create-quiz-servlet")
 @MultipartConfig(
-        location="C:\\Users\\timur\\IdeaProjects\\Clever\\src\\main\\webapp\\source\\quiz_icons",
-        fileSizeThreshold=1024*1024,
-        maxFileSize=1024*1024*1024,
-        maxRequestSize=1024*1024*5*5
+        fileSizeThreshold = 1024 * 1024,
+        maxFileSize = 1024 * 1024 * 1024,
+        maxRequestSize = 1024 * 1024 * 5 * 5
 )
 public class CreateQuizServlet extends HttpServlet {
+    private final QuizService quizService = new QuizServiceImpl();
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name_quiz = req.getParameter("name_quiz");
@@ -30,20 +32,19 @@ public class CreateQuizServlet extends HttpServlet {
         Part part = req.getPart("quiz_icon");
         String filename = part.getSubmittedFileName();
 
-        String uploadPath = "C:\\Users\\timur\\IdeaProjects\\Clever\\src\\main\\webapp\\source\\quiz_icons\\" + filename;
+        String uploadDir = getServletContext().getRealPath("/source/quiz_icons");
+        String uploadPath = uploadDir + "/" + filename;
 
-        String quizIconPath = "http://localhost:8080/source/quiz_icons/" + filename;
+        String contextPath = req.getContextPath();
+        String quizIconPath = contextPath + "/source/quiz_icons/" + filename;
 
         uploadFilesService.uploadMediaFile(part.getInputStream(), uploadPath);
 
         QuizDTO quizDTO = new QuizDTO(name_quiz, description_quiz, quiz_type, quizIconPath);
-        QuizDAO quizDAO = new QuizDAO();
 
-        int quiz_id = quizDAO.addQuiz(quizDTO);
+        int quiz_id = quizService.addQuiz(quizDTO);
         session.setAttribute("quiz_id", quiz_id);
 
         req.getRequestDispatcher("/create-question-jsp").forward(req, resp);
-
-        // TODO (Подумать про дубликаты квизов и всяческие проверки)
     }
 }

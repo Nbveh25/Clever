@@ -31,4 +31,9 @@ public class GameServiceImpl implements GameService {
     public int getQuizIdByGameId(int gameId) {
         return gameDAO.getQuizId(gameId);
     }
+
+    @Override
+    public void deleteGame(int gameId) {
+        gameDAO.deleteGame(gameId);
+    }
 }

@@ -8,9 +8,10 @@ import jakarta.servlet.http.HttpSession;
 import utils.Constants;
 
 import java.io.IOException;
+import java.util.Set;
 
-@WebFilter(filterName = "AuthFilter", urlPatterns = "/*")
-public class AuthFilter implements Filter {
+@WebFilter(filterName = "AuthenticationFilter", urlPatterns = "/*")
+public class AuthenticationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
@@ -18,21 +19,18 @@ public class AuthFilter implements Filter {
         HttpSession session = request.getSession(false);
         String uri = request.getRequestURI();
 
-        // Проверяем, является ли запрос к статическим ресурсам
         boolean isStaticResource = uri.startsWith("/css/") || uri.startsWith("/js/") || uri.startsWith("/img/");
 
-        // Проверяем, существует ли сессия и есть ли у пользователя роль
-        boolean isLoggedIn = (session != null && session.getAttribute("role") != null);
-        boolean isUser = isLoggedIn && (session.getAttribute("role").equals(Constants.SIMPLE) || session.getAttribute("role").equals(Constants.PRO));
+        boolean isLoggedIn = (session != null && session.getAttribute("roles") != null);
+        Set<String> roles = isLoggedIn ? (Set<String>) session.getAttribute("roles") : null;
+        boolean isUser = isLoggedIn && (roles != null && roles.contains(Constants.SIMPLE));
         boolean isLoginRequest = uri.contains("login") || uri.contains("auth");
         boolean isRegistrationRequest = uri.contains("register");
-        boolean isIndex = !uri.endsWith("/");
+        boolean isIndex = uri.equals("/") || uri.isEmpty();
 
-        if (!isUser && !isLoginRequest && !isRegistrationRequest && !isStaticResource && isIndex) {
-            // Если сессия не существует или роль не "user", перенаправляем на страницу входа
+        if (!isUser && !isLoginRequest && !isRegistrationRequest && !isStaticResource && !isIndex) {
             response.sendRedirect("/login-jsp");
         } else {
-            // Если пользователь аутентифицирован или запрашивает страницу входа, продолжаем цепочку фильтров
             filterChain.doFilter(request, response);
         }
     }

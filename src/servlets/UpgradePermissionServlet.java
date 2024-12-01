@@ -1,6 +1,5 @@
 package servlets;
 
-import dao.RoleDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,17 +8,25 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import services.RoleService;
 import services.impl.RoleServiceImpl;
+import utils.Constants;
 
 import java.io.IOException;
+import java.util.Set;
 
 @WebServlet(name = "UpgradePermissionServlet", urlPatterns = "/upgrade-permission-servlet")
 public class UpgradePermissionServlet extends HttpServlet {
     private final RoleService roleService = new RoleServiceImpl();
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
         int user_id = (int) session.getAttribute("user_id");
-        roleService.addRole(user_id);
+        roleService.addRole(user_id, Constants.PRO);
+
+        Set<String> roles = roleService.getRoles(user_id);
+        session.setAttribute("roles", roles);
+
+        resp.sendRedirect("html/notification.html");
     }
 }

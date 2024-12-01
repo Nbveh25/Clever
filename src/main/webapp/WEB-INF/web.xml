@@ -69,7 +69,6 @@
   </servlet-mapping>
 
   <!-- Забыли пароль Servlet -->
-
   <servlet>
     <servlet-name>ForgotPassServlet</servlet-name>
     <servlet-class>servlets.ForgotPasswordServlet</servlet-class>
@@ -80,7 +79,6 @@
   </servlet-mapping>
 
   <!-- Забыли пароль JSP -->
-
   <servlet>
     <servlet-name>ForgotPassJSP</servlet-name>
     <jsp-file>/jsp/forgot_password.jsp</jsp-file>
@@ -91,7 +89,6 @@
   </servlet-mapping>
 
   <!-- Создание квиза Servlet -->
-
   <servlet>
     <servlet-name>CreateQuizServlet</servlet-name>
     <servlet-class>servlets.CreateQuizServlet</servlet-class>
@@ -102,7 +99,6 @@
   </servlet-mapping>
 
   <!-- Создание квиза JSP -->
-
   <servlet>
     <servlet-name>CreateQuizJSP</servlet-name>
     <jsp-file>/jsp/create_quiz.jsp</jsp-file>
@@ -113,7 +109,6 @@
   </servlet-mapping>
 
   <!-- Создание вопросов Servlet -->
-
   <servlet>
     <servlet-name>CreateQuestionServlet</servlet-name>
     <servlet-class>servlets.CreateQuestionServlet</servlet-class>
@@ -130,7 +125,6 @@
   </servlet-mapping>
 
   <!--  Создание Вопросов JSP -->
-
   <servlet>
     <servlet-name>CreateQuestionJSP</servlet-name>
     <jsp-file>/jsp/create_question.jsp</jsp-file>
@@ -141,7 +135,6 @@
   </servlet-mapping>
   
 <!--  Выбрать Квиз Servlet -->
-
   <servlet>
     <servlet-name>ChooseQuizServlet</servlet-name>
     <servlet-class>servlets.ChooseQuizServlet</servlet-class>
@@ -203,23 +196,24 @@
 
   <!--  Начало квиза Servlet  -->
   <servlet>
-    <servlet-name>QuizStartServlet</servlet-name>
-    <servlet-class>servlets.QuizStartServlet</servlet-class>
+    <servlet-name>QuizServlet</servlet-name>
+    <servlet-class>servlets.QuizServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>QuizStartServlet</servlet-name>
-    <url-pattern>/quiz-start-servlet</url-pattern>
+    <servlet-name>QuizServlet</servlet-name>
+    <url-pattern>/quiz-servlet</url-pattern>
   </servlet-mapping>
 
   <!--  Начало квиза  JSP -->
   <servlet>
-    <servlet-name>QuizStartJSP</servlet-name>
-    <jsp-file>/jsp/quiz_start.jsp</jsp-file>
+    <servlet-name>QuizJSP</servlet-name>
+    <jsp-file>/jsp/quiz.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-    <servlet-name>QuizStartJSP</servlet-name>
-    <url-pattern>/quiz-start-jsp</url-pattern>
+    <servlet-name>QuizJSP</servlet-name>
+    <url-pattern>/quiz-jsp</url-pattern>
   </servlet-mapping>
+
 
   <servlet>
     <servlet-name>PersonalAccountJSP</servlet-name>
@@ -230,6 +224,7 @@
     <url-pattern>/personal-account-jsp</url-pattern>
   </servlet-mapping>
 
+  <!-- Страница Получения Прав JSP -->
   <servlet>
     <servlet-name>UpgradePermissionJSP</servlet-name>
     <jsp-file>/jsp/upgrade_permission.jsp</jsp-file>
@@ -239,15 +234,17 @@
     <url-pattern>/upgrade-permission-jsp</url-pattern>
   </servlet-mapping>
 
+  <!-- Страница Завершение Квиза JSP -->
   <servlet>
-    <servlet-name>EndOfQuiz</servlet-name>
+    <servlet-name>EndOfQuizJSP</servlet-name>
     <jsp-file>/jsp/end_of_quiz.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-    <servlet-name>EndOfQuiz</servlet-name>
+    <servlet-name>EndOfQuizJSP</servlet-name>
     <url-pattern>/end-of-quiz-jsp</url-pattern>
   </servlet-mapping>
 
+  <!-- Страница Результатов JSP -->
   <servlet>
     <servlet-name>ResultOfQuizJSP</servlet-name>
     <jsp-file>/jsp/result_of_quiz.jsp</jsp-file>

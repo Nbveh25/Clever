@@ -1,5 +1,6 @@
 package servlets;
 
+import dto.AnswerDTO;
 import dto.QuestionDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -17,9 +18,9 @@ import java.io.*;
 
 @WebServlet(name = "CreateQuestionServlet", urlPatterns = "/create-question-servlet")
 @MultipartConfig(
-        location="C:\\Users\\timur\\IdeaProjects\\Clever\\src\\main\\webapp\\media",
-        fileSizeThreshold=1024*1024,
-        maxFileSize=1024*1024*1024, maxRequestSize=1024*1024*5*5
+        fileSizeThreshold = 1024 * 1024,
+        maxFileSize = 1024 * 1024 * 1024,
+        maxRequestSize = 1024 * 1024 * 5 * 5
 )
 public class CreateQuestionServlet extends HttpServlet {
     private final QuestionService questionService = new QuestionServiceImpl();
@@ -63,10 +64,10 @@ public class CreateQuestionServlet extends HttpServlet {
     private void saveQuestion(String right_answer, String wrong_answer1, String wrong_answer2, String wrong_answer3, QuestionDTO questionDTO) {
         int question_id = questionService.addQuestion(questionDTO);
 
-        answerService.addAnswer(new Answer(question_id, right_answer), Constants.RIGHT_ANSWERS);
-        answerService.addAnswer(new Answer(question_id, wrong_answer1), Constants.WRONG_ANSWERS);
-        answerService.addAnswer(new Answer(question_id, wrong_answer2), Constants.WRONG_ANSWERS);
-        answerService.addAnswer(new Answer(question_id, wrong_answer3), Constants.WRONG_ANSWERS);
+        answerService.addAnswer(new AnswerDTO(question_id, right_answer), Constants.RIGHT_ANSWERS);
+        answerService.addAnswer(new AnswerDTO(question_id, wrong_answer1), Constants.WRONG_ANSWERS);
+        answerService.addAnswer(new AnswerDTO(question_id, wrong_answer2), Constants.WRONG_ANSWERS);
+        answerService.addAnswer(new AnswerDTO(question_id, wrong_answer3), Constants.WRONG_ANSWERS);
     }
 
 

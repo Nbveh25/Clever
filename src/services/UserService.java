@@ -1,9 +1,11 @@
 package services;
 
+import dto.UserDTO;
+
 public interface UserService {
-    boolean registerUser(String login, String email, String password);
+    void registerUser(UserDTO userDTO);
     boolean userExists(String login, String password);
-    boolean userExists(String login, String email, String password);
+    boolean userExists(UserDTO userDTO);
     boolean dataOfUserExists(String identifier, String type);
     String getUserEmail(String login);
     int getIdByLogin(String login);

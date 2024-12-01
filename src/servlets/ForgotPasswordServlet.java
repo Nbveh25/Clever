@@ -20,13 +20,6 @@ public class ForgotPasswordServlet extends HttpServlet {
         HttpSession session = req.getSession();
 
         if (session == null) {
-            // Сессия истекла или не существует
-            req.setAttribute("errorMessage", "Сессия истекла. Пожалуйста, войдите снова.");
-            try {
-                TimeUnit.SECONDS.sleep(5);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
             req.getRequestDispatcher("/login-jsp").forward(req, resp);
             return;
         }

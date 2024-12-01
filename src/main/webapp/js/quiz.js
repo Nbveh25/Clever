@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let timerInterval;
 
     function loadQuestions() {
-        fetch('/quiz-start-servlet')
+        fetch('/quiz-servlet')
             .then(response => response.json())
             .then(data => {
                 questions = data;
