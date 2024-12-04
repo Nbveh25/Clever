@@ -5,25 +5,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Создание квиза</title>
-    <link rel="stylesheet" href="../css/create_quiz.css">
-    <link rel="shortcut icon" href="../img/logo_without_name_1.png">
+    <link rel="stylesheet" href="<c:url value='/css/create_quiz.css'/>">
+    <link rel="shortcut icon" href="<c:url value='../img/logo_without_name_1.png'/>">
+    <script src="<c:url value='/js/create_quiz_validator.js'/>"></script>
 </head>
 
 <body>
 
 <div class="create-container">
-    <form action="<c:url value="/create-quiz-servlet"/>" method="post" enctype="multipart/form-data">
+    <form action="<c:url value='/create-quiz-servlet'/>" method="post" enctype="multipart/form-data"
+          id="create-quiz-form">
+
+        <h2 class="header-create">Создание квиза</h2>
 
         <p>
-            <h2 class="header-create">Создание квиза</h2>
+            <input id="name_quiz" name="name_quiz" class="input-text" type="text" placeholder="Название квиза"
+                   maxlength="40" required>
         </p>
 
         <p>
-            <input name="name_quiz" class="input-text" type="text" placeholder="Название квиза" required>
-        </p>
-
-        <p>
-            <textarea name="description_quiz" class="textarea" placeholder="Описание квиза"></textarea>
+            <textarea id="description_quiz" name="description_quiz" class="textarea" placeholder="Описание квиза"
+                      maxlength="40"></textarea>
         </p>
 
         <p>
@@ -37,11 +39,14 @@
 
         <p>
             <label for="quizIcon" class="label_icon">Иконка квиза:</label>
-            <input class="media-file" type="file" id="quizIcon" name="quiz_icon" accept="image/*" >
+            <input class="media-file" type="file" id="quizIcon" name="quiz_icon" accept="image/*">
         </p>
 
         <p>
             <button class="create-quiz-btn" type="submit">Создать квиз</button>
+        </p>
+        <p>
+        <div class="error_message" style="display: none; color: red;"></div>
         </p>
     </form>
 

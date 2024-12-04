@@ -11,7 +11,6 @@ import utils.EmailSenderUtil;
 
 import java.io.IOException;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 @WebServlet(name = "ForgotPassServlet", urlPatterns = "/forgot-pass-servlet")
 public class ForgotPasswordServlet extends HttpServlet {
@@ -35,7 +34,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 
             String code = String.valueOf(new Random().nextInt(999999));
 
-            EmailSenderUtil.sendEmail(code ,email);
+            EmailSenderUtil.sendVerificationCode(code ,email);
 
             session.setAttribute("type_auth", Constants.FORGOT_PASSWORD);
             session.setAttribute("code", code);

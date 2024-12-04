@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import services.RoleService;
-import services.impl.RoleServiceImpl;
 import utils.Constants;
 
 import java.io.IOException;
@@ -15,7 +14,13 @@ import java.util.Set;
 
 @WebServlet(name = "UpgradePermissionServlet", urlPatterns = "/upgrade-permission-servlet")
 public class UpgradePermissionServlet extends HttpServlet {
-    private final RoleService roleService = new RoleServiceImpl();
+    private RoleService roleService;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        roleService = (RoleService) getServletContext().getAttribute("roleService");
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

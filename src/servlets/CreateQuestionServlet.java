@@ -6,11 +6,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import model.Answer;
 import services.AnswerService;
 import services.QuestionService;
-import services.impl.AnswerServiceImpl;
-import services.impl.QuestionServiceImpl;
 import utils.Constants;
 import utils.UploadFilesUtil;
 
@@ -23,8 +20,16 @@ import java.io.*;
         maxRequestSize = 1024 * 1024 * 5 * 5
 )
 public class CreateQuestionServlet extends HttpServlet {
-    private final QuestionService questionService = new QuestionServiceImpl();
-    private final AnswerService answerService = new AnswerServiceImpl();
+    private QuestionService questionService;
+    private AnswerService answerService;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        questionService = (QuestionService) getServletContext().getAttribute("questionService");
+        answerService = (AnswerService) getServletContext().getAttribute("answerService");
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();

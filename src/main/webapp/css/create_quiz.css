@@ -44,7 +44,11 @@ body {
     font-weight: 500;
     border-radius: 5px;
     border: solid 1px #333333;
-    resize: none;
+    resize: vertical;
+    word-wrap: break-word;
+    height: 100px; /* Установите желаемую высоту */
+    overflow: auto; /* Добавляет прокрутку, если текст превышает высоту */
+    box-sizing: border-box; /* Учитывает отступы и границы в ширине */
 }
 
 .quiz-category {

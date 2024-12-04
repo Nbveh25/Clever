@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import services.GameService;
-import services.impl.GameServiceImpl;
 import websockets.QuizStartWebSocket;
 
 import java.io.IOException;
@@ -16,7 +15,14 @@ import java.util.Random;
 
 @WebServlet(name = "GameServlet", urlPatterns = "/game-servlet")
 public class GameServlet extends HttpServlet {
-    private final GameService gameService = new GameServiceImpl();
+    private GameService gameService;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        gameService = (GameService) getServletContext().getAttribute("gameService");
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

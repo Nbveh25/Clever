@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import services.QuizService;
-import services.impl.QuizServiceImpl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,7 +15,14 @@ import java.util.List;
 
 @WebServlet(name = "ChooseQuizServlet", urlPatterns = "/choose-quiz-servlet")
 public class ChooseQuizServlet extends HttpServlet {
-    private final QuizService quizService = new QuizServiceImpl();
+    private QuizService quizService;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        quizService = (QuizService) getServletContext().getAttribute("quizService");
+    }
+
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");

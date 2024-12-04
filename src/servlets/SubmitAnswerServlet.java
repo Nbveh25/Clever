@@ -6,19 +6,23 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import dao.PlayerDAO;
 import services.AnswerService;
 import services.PlayerService;
-import services.impl.AnswerServiceImpl;
-import services.impl.PlayerServiceImpl;
 import utils.Constants;
 
 import java.io.IOException;
 
 @WebServlet(name = "SubmitAnswerServlet", urlPatterns = "/submit-answer-servlet")
 public class SubmitAnswerServlet extends HttpServlet {
-    private final AnswerService answerService = new AnswerServiceImpl();
-    private final PlayerService playerService = new PlayerServiceImpl();
+    private AnswerService answerService;
+    private PlayerService playerService;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        answerService = (AnswerService) getServletContext().getAttribute("answerService");
+        playerService = (PlayerService) getServletContext().getAttribute("playerService");
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

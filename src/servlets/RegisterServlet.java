@@ -7,19 +7,22 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import services.EmailService;
 import services.UserService;
-import services.impl.EmailServiceImpl;
-import services.impl.UserServiceImpl;
 import utils.Constants;
+import utils.EmailSenderUtil;
 
 import java.io.IOException;
 import java.util.Random;
 
 @WebServlet(name = "RegisterServlet", urlPatterns = "/register-servlet")
 public class RegisterServlet extends HttpServlet {
-    private final UserService userService = new UserServiceImpl();
-    private final EmailService emailService = new EmailServiceImpl();
+    private UserService userService;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        userService = (UserService) getServletContext().getAttribute("userService");
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,7 +37,7 @@ public class RegisterServlet extends HttpServlet {
         if (!userService.userExists(userDTO)) {
 
             String code = String.valueOf(new Random().nextInt(999999));
-            emailService.sendVerificationCode(code, email);
+            EmailSenderUtil.sendVerificationCode(code, email);
 
             session.setMaxInactiveInterval(60);
             session.setAttribute("login", login);

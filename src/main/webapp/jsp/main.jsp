@@ -6,16 +6,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clever</title>
-    <link rel="shortcut icon" href="../img/logo_without_name_1.png">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="shortcut icon" href="<c:url value='../img/logo_without_name_1.png'/>">
+    <link rel="stylesheet" href="<c:url value='/css/main.css'/>">
+    <script src="<c:url value='/js/connect_to_game_form_validator.js'/>"></script>
 </head>
 
 <header class="header">
-    <img class="logo" src="../img/logo_brain_1.png" alt="logo">
+    <img class="logo" src="<c:url value='../img/logo_brain_1.png'/>" alt="logo">
     <div class="header_link_container">
-        <a class="header_link" href="<c:url value="/create-quiz-jsp"/>">Создать квиз</a>
-        <a class="header_link" href="<c:url value="/personal-account-jsp"/>">Профиль</a>
-        <a class="header_link" href="<c:url value="/logout-servlet"/>">Выйти</a>
+        <a class="header_link" href="<c:url value='/create-quiz-jsp'/>">Создать квиз</a>
+        <a class="header_link" href="<c:url value='/personal-account-jsp'/>">Профиль</a>
+        <a class="header_link" href="<c:url value='/logout-servlet'/>">Выйти</a>
     </div>
 </header>
 
@@ -23,20 +24,23 @@
 
 <div class="container">
     <h1>Провести квиз</h1>
-    <img class="main_img" src="../img/flying_man_quiz.png" alt="flying_man">
+    <img class="main_img" src="<c:url value='../img/flying_man_quiz.png'/>" alt="flying_man">
     <div class="button-container">
-        <a href="<c:url value="/jsp/choose_quiz.jsp"/>" class="button">Создать игру</a>
+        <a href="<c:url value='/jsp/choose_quiz.jsp'/>" class="button">Создать игру</a>
     </div>
 </div>
 
 <div class="container">
     <h1>Играть с друзьями</h1>
-    <img class="main_img" src="../img/connect_to_quiz.png" alt="conversation_mens"><br>
-    <form action="<c:url value="/main-servlet"/>" method="POST">
-        <input name="input_code" class="input_code" type="text" placeholder="Введите код">
+    <img class="main_img" src="<c:url value='../img/connect_to_quiz.png'/>" alt="conversation_mens"><br>
+    <form action="<c:url value='/main-servlet'/>" method="POST" id="connect-to-game-form">
+        <input name="input_code" class="input_code" type="number" placeholder="Введите код">
         <div class="button-container">
             <button type="submit" class="button">Подключиться к игре</button>
         </div>
+        <p>
+        <div class="error_message" style="display: none; color: red;"></div>
+        </p>
     </form>
 </div>
 

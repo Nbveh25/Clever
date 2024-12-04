@@ -1,6 +1,7 @@
 package services.impl;
 
 import dao.UserDAO;
+import dao.impl.UserDAOImpl;
 import dto.UserDTO;
 import model.User;
 import services.UserService;
@@ -10,7 +11,7 @@ public class UserServiceImpl implements UserService {
     private final UserDAO userDAO;
 
     public UserServiceImpl() {
-        this.userDAO = new UserDAO();
+        this.userDAO = new UserDAOImpl();
     }
 
     @Override
@@ -34,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean userExists(UserDTO userDTO) {
-        return userDAO.containsUser(userDTO.getLogin(), Constants.LOGIN) && userDAO.containsUser(userDTO.getEmail(), Constants.EMAIL) && userDAO.containsUser(userDTO.getPassword(), Constants.PASSWORD);
+        return userDAO.containsUser(userDTO.getLogin(), Constants.LOGIN) || userDAO.containsUser(userDTO.getEmail(), Constants.EMAIL) || userDAO.containsUser(userDTO.getPassword(), Constants.PASSWORD);
     }
 
     @Override

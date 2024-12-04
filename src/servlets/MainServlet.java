@@ -9,15 +9,21 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import services.GameService;
 import services.PlayerService;
-import services.impl.GameServiceImpl;
-import services.impl.PlayerServiceImpl;
 
 import java.io.IOException;
 
 @WebServlet(name = "MainServlet", urlPatterns = "/main-servlet")
 public class MainServlet extends HttpServlet {
-    private final GameService gameService = new GameServiceImpl();
-    private final PlayerService playerService = new PlayerServiceImpl();
+    private GameService gameService;
+    private PlayerService playerService;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        gameService = (GameService) getServletContext().getAttribute("gameService");
+        playerService = (PlayerService) getServletContext().getAttribute("playerService");
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();

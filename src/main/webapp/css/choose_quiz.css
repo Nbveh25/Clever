@@ -45,6 +45,21 @@ header {
     flex: 1;
 }
 
+.quiz-content p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin: 0;
+}
+
+.quiz-content h2 {
+    margin: 0; /* Убираем отступы */
+    font-size: 1.5em; /* Увеличиваем размер шрифта для заголовка */
+    white-space: nowrap; /* Запрещаем перенос заголовка */
+    overflow: hidden; /* Скрываем переполнение */
+    text-overflow: ellipsis; /* Добавляем многоточие, если текст слишком длинный */
+}
+
+
 .quiz-tag h2 {
     font-family: "Matemasie", sans-serif;
     margin-top: 0;

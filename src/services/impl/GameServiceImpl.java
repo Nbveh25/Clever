@@ -1,6 +1,7 @@
 package services.impl;
 
 import dao.GameDAO;
+import dao.impl.GameDAOImpl;
 import dto.GameDTO;
 import model.Game;
 import services.GameService;
@@ -9,7 +10,7 @@ public class GameServiceImpl implements GameService {
     private final GameDAO gameDAO;
 
     public GameServiceImpl() {
-        this.gameDAO = new GameDAO();
+        this.gameDAO = new GameDAOImpl();
     }
 
     @Override

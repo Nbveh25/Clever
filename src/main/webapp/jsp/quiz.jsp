@@ -3,15 +3,15 @@
 <html>
 <head>
     <title>Квиз</title>
-    <link rel="stylesheet" href="../css/quiz.css">
-    <script src="../js/quiz.js"></script>
+    <link rel="stylesheet" href="<c:url value='/css/quiz.css'/>">
+    <script src="<c:url value='/js/quiz.js'/>"></script>
 </head>
 
 <body>
-    <div class="question_container" id="question_container">
-        <%-- Здесь будет генериться вопрос--%>
-    </div>
-    <div class="timer">15</div>
+<div class="question_container" id="question_container">
+    <%-- Здесь будет генериться вопрос --%>
+</div>
+<div class="timer">15</div>
 
 </body>
 

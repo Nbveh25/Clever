@@ -1,6 +1,7 @@
 package services.impl;
 
 import dao.AnswerDAO;
+import dao.impl.AnswerDAOImpl;
 import dto.AnswerDTO;
 import model.Answer;
 import services.AnswerService;
@@ -12,7 +13,7 @@ public class AnswerServiceImpl implements AnswerService {
     private final AnswerDAO answerDAO;
 
     public AnswerServiceImpl() {
-        this.answerDAO = new AnswerDAO();
+        this.answerDAO = new AnswerDAOImpl();
     }
 
     @Override

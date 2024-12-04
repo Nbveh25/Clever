@@ -1,6 +1,7 @@
 package services.impl;
 
 import dao.QuizDAO;
+import dao.impl.QuizDAOImpl;
 import dto.QuizDTO;
 import model.Quiz;
 import services.QuizService;
@@ -11,7 +12,7 @@ public class QuizServiceImpl implements QuizService {
     private final QuizDAO quizDAO;
 
     public QuizServiceImpl() {
-        this.quizDAO = new QuizDAO();
+        this.quizDAO = new QuizDAOImpl();
     }
 
     @Override

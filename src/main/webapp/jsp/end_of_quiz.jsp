@@ -1,11 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %><html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 
 <head>
     <meta charset="UTF-8">
     <title>Аутентификация</title>
-    <link rel="shortcut icon" href="../img/logo_without_name_1.png" />
-    <link rel="stylesheet" href="../css/end_of_quiz.css">
+    <link rel="shortcut icon" href="<c:url value='../img/logo_without_name_1.png'/>" />
+    <link rel="stylesheet" href="<c:url value='/css/end_of_quiz.css'/>">
 </head>
 
 <body>

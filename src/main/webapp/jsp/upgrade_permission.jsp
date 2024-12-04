@@ -6,17 +6,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Улучшить до версии ПРО</title>
-    <link rel="stylesheet" href="../css/upgrade.css">
-    <link rel="shortcut icon" href="../img/logo_without_name_1.png">
+    <link rel="stylesheet" href="<c:url value='/css/upgrade.css'/>">
+    <link rel="shortcut icon" href="<c:url value='../img/logo_without_name_1.png'/>">
 </head>
 <body>
 <header class="header">
-    <img class="logo" src="../img/logo_brain_1.png" alt="Логотип">
+    <img class="logo" src="<c:url value='../img/logo_brain_1.png'/>" alt="Логотип">
 </header>
 
 <div class="container">
     <h1>Улучшить до версии ПРО</h1>
-    <p class="description">Станьте пользователем версии ПРО и получите доступ к эксклюзивным функциям, включая создание собственных квизов!</p>
+    <p class="description">Станьте пользователем версии ПРО и получите доступ к эксклюзивным функциям, включая создание
+        собственных квизов!</p>
 
     <div class="upgrade_info">
         <h2>Преимущества версии ПРО:</h2>
@@ -28,7 +29,7 @@
         </ul>
     </div>
 
-    <form method="post" action="<c:url value="/upgrade-permission-servlet"/>">
+    <form method="post" action="<c:url value='/upgrade-permission-servlet'/>">
         <div class="upgrade_button_container">
             <button class="upgrade_btn">Улучшить до версии ПРО</button>
         </div>

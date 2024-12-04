@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import services.AnswerService;
-import services.impl.AnswerServiceImpl;
 import utils.Constants;
 
 import java.io.IOException;
@@ -18,7 +17,13 @@ import java.util.List;
 
 @WebServlet(name = "GetAnswersServlet", urlPatterns = "/get-answers-servlet")
 public class GetAnswersServlet extends HttpServlet {
-    private final AnswerService answerService = new AnswerServiceImpl();
+    private AnswerService answerService;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        answerService = (AnswerService) getServletContext().getAttribute("answerService");
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

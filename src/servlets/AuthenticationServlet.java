@@ -9,8 +9,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import services.RoleService;
 import services.UserService;
-import services.impl.RoleServiceImpl;
-import services.impl.UserServiceImpl;
 import utils.Constants;
 
 import java.io.IOException;
@@ -18,8 +16,15 @@ import java.util.Set;
 
 @WebServlet(name = "AuthServlet", urlPatterns = "/auth-servlet")
 public class AuthenticationServlet extends HttpServlet {
-    private final UserService userService = new UserServiceImpl();
-    private final RoleService roleService = new RoleServiceImpl();
+    private UserService userService;
+    private RoleService roleService;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        userService = (UserService) getServletContext().getAttribute("userService");
+        roleService = (RoleService) getServletContext().getAttribute("roleService");
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

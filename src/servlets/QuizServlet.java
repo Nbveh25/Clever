@@ -10,8 +10,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import services.GameService;
 import services.QuestionService;
-import services.impl.GameServiceImpl;
-import services.impl.QuestionServiceImpl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,8 +17,15 @@ import java.util.List;
 
 @WebServlet(name = "QuizServlet", urlPatterns = "/quiz-servlet")
 public class QuizServlet extends HttpServlet {
-    private final QuestionService questionService = new QuestionServiceImpl();
-    private final GameService gameService = new GameServiceImpl();
+    private QuestionService questionService;
+    private GameService gameService;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        questionService = (QuestionService) getServletContext().getAttribute("questionService");
+        gameService = (GameService) getServletContext().getAttribute("gameService");
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

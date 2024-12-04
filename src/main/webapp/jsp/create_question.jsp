@@ -6,21 +6,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Создание вопросов</title>
-    <link rel="stylesheet" href="../css/create_question.css">
-    <link rel="shortcut icon" href="../img/logo_without_name_1.png">
-    <script src="../js/number_of_question.js"></script>
+    <link rel="stylesheet" href="<c:url value='/css/create_question.css'/>">
+    <link rel="shortcut icon" href="<c:url value='../img/logo_without_name_1.png'/>">
+    <script src="<c:url value='/js/number_of_question.js'/>"></script>
 </head>
 
 <body>
 
 <div class="create-container">
-    <form action="<c:url value="/create-question-servlet"/>" method="post" enctype="multipart/form-data">
+    <form action="<c:url value='/create-question-servlet'/>" method="post" enctype="multipart/form-data">
         <h2 class="header-create">Создание вопросов</h2>
 
         <p id="question-number" class="number-of-question">Номер вопроса: 0</p>
 
         <p>
-            <textarea name="question_quiz" class="textarea" placeholder="Введите вопрос"></textarea>
+            <textarea name="question_quiz" class="textarea" placeholder="Введите вопрос" minlength="50"></textarea>
         </p>
 
         <p>
@@ -37,10 +37,10 @@
         </p>
 
         <p>
-            <textarea name="right_answer" class="textarea" placeholder="Правильный ответ"></textarea>
-            <textarea name="wrong_answer1" class="textarea" placeholder="Неправильный ответ 1"></textarea>
-            <textarea name="wrong_answer2" class="textarea" placeholder="Неправильный ответ 2"></textarea>
-            <textarea name="wrong_answer3" class="textarea" placeholder="Неправильный ответ 3"></textarea>
+            <textarea name="right_answer" class="textarea" placeholder="Правильный ответ" minlength="30"></textarea>
+            <textarea name="wrong_answer1" class="textarea" placeholder="Неправильный ответ 1" minlength="30"></textarea>
+            <textarea name="wrong_answer2" class="textarea" placeholder="Неправильный ответ 2" minlength="30"></textarea>
+            <textarea name="wrong_answer3" class="textarea" placeholder="Неправильный ответ 3" minlength="30"></textarea>
         </p>
 
         <p>

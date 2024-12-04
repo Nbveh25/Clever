@@ -18,7 +18,13 @@ import java.io.IOException;
         maxRequestSize = 1024 * 1024 * 5 * 5
 )
 public class CreateQuizServlet extends HttpServlet {
-    private final QuizService quizService = new QuizServiceImpl();
+    private QuizService quizService;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        quizService = (QuizServiceImpl) getServletContext().getAttribute("quizService");
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

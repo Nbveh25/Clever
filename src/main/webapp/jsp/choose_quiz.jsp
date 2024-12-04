@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: timur
-  Date: 09.10.2024
-  Time: 18:32
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -14,11 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Выбор квизов</title>
-    <link rel="stylesheet" href="../css/choose_quiz.css">
-    <link rel="shortcut icon" href="../img/logo_without_name_1.png">
-    <script src="../js/choose_quiz.js"></script>
-    <script src="../js/search_quiz.js"></script>
-    <script src="../js/filter_quiz.js"></script>
+    <link rel="stylesheet" href="<c:url value='/css/choose_quiz.css'/>">
+    <link rel="shortcut icon" href="<c:url value='../img/logo_without_name_1.png'/>">
+    <script src="<c:url value='/js/choose_quiz.js'/>"></script>
+    <script src="<c:url value='/js/search_quiz.js'/>"></script>
+    <script src="<c:url value='/js/filter_quiz.js'/>"></script>
 </head>
 <body>
 <div class="container">

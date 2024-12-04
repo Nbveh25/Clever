@@ -6,9 +6,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Аутентификация</title>
-    <link rel="shortcut icon" href="../img/logo_without_name_1.png" />
-    <link rel="stylesheet" href="../css/auth.css">
-    <script src="../js/auth_validator.js"></script>
+    <link rel="shortcut icon" href="<c:url value='../img/logo_without_name_1.png'/>" />
+    <link rel="stylesheet" href="<c:url value='/css/auth.css'/>" />
+    <script src="<c:url value='/js/auth_validator.js'/>"></script>
 </head>
 
 <body>
