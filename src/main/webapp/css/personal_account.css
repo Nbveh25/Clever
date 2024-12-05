@@ -124,9 +124,11 @@ body {
     background-color: #03a9f4;
     color: white;
     text-decoration: none;
+    font-size: 16px;
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
+    border: none;
     text-align: center;
     transition: background-color 0.3s;
 }

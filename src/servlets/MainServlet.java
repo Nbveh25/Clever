@@ -44,6 +44,8 @@ public class MainServlet extends HttpServlet {
             session.setAttribute("quiz_id", quiz_id);
             session.setAttribute("game_id", game_id);
             req.getRequestDispatcher("html/waiting_of_quiz.html").forward(req, resp);
+        } else {
+            req.getRequestDispatcher("/main-jsp").forward(req, resp);
         }
     }
 }

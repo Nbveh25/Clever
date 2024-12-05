@@ -7,5 +7,7 @@ public interface UserDAO {
     void registerUser(User user);
     int getIdByLogin(String login);
     String getUserEmail(String login);
+    void updateLogin(int id, String login);
     void updateUserPassword(String email, String newPassword);
+    void deleteUser(int userId);
 }

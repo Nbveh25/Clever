@@ -8,6 +8,8 @@
     <title>Личный кабинет</title>
     <link rel="stylesheet" href="<c:url value='/css/personal_account.css'/>">
     <link rel="shortcut icon" href="<c:url value='../img/logo_without_name_1.png'/>">
+    <script src="<c:url value='../js/personal_account.js'/>" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <header class="header">
@@ -26,13 +28,11 @@
         </div>
         <div>
             <div class="user_info">
-                <p id="name_of_user" class="name_of_user"><%= session.getAttribute("login") %>
-                </p>
+                <p id="name_of_user" class="name_of_user"><%= session.getAttribute("login") %></p>
             </div>
             <br>
             <div class="user_info">
-                <h2 class="email_user"><%= session.getAttribute("email") %>
-                </h2>
+                <h2 class="email_user"><%= session.getAttribute("email") %></h2>
             </div>
         </div>
     </div>
@@ -40,10 +40,11 @@
 
 <div class="setting_container">
     <h2>Настройки</h2>
-    <a class="link_btn" href="<c:url value='/upgrade-permission-jsp'/>">Права модератора</a>
-    <a class="link_btn" href="#">Изменить логин</a>
-    <a class="link_btn" href="#">Удалить профиль</a>
+    <button id="upgrade-permission" class="link_btn">Права PRO</button>
+    <button id="change-login" class="link_btn" >Изменить логин</button>
+    <button id="delete-profile" class="link_btn">Удалить профиль</button>
 </div>
 
 </body>
 </html>
+

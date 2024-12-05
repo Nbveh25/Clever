@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     let currentQuestionIndex = 0;
     let questions = [];
     let timeLeft = 15;
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         answerButton.setAttribute('data-question', question.id);
                         answerButton.textContent = answer.answer;
 
-                        answerButton.addEventListener('click', function() {
+                        answerButton.addEventListener('click', function () {
                             // Отключаем все кнопки после нажатия
                             const allButtons = buttonContainer.querySelectorAll('button');
                             allButtons.forEach(btn => btn.disabled = true); // Блокируем все кнопки
@@ -97,7 +97,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: data.toString()
-
         })
             .then(response => response.json())
             .then(data => {
@@ -125,7 +124,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     startTimer();
                 } else {
                     console.log("Все вопросы были показаны.");
-                    // переход на страницу с результатами
                     window.location.href = "/end-of-quiz-jsp";
                 }
             }

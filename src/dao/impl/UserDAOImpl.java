@@ -53,9 +53,9 @@ public class UserDAOImpl implements UserDAO {
 
         int id = -1;
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USERS_SQL)) {
-            preparedStatement.setString(1, login);
-            try (ResultSet rs = preparedStatement.executeQuery()) {
+        try (PreparedStatement ps = connection.prepareStatement(SELECT_USERS_SQL)) {
+            ps.setString(1, login);
+            try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     id = rs.getInt("id");
                 }
@@ -87,15 +87,39 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public void updateLogin(int id, String login) {
+        String UPDATE_LOGIN_SQL = "UPDATE users SET login = ? WHERE id = ?";
+        try (PreparedStatement ps = connection.prepareStatement(UPDATE_LOGIN_SQL)) {
+            ps.setString(1, login);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public void updateUserPassword(String email, String newPassword) {
         String UPDATE_PASSWORD_SQL = "UPDATE users SET password = ? WHERE email = ?";
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PASSWORD_SQL)) {
-            preparedStatement.setString(1, newPassword);
-            preparedStatement.setString(2, email);
+        try (PreparedStatement ps = connection.prepareStatement(UPDATE_PASSWORD_SQL)) {
+            ps.setString(1, newPassword);
+            ps.setString(2, email);
 
-            preparedStatement.executeUpdate();
+            ps.executeUpdate();
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void deleteUser(int userId) {
+        String DELETE_USERS_SQL = "DELETE FROM users WHERE id = ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(DELETE_USERS_SQL)) {
+            ps.setInt(1, userId);
+            ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
