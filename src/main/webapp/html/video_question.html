@@ -1,29 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<html lang="ru">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../css/quiz.css">
+    <title>Вход</title>
+    <link rel="shortcut icon" href="<c:url value='../img/logo_without_name_1.png'/>"/>
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/login_validator.js"></script>
+    <script src="../js/eye_pass.js"></script>
 </head>
+
 <body>
-    <div class="question_container">
-        <h2 class="number_of_question">Вопрос №1</h2>
+<article class="container_login">
 
-        <video width="320" height="240" controls class="question_video">
-            <source src="movie.mp4" type="video/mp4">
-            <source src="movie.ogg" type="video/ogg">
-            Your browser does not support the video tag.
-        </video>
-
-
-        <h3>I was made for loving you baby, you were made for loving me! aaaaaaaaaaaaaaaaa?</h3>
-
-        <div class="button_container">
-            <button class="button_answer red">Здесь так красиво я перестаю дышать</button>
-            <button class="button_answer purple">Белый снег серый лед на растрескавшейся земле одеялом лоскутным на ней город в дорожной петле</button>
-            <button class="button_answer orange">I was made for loving you baby you were made for loving me and i cant get enough of you baby can you get enough of me?</button>
-            <button class="button_answer green">Ответ 4</button>
+    <div class="block_login">
+        <div class="block_item_login">
+            <h2 class="block_item_title_login">У вас нет аккаунта?</h2>
+            <form action="<c:url value='/register-jsp'/>">
+                <button class="block_item_btn_login">Зарегистрироваться?</button>
+            </form>
         </div>
     </div>
+
+    <div class="form_box_login">
+        <form action="<c:url value='/login-servlet'/>" method="post" class="form_login form_signin_login">
+            <h3 class="form_title_login">Вход</h3>
+            <p>
+                <input id="login" name="login" type="text" placeholder="Логин" class="form_input_login" required>
+            </p>
+            <p class="password-container">
+                <input id="password" name="password" type="password" placeholder="Пароль" class="form_input_login"
+                       required>
+                <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')">👁️</button>
+            </p>
+            <p>
+                <input type="checkbox" id="rememberMe" name="rememberMe">
+                <label for="rememberMe">Запомнить меня</label> <!-- Добавлен чекбокс "Запомнить меня" -->
+            </p>
+            <p>
+                <button type="submit" class="form_btn_login">Войти</button>
+            </p>
+            <p>
+                <a href="<c:url value='/forgot-pass-jsp'/>" class="form_forgot_login">Забыли пароль?</a>
+            </p>
+            <p>
+            <div class="error_message" style="display: none; color: red;"></div>
+            </p>
+        </form>
+    </div>
+
+</article>
+
 </body>
+
 </html>
