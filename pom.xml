@@ -9,10 +9,11 @@
     <url>http://maven.apache.org</url>
 
     <properties>
+        <project.recording.outputEncoding>UTF-8</project.recording.outputEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>22</maven.compiler.source>
         <maven.compiler.target>22</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.recording.outputEncoding>UTF-8</project.recording.outputEncoding>
+        <cloudinary.version>1.29.0</cloudinary.version>
         <slf4j.version>2.0.13</slf4j.version>
     </properties>
 
@@ -82,6 +83,22 @@
             <scope>provided</scope>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.cloudinary</groupId>
+            <artifactId>cloudinary-core</artifactId>
+            <version>${cloudinary.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudinary</groupId>
+            <artifactId>cloudinary-http44</artifactId>
+            <version>${cloudinary.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudinary</groupId>
+            <artifactId>cloudinary-taglib</artifactId>
+            <version>${cloudinary.version}</version>
+        </dependency>
 
     </dependencies>
 

@@ -20,11 +20,11 @@
         <p id="question-number" class="number-of-question">Номер вопроса: 0</p>
 
         <p>
-            <textarea name="question_quiz" class="textarea" placeholder="Введите вопрос" minlength="50"></textarea>
+            <textarea name="question_quiz" class="textarea" placeholder="Введите вопрос" maxlength="50"></textarea>
         </p>
 
         <p>
-            <select name="quiz_type" class="question-category">
+            <select name="question_type" class="question-category">
                 <option value="text_question" class="option-category">Текстовый вопрос</option>
                 <option value="music_question" class="option-category">Музыкальный вопрос</option>
                 <option value="image_question" class="option-category">Вопрос с картинкой</option>
@@ -37,10 +37,10 @@
         </p>
 
         <p>
-            <textarea name="right_answer" class="textarea" placeholder="Правильный ответ" minlength="30"></textarea>
-            <textarea name="wrong_answer1" class="textarea" placeholder="Неправильный ответ 1" minlength="30"></textarea>
-            <textarea name="wrong_answer2" class="textarea" placeholder="Неправильный ответ 2" minlength="30"></textarea>
-            <textarea name="wrong_answer3" class="textarea" placeholder="Неправильный ответ 3" minlength="30"></textarea>
+            <textarea name="right_answer" class="textarea" placeholder="Правильный ответ" maxlength="30"></textarea>
+            <textarea name="wrong_answer1" class="textarea" placeholder="Неправильный ответ 1" maxlength="30"></textarea>
+            <textarea name="wrong_answer2" class="textarea" placeholder="Неправильный ответ 2" maxlength="30"></textarea>
+            <textarea name="wrong_answer3" class="textarea" placeholder="Неправильный ответ 3" maxlength="30"></textarea>
         </p>
 
         <p>
