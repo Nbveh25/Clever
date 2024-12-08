@@ -20,15 +20,18 @@ import java.util.Map;
 
 import static utils.UploadUtil.getFile;
 
-@WebServlet(urlPatterns = "/create-quiz")
+@WebServlet(name = "CreateQuizServlet", urlPatterns = "/create-quiz")
 @MultipartConfig(
         maxFileSize = 5 * 1024 * 1024,
         maxRequestSize = 10 * 1024 * 1024
 )
 public class CreateQuizServlet extends HttpServlet {
 
-    private QuizService quizService;
     private Cloudinary cloudinary;
+    private QuizService quizService;
+
+    private static final String QUIZ_ICON_FOLDER = "quiz_icons";
+    private static final String DEFAULT_QUIZ_ICON = "https://res.cloudinary.com/dsrqq4er2/image/upload/v1733603414/logo_without_name_1_poumis.png";
 
     @Override
     public void init() throws ServletException {
@@ -42,23 +45,29 @@ public class CreateQuizServlet extends HttpServlet {
         String description_quiz = req.getParameter("description_quiz");
         String quiz_type = req.getParameter("quiz_type");
 
-        Part part = req.getPart("quiz_icon");
-        File file = getFile(part);
+        String quizIconPath = DEFAULT_QUIZ_ICON;
 
-        Map<String, Object> uploadParams = new HashMap<>();
-        uploadParams.put("folder", "quiz_icons");
+        Part filePart = req.getPart("quiz_icon");
+        if (filePart != null && filePart.getSize() > 0) {
+            try {
+                File file = getFile(filePart);
 
-        Map uploadResult = cloudinary.uploader().upload(file, uploadParams);
+                Map<String, Object> uploadParams = new HashMap<>();
+                uploadParams.put("folder", QUIZ_ICON_FOLDER);
 
-        String quizIconPath = (String) uploadResult.get("secure_url");
+                Map uploadResult = cloudinary.uploader().upload(file, uploadParams);
+                quizIconPath = (String) uploadResult.get("secure_url");
+
+                file.delete();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         QuizDTO quizDTO = new QuizDTO(name_quiz, description_quiz, quiz_type, quizIconPath);
         int quiz_id = quizService.addQuiz(quizDTO);
 
         req.getSession().setAttribute("quiz_id", quiz_id);
-
         req.getRequestDispatcher("/create-question-jsp").forward(req, resp);
-
-        file.delete();
     }
 }

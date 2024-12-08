@@ -20,12 +20,12 @@
 
         <p>
             <input id="name_quiz" name="name_quiz" class="input-text" type="text" placeholder="Название квиза"
-                   maxlength="40" required>
+                   maxlength="50" required>
         </p>
 
         <p>
             <textarea id="description_quiz" name="description_quiz" class="textarea" placeholder="Описание квиза"
-                      maxlength="40"></textarea>
+                      maxlength="50"></textarea>
         </p>
 
         <p>

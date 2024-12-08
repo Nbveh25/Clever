@@ -1,5 +1,6 @@
 package utils;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Part;
 
 import java.io.File;
@@ -8,8 +9,11 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class UploadUtil {
-
     private static final String FILE_PREFIX = "/tmp";
+    private static final String MUSIC = "music";
+    private static final String IMAGE = "image";
+    private static final String VIDEO = "video";
+    private static final String RAW = "raw";
 
     public static File getFile(Part part) throws IOException {
         String filename = part.getSubmittedFileName();
@@ -31,15 +35,23 @@ public class UploadUtil {
     }
 
     public static String getFolderUpload(String question_type) {
-        String folder = "";
-        if (question_type.equals("music_question")) {
-            folder = "music";
-        } else if (question_type.equals("image_question")) {
-            folder = "image";
-        } else if (question_type.equals("video_question")) {
-            folder = "video";
-        }
+        return switch (question_type) {
+            case "music_question" -> MUSIC;
+            case "image_question" -> IMAGE;
+            case "video_question" -> VIDEO;
+            default -> "";
+        };
+    }
 
-        return folder;
+    public static String getResourceType(String contentType) throws ServletException {
+        if (contentType.startsWith("image/")) {
+            return IMAGE;
+        } else if (contentType.startsWith("video/")) {
+            return VIDEO;
+        } else if (contentType.startsWith("audio/")) {
+            return RAW;
+        } else {
+            throw new ServletException("Unsupported file type: " + contentType);
+        }
     }
 }
