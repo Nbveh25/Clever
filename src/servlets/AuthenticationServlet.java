@@ -51,10 +51,12 @@ public class AuthenticationServlet extends HttpServlet {
 
                     int user_id = userService.getIdByLogin(userDTO.getLogin());
                     Set<String> roles = roleService.getRoles(user_id);
+                    String icon_url = userService.getProfileIconUrl(user_id);
 
                     session.setAttribute("email", email);
                     session.setAttribute("user_id", user_id);
                     session.setAttribute("roles", roles);
+                    session.setAttribute("icon_url", icon_url);
 
                     req.getRequestDispatcher("/main-jsp").forward(req, resp);
                     break;

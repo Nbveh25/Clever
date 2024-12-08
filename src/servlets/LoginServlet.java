@@ -53,8 +53,8 @@ public class LoginServlet extends HttpServlet {
             if (rememberMe != null) {
                 Cookie loginCookie = new Cookie("login", login);
                 Cookie passwordCookie = new Cookie("password", password);
-                loginCookie.setMaxAge(60 * 60 * 24); // Устанавливаем время жизни cookie в 1 день
-                passwordCookie.setMaxAge(60 * 60 * 24); // Устанавливаем время жизни cookie в 1 день
+                loginCookie.setMaxAge(60 * 60 * 24);
+                passwordCookie.setMaxAge(60 * 60 * 24);
                 resp.addCookie(loginCookie);
                 resp.addCookie(passwordCookie);
             }

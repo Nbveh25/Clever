@@ -114,6 +114,37 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public void updateProfileIconUrl(int userId, String iconUrl) {
+        String UPDATE_PROFILE_ICONS_SQL = "UPDATE users SET icon_url = ? WHERE id = ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(UPDATE_PROFILE_ICONS_SQL)) {
+            ps.setString(1, iconUrl);
+            ps.setInt(2, userId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    public String getProfileIconUrl(int userId) {
+        String SELECT_PROFILE_ICONS_SQL = "SELECT icon_url FROM users WHERE id = ?";
+        String iconUrl = null;
+        try (PreparedStatement ps = connection.prepareStatement(SELECT_PROFILE_ICONS_SQL)) {
+            ps.setInt(1, userId);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    iconUrl = rs.getString("icon_url");
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return iconUrl;
+    }
+
+    @Override
     public void deleteUser(int userId) {
         String DELETE_USERS_SQL = "DELETE FROM users WHERE id = ?";
 

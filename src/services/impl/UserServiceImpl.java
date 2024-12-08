@@ -64,6 +64,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void updateProfileIconUrl(int user_id, String iconUrl) {
+        userDAO.updateProfileIconUrl(user_id, iconUrl);
+    }
+
+    @Override
+    public String getProfileIconUrl(int userId) {
+        return userDAO.getProfileIconUrl(userId);
+    }
+
+    @Override
     public void deleteUser(int userId) {
         userDAO.deleteUser(userId);
     }
