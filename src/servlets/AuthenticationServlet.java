@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpSession;
 import services.RoleService;
 import services.UserService;
 import utils.Constants;
+import utils.PasswordUtil;
 
 import java.io.IOException;
 import java.util.Set;
@@ -42,7 +43,7 @@ public class AuthenticationServlet extends HttpServlet {
         String type_auth = (String) session.getAttribute("type_auth");
         String input_code = req.getParameter("input_code");
 
-        UserDTO userDTO = new UserDTO(login, email, password);
+        UserDTO userDTO = new UserDTO(login, email, PasswordUtil.encrypt(password));
 
         if (input_code.equals(code)) {
             switch (type_auth) {
@@ -65,13 +66,13 @@ public class AuthenticationServlet extends HttpServlet {
                     userService.registerUser(userDTO);
                     roleService.addRole(userService.getIdByLogin(login), Constants.SIMPLE);
 
-                    req.getRequestDispatcher("html/congrat.html").forward(req, resp);
+                    req.getRequestDispatcher("/congrat-jsp").forward(req, resp);
                     break;
                 }
                 case Constants.FORGOT_PASSWORD: {
                     userService.updateUserPassword(email, password);
 
-                    req.getRequestDispatcher("html/password_updated.html").forward(req, resp);
+                    req.getRequestDispatcher("/password-updated-jsp").forward(req, resp);
                     break;
                 }
             }

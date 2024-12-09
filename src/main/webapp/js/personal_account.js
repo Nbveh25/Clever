@@ -55,6 +55,7 @@ function updateLogin() {
 }
 
 function deleteUser() {
+    window.location.href = '/login-jsp';
     Swal.fire({
         title: 'Подтверждение удаления',
         text: "Вы уверены, что хотите удалить свой профиль?",
@@ -66,13 +67,17 @@ function deleteUser() {
         if (result.isConfirmed) {
             fetch('/user-servlet', {
                 method: 'DELETE'
-            }).then(response => response.text()) // Исправлено: добавлен return
-                .then(text => { // Добавлен новый then для обработки текста ответа
-                    // Здесь можно добавить логику после успешного удаления, например:
-                    // window.location.href = '/login-jsp';
-                }).catch(error => {
-                console.error('Ошибка', error);
-                //Swal.fire('Произошла ошибка. Попробуйте еще раз.');
+            }).then(response => {
+                if (response.ok) {
+                    window.location.href = '/login-jsp';
+                } else {
+                    return response.text().then(text => {
+                        Swal.fire('Ошибка при удалении профиля: ' + text);
+                    });
+                }
+            }).catch(error => {
+                console.error('Ошибка:', error);
+                Swal.fire('Произошла ошибка при удалении профиля.');
             });
         }
     });

@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpSession;
 import services.UserService;
 import utils.Constants;
 import utils.EmailSenderUtil;
+import utils.PasswordUtil;
 
 import java.io.IOException;
 import java.util.Random;
@@ -35,7 +36,7 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
         String rememberMe = req.getParameter("rememberMe");
 
-        if (userService.userExists(login, password)) {
+        if (userService.userExists(login, PasswordUtil.encrypt(password))) {
             HttpSession session = req.getSession();
 
             String code = String.format("%06d", new Random().nextInt(1000000));

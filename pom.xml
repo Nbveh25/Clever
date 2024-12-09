@@ -6,7 +6,7 @@
     <packaging>war</packaging>
     <version>1.0</version>
     <name>Clever Maven Webapp</name>
-    <url>http://maven.apache.org</url>
+    <url>https://maven.apache.org</url>
 
     <properties>
         <project.recording.outputEncoding>UTF-8</project.recording.outputEncoding>
@@ -99,6 +99,13 @@
             <artifactId>cloudinary-taglib</artifactId>
             <version>${cloudinary.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+        
 
     </dependencies>
 

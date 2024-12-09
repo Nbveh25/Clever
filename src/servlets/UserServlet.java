@@ -4,10 +4,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 import services.RoleService;
 import services.UserService;
 import utils.Constants;
@@ -64,6 +61,16 @@ public class UserServlet extends HttpServlet {
         int user_id = (int) session.getAttribute("user_id");
         userService.deleteUser(user_id);
 
-        resp.sendRedirect("/logout-servlet");
+        Cookie[] cookies = req.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                cookie.setValue("");
+                cookie.setPath("/");
+                cookie.setMaxAge(0);
+                resp.addCookie(cookie);
+            }
+        }
+
+        session.invalidate();
     }
 }

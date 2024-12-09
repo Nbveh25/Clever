@@ -253,6 +253,26 @@
     <servlet-name>ResultOfQuizJSP</servlet-name>
     <url-pattern>/result-of-quiz-jsp</url-pattern>
   </servlet-mapping>
+  
+  
+  <!-- Успех! -->
+  <servlet>
+    <servlet-name>CongratJSP</servlet-name>
+    <jsp-file>/jsp/congrat.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CongratJSP</servlet-name>
+    <url-pattern>/congrat-jsp</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>PasswordUpdatedJSP</servlet-name>
+    <jsp-file>/jsp/password_updated.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PasswordUpdatedJSP</servlet-name>
+    <url-pattern>/password-updated-jsp</url-pattern>
+  </servlet-mapping>
 
   <!--  Страница ошибки 404 -->
 <!--  <error-page>
