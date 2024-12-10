@@ -19,15 +19,13 @@
     String login = "";
     String pass = "";
 
-    // Получаем все cookies
     Cookie[] cookies = request.getCookies();
     if (cookies != null) {
         for (Cookie cookie : cookies) {
-            // Извлекаем логин и пароль из cookies
             if ("login".equals(cookie.getName())) {
                 login = cookie.getValue();
             }
-            if ("password".equals(cookie.getName())) { // Исправлено: имя cookie должно быть "password"
+            if ("password".equals(cookie.getName())) {
                 pass = cookie.getValue();
             }
         }

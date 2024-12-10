@@ -255,7 +255,7 @@
   </servlet-mapping>
   
   
-  <!-- Успех! -->
+  <!-- Успех! JSP-->
   <servlet>
     <servlet-name>CongratJSP</servlet-name>
     <jsp-file>/jsp/congrat.jsp</jsp-file>
@@ -274,11 +274,20 @@
     <url-pattern>/password-updated-jsp</url-pattern>
   </servlet-mapping>
 
-  <!--  Страница ошибки 404 -->
-<!--  <error-page>
-    <error-code>404</error-code>
-    <location>/html/404.html</location>
-  </error-page>-->
+  <!-- Страница ошибки JSP -->
+  <servlet>
+    <servlet-name>ExceptionJSP</servlet-name>
+    <jsp-file>/jsp/exception.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExceptionJSP</servlet-name>
+    <url-pattern>/exception-jsp</url-pattern>
+  </servlet-mapping>
+
+  <error-page>
+    <location>/handle</location>
+  </error-page>
+
 
 </web-app>
 
