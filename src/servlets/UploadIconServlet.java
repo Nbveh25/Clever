@@ -51,7 +51,7 @@ public class UploadIconServlet extends HttpServlet {
 
             uploadedFile.delete();
 
-            req.getRequestDispatcher("/personal-account-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/personal-account-jsp").forward(req, resp);
         } catch (Exception e) {
             req.setAttribute("error", "Ошибка загрузки иконки: " + e.getMessage());
             req.getRequestDispatcher("/error.jsp").forward(req, resp);

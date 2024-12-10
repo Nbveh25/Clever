@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/login-jsp").forward(req, resp);
+        req.getRequestDispatcher(getServletContext().getContextPath() + "/login-jsp").forward(req, resp);
     }
 
     @Override
@@ -60,9 +60,9 @@ public class LoginServlet extends HttpServlet {
                 resp.addCookie(passwordCookie);
             }
 
-            req.getRequestDispatcher("/auth-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/auth-jsp").forward(req, resp);
         } else {
-            req.getRequestDispatcher("/login-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/login-jsp").forward(req, resp);
         }
     }
 }

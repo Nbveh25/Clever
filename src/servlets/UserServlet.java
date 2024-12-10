@@ -26,7 +26,7 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/personal-account-jsp").forward(req, resp);
+        req.getRequestDispatcher(getServletContext().getContextPath() + "/personal-account-jsp").forward(req, resp);
     }
 
     @Override

@@ -49,7 +49,7 @@ public class CreateQuestionServlet extends HttpServlet {
         }
 
         req.setAttribute("number", questionNumber);
-        req.getRequestDispatcher("/create-question-jsp").forward(req, resp);
+        req.getRequestDispatcher(getServletContext().getContextPath() + "/create-question-jsp").forward(req, resp);
     }
 
     @Override
@@ -99,10 +99,10 @@ public class CreateQuestionServlet extends HttpServlet {
         if (req.getParameter("add_question") != null) {
             saveQuestion(right_answer, wrong_answer1, wrong_answer2, wrong_answer3, questionDTO);
             req.setAttribute("number", questionNumber);
-            req.getRequestDispatcher("/create-question-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/create-question-jsp").forward(req, resp);
         } else if (req.getParameter("save_quiz") != null) {
             saveQuestion(right_answer, wrong_answer1, wrong_answer2, wrong_answer3, questionDTO);
-            req.getRequestDispatcher("/choose-quiz-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/choose-quiz-jsp").forward(req, resp);
         }
     }
 

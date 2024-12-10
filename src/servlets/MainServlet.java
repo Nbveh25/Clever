@@ -37,14 +37,14 @@ public class MainServlet extends HttpServlet {
         if (game_id != -1) {
             int quiz_id = gameService.getQuizIdByGameId(game_id);
 
-            PlayerDTO playerDTO = new PlayerDTO(user_id, game_id, login,0, icon_url);
+            PlayerDTO playerDTO = new PlayerDTO(user_id, game_id, login, 0, icon_url);
             playerService.addPlayer(playerDTO);
 
             session.setAttribute("quiz_id", quiz_id);
             session.setAttribute("game_id", game_id);
-            req.getRequestDispatcher("/waiting-of-quiz-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/waiting-of-quiz-jsp").forward(req, resp);
         } else {
-            req.getRequestDispatcher("/main-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/main-jsp").forward(req, resp);
         }
     }
 }

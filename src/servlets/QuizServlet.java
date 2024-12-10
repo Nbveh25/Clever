@@ -50,6 +50,6 @@ public class QuizServlet extends HttpServlet {
 
         gameService.deleteGame(game_id);
 
-        req.getRequestDispatcher("/main-jsp").forward(req, resp);
+        req.getRequestDispatcher(getServletContext().getContextPath() + "/main-jsp").forward(req, resp);
     }
 }

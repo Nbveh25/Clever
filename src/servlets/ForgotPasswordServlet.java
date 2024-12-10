@@ -19,7 +19,7 @@ public class ForgotPasswordServlet extends HttpServlet {
         HttpSession session = req.getSession();
 
         if (session == null) {
-            req.getRequestDispatcher("/login-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/login-jsp").forward(req, resp);
             return;
         }
 
@@ -34,16 +34,16 @@ public class ForgotPasswordServlet extends HttpServlet {
 
             String code = String.valueOf(new Random().nextInt(999999));
 
-            EmailSenderUtil.sendVerificationCode(code ,email);
+            EmailSenderUtil.sendVerificationCode(code, email);
 
             session.setAttribute("type_auth", Constants.FORGOT_PASSWORD);
             session.setAttribute("code", code);
 
-            req.getRequestDispatcher("/auth-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/auth-jsp").forward(req, resp);
         } else {
             String message = "Пароли не совпадают";
             req.setAttribute("errorMessage", message);
-            req.getRequestDispatcher("/forgot-pass-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/forgot-pass-jsp").forward(req, resp);
         }
     }
 }

@@ -31,7 +31,7 @@ public class AuthenticationServlet extends HttpServlet {
         HttpSession session = req.getSession(false);
 
         if (session == null) {
-            req.getRequestDispatcher("/login-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/login-jsp").forward(req, resp);
             return;
         }
 
@@ -58,25 +58,25 @@ public class AuthenticationServlet extends HttpServlet {
                     session.setAttribute("roles", roles);
                     session.setAttribute("icon_url", icon_url);
 
-                    req.getRequestDispatcher("/main-jsp").forward(req, resp);
+                    req.getRequestDispatcher(getServletContext().getContextPath() + "/main-jsp").forward(req, resp);
                     break;
                 }
                 case Constants.REGISTER: {
                     userService.registerUser(userDTO);
                     roleService.addRole(userService.getIdByLogin(login), Constants.SIMPLE);
 
-                    req.getRequestDispatcher("/congrat-jsp").forward(req, resp);
+                    req.getRequestDispatcher(getServletContext().getContextPath() + "/congrat-jsp").forward(req, resp);
                     break;
                 }
                 case Constants.FORGOT_PASSWORD: {
                     userService.updateUserPassword(email, password);
 
-                    req.getRequestDispatcher("/password-updated-jsp").forward(req, resp);
+                    req.getRequestDispatcher(getServletContext().getContextPath() + "/password-updated-jsp").forward(req, resp);
                     break;
                 }
             }
         } else {
-            req.getRequestDispatcher("/auth-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/auth-jsp").forward(req, resp);
         }
     }
 }

@@ -31,6 +31,6 @@ public class ExceptionHandler extends HttpServlet {
             req.setAttribute("message", throwable.getMessage());
         }
 
-        req.getRequestDispatcher("/exception-jsp").forward(req, resp);
+        req.getRequestDispatcher(getServletContext().getContextPath() + "/exception-jsp").forward(req, resp);
     }
 }

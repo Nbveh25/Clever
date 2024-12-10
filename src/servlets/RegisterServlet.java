@@ -45,11 +45,11 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("code", code);
             session.setAttribute("type_auth", Constants.REGISTER);
 
-            req.getRequestDispatcher("/auth-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/auth-jsp").forward(req, resp);
 
         } else {
 
-            req.getRequestDispatcher("/register-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/register-jsp").forward(req, resp);
 
         }
     }

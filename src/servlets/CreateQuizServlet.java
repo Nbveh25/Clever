@@ -68,6 +68,6 @@ public class CreateQuizServlet extends HttpServlet {
         int quiz_id = quizService.addQuiz(quizDTO);
 
         req.getSession().setAttribute("quiz_id", quiz_id);
-        req.getRequestDispatcher("/create-question-jsp").forward(req, resp);
+        req.getRequestDispatcher(getServletContext().getContextPath() + "/create-question-jsp").forward(req, resp);
     }
 }
