@@ -83,7 +83,6 @@
             <scope>provided</scope>
         </dependency>
 
-
         <dependency>
             <groupId>com.cloudinary</groupId>
             <artifactId>cloudinary-core</artifactId>
@@ -105,7 +104,6 @@
             <artifactId>jakarta.xml.bind-api</artifactId>
             <version>4.0.2</version>
         </dependency>
-        
 
     </dependencies>
 

@@ -177,6 +177,15 @@
     <servlet-name>ExceptionJSP</servlet-name>
     <url-pattern>/exception-jsp</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>WaitingOfQuizJSP</servlet-name>
+    <jsp-file>/jsp/waiting_of_quiz.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WaitingOfQuizJSP</servlet-name>
+    <url-pattern>/waiting-of-quiz-jsp</url-pattern>
+  </servlet-mapping>
 
   <error-page>
     <location>/handle</location>
