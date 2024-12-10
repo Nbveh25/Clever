@@ -19,7 +19,6 @@ public class ChooseQuizServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        super.init();
         quizService = (QuizService) getServletContext().getAttribute("quizService");
     }
 

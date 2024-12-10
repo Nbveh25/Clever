@@ -21,7 +21,6 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        super.init();
         userService = (UserService) getServletContext().getAttribute("userService");
     }
 
@@ -47,6 +46,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("code", code);
             session.setAttribute("login", login);
             session.setAttribute("email", email);
+            session.setAttribute("password", password);
             session.setAttribute("type_auth", Constants.LOGIN);
 
             session.setMaxInactiveInterval(60);

@@ -19,7 +19,6 @@ public class SubmitAnswerServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        super.init();
         answerService = (AnswerService) getServletContext().getAttribute("answerService");
         playerService = (PlayerService) getServletContext().getAttribute("playerService");
     }

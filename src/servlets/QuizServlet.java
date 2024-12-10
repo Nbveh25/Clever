@@ -22,7 +22,6 @@ public class QuizServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        super.init();
         questionService = (QuestionService) getServletContext().getAttribute("questionService");
         gameService = (GameService) getServletContext().getAttribute("gameService");
     }

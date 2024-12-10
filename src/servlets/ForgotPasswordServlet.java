@@ -41,7 +41,6 @@ public class ForgotPasswordServlet extends HttpServlet {
 
             req.getRequestDispatcher("/auth-jsp").forward(req, resp);
         } else {
-            // Вывести сообщение о несовпадающих паролях
             String message = "Пароли не совпадают";
             req.setAttribute("errorMessage", message);
             req.getRequestDispatcher("/forgot-pass-jsp").forward(req, resp);

@@ -1,5 +1,6 @@
 package model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,19 +8,14 @@ import java.util.Objects;
 
 @Setter
 @Getter
+@AllArgsConstructor
 public class Player {
 
     private int user_id;
     private int game_id;
     private String login;
     private int total_score;
-
-    public Player(int user_id, int game_id, String login, int total_score) {
-        this.user_id = user_id;
-        this.game_id = game_id;
-        this.login = login;
-        this.total_score = total_score;
-    }
+    private String icon_url;
 
     @Override
     public boolean equals(Object o) {

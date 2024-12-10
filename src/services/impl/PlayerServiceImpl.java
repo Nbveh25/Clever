@@ -23,7 +23,8 @@ public class PlayerServiceImpl implements PlayerService {
                         playerDTO.getUser_id(),
                         playerDTO.getGame_id(),
                         playerDTO.getLogin(),
-                        playerDTO.getTotal_score()
+                        playerDTO.getTotal_score(),
+                        playerDTO.getIcon_url()
                 )
         );
     }
@@ -49,7 +50,8 @@ public class PlayerServiceImpl implements PlayerService {
                 player.getUser_id(),
                 player.getGame_id(),
                 player.getLogin(),
-                player.getTotal_score()
+                player.getTotal_score(),
+                player.getIcon_url()
         );
     }
 

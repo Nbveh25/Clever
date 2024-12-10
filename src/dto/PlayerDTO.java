@@ -12,4 +12,5 @@ public class PlayerDTO {
     private int game_id;
     private String login;
     private Integer total_score;
+    private String icon_url;
 }

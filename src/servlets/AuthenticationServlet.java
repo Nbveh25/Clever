@@ -22,7 +22,6 @@ public class AuthenticationServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        super.init();
         userService = (UserService) getServletContext().getAttribute("userService");
         roleService = (RoleService) getServletContext().getAttribute("roleService");
     }

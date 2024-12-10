@@ -20,7 +20,6 @@ public class GetPlayersServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        super.init();
         playerService = (PlayerService) getServletContext().getAttribute("playerService");
     }
 

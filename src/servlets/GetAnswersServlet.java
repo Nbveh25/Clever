@@ -21,7 +21,6 @@ public class GetAnswersServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        super.init();
         answerService = (AnswerService) getServletContext().getAttribute("answerService");
     }
 

@@ -42,7 +42,8 @@ public class PlayerDAOImpl implements PlayerDAO {
                     int user_id = rs.getInt("user_id");
                     String login = rs.getString("login");
                     int total_score = rs.getInt("total_score");
-                    Player player = new Player(user_id, game_id, login, total_score);
+                    String icon_url = rs.getString("icon_url");
+                    Player player = new Player(user_id, game_id, login, total_score, icon_url);
                     players.add(player);
                 }
             }

@@ -19,7 +19,6 @@ public class GameServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        super.init();
         gameService = (GameService) getServletContext().getAttribute("gameService");
     }
 

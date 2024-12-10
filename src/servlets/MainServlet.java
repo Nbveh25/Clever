@@ -19,7 +19,6 @@ public class MainServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        super.init();
         gameService = (GameService) getServletContext().getAttribute("gameService");
         playerService = (PlayerService) getServletContext().getAttribute("playerService");
     }
@@ -31,14 +30,14 @@ public class MainServlet extends HttpServlet {
         String code = req.getParameter("input_code");
         int user_id = (int) session.getAttribute("user_id");
         String login = (String) session.getAttribute("login");
-
+        String icon_url = (String) session.getAttribute("icon_url");
         int game_id = gameService.getGameIdByCode(code);
 
         // Ищем игру по коду в БД
         if (game_id != -1) {
             int quiz_id = gameService.getQuizIdByGameId(game_id);
 
-            PlayerDTO playerDTO = new PlayerDTO(user_id, game_id, login,0);
+            PlayerDTO playerDTO = new PlayerDTO(user_id, game_id, login,0, icon_url);
             playerService.addPlayer(playerDTO);
 
             session.setAttribute("quiz_id", quiz_id);
