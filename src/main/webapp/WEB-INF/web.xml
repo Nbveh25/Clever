@@ -7,16 +7,6 @@
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
             https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
-  
-  <!-- Регистрация Servlet-->
-  <servlet>
-    <servlet-name>RegisterServlet</servlet-name>
-    <servlet-class>servlets.RegisterServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RegisterServlet</servlet-name>
-    <url-pattern>/register-servlet</url-pattern>
-  </servlet-mapping>
 
   <!--  Регистрация JSP -->
   <servlet>
@@ -26,16 +16,6 @@
   <servlet-mapping>
     <servlet-name>RegisterJsp</servlet-name>
     <url-pattern>/register-jsp</url-pattern>
-  </servlet-mapping>
-
-  <!-- Логин Servlet -->
-  <servlet>
-    <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>servlets.LoginServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LoginServlet</servlet-name>
-    <url-pattern>/login-servlet</url-pattern>
   </servlet-mapping>
 
   <!-- Логин JSP -->
@@ -48,16 +28,6 @@
     <url-pattern>/login-jsp</url-pattern>
   </servlet-mapping>
 
-  <!-- Аутентификация Servlet -->
-  <servlet>
-    <servlet-name>AuthServlet</servlet-name>
-    <servlet-class>servlets.AuthenticationServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AuthServlet</servlet-name>
-    <url-pattern>/auth-servlet</url-pattern>
-  </servlet-mapping>
-
   <!-- Аутентификация JSP -->
   <servlet>
     <servlet-name>AuthJsp</servlet-name>
@@ -66,16 +36,6 @@
   <servlet-mapping>
     <servlet-name>AuthJsp</servlet-name>
     <url-pattern>/auth-jsp</url-pattern>
-  </servlet-mapping>
-
-  <!-- Забыли пароль Servlet -->
-  <servlet>
-    <servlet-name>ForgotPassServlet</servlet-name>
-    <servlet-class>servlets.ForgotPasswordServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ForgotPassServlet</servlet-name>
-    <url-pattern>/forgot-pass-servlet</url-pattern>
   </servlet-mapping>
 
   <!-- Забыли пароль JSP -->
@@ -88,16 +48,6 @@
     <url-pattern>/forgot-pass-jsp</url-pattern>
   </servlet-mapping>
 
-  <!-- Создание квиза Servlet -->
-  <servlet>
-    <servlet-name>CreateQuizServlet</servlet-name>
-    <servlet-class>servlets.CreateQuizServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CreateQuizServlet</servlet-name>
-    <url-pattern>/create-quiz-servlet</url-pattern>
-  </servlet-mapping>
-
   <!-- Создание квиза JSP -->
   <servlet>
     <servlet-name>CreateQuizJSP</servlet-name>
@@ -108,22 +58,6 @@
     <url-pattern>/create-quiz-jsp</url-pattern>
   </servlet-mapping>
 
-  <!-- Создание вопросов Servlet -->
-  <servlet>
-    <servlet-name>CreateQuestionServlet</servlet-name>
-    <servlet-class>servlets.CreateQuestionServlet</servlet-class>
-    <!--<multipart-config>
-      <location>/main.webapp.media</location>
-      <max-file-size>20848820</max-file-size>
-      <max-request-size>418018841</max-request-size>
-      <file-size-threshold>1048576</file-size-threshold>
-    </multipart-config>-->
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CreateQuestionServlet</servlet-name>
-    <url-pattern>/create-question-servlet</url-pattern>
-  </servlet-mapping>
-
   <!--  Создание Вопросов JSP -->
   <servlet>
     <servlet-name>CreateQuestionJSP</servlet-name>
@@ -132,16 +66,6 @@
   <servlet-mapping>
     <servlet-name>CreateQuestionJSP</servlet-name>
     <url-pattern>/create-question-jsp</url-pattern>
-  </servlet-mapping>
-  
-<!--  Выбрать Квиз Servlet -->
-  <servlet>
-    <servlet-name>ChooseQuizServlet</servlet-name>
-    <servlet-class>servlets.ChooseQuizServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ChooseQuizServlet</servlet-name>
-    <url-pattern>/choose-quiz-servlet</url-pattern>
   </servlet-mapping>
 
 <!--  Выбрать Квиз JSP -->
@@ -154,16 +78,6 @@
     <url-pattern>/choose-quiz-jsp</url-pattern>
   </servlet-mapping>
 
-<!--  Страницы хоста со списком игроков Servlet  -->
-  <servlet>
-    <servlet-name>GameServlet</servlet-name>
-    <servlet-class>servlets.GameServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>GameServlet</servlet-name>
-    <url-pattern>/game-servlet</url-pattern>
-  </servlet-mapping>
-
   <!--  Страницы хоста со списком игроков JSP  -->
   <servlet>
     <servlet-name>PageWithCodeJSP</servlet-name>
@@ -174,16 +88,6 @@
     <url-pattern>/page-with-code-jsp</url-pattern>
   </servlet-mapping>
 
-  <!--  Главный экран Servlet  -->
-  <servlet>
-    <servlet-name>MainServlet</servlet-name>
-    <servlet-class>servlets.MainServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>MainServlet</servlet-name>
-    <url-pattern>/main-servlet</url-pattern>
-  </servlet-mapping>
-  
   <!--  Главный экран JSP  -->
   <servlet>
     <servlet-name>MainJSP</servlet-name>
@@ -192,16 +96,6 @@
   <servlet-mapping>
     <servlet-name>MainJSP</servlet-name>
     <url-pattern>/main-jsp</url-pattern>
-  </servlet-mapping>
-
-  <!--  Начало квиза Servlet  -->
-  <servlet>
-    <servlet-name>QuizServlet</servlet-name>
-    <servlet-class>servlets.QuizServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>QuizServlet</servlet-name>
-    <url-pattern>/quiz-servlet</url-pattern>
   </servlet-mapping>
 
   <!--  Начало квиза  JSP -->
