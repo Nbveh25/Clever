@@ -27,11 +27,16 @@ public class AuthenticationServlet extends HttpServlet {
     }
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("jsp/auth.jsp").forward(req, resp);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
 
         if (session == null) {
-            req.getRequestDispatcher(getServletContext().getContextPath() + "/login-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/login-servlet").forward(req, resp);
             return;
         }
 
@@ -58,25 +63,25 @@ public class AuthenticationServlet extends HttpServlet {
                     session.setAttribute("roles", roles);
                     session.setAttribute("icon_url", icon_url);
 
-                    req.getRequestDispatcher(getServletContext().getContextPath() + "/main-jsp").forward(req, resp);
+                    req.getRequestDispatcher(getServletContext().getContextPath() + "/main-servlet").forward(req, resp);
                     break;
                 }
                 case Constants.REGISTER: {
                     userService.registerUser(userDTO);
                     roleService.addRole(userService.getIdByLogin(login), Constants.SIMPLE);
 
-                    req.getRequestDispatcher(getServletContext().getContextPath() + "/congrat-jsp").forward(req, resp);
+                    req.getRequestDispatcher("jsp/congrat.jsp").forward(req, resp);
                     break;
                 }
                 case Constants.FORGOT_PASSWORD: {
                     userService.updateUserPassword(email, password);
 
-                    req.getRequestDispatcher(getServletContext().getContextPath() + "/password-updated-jsp").forward(req, resp);
+                    req.getRequestDispatcher("jsp/password_updated.jsp").forward(req, resp);
                     break;
                 }
             }
         } else {
-            req.getRequestDispatcher(getServletContext().getContextPath() + "/auth-jsp").forward(req, resp);
+            resp.sendRedirect("/auth-servlet");
         }
     }
 }

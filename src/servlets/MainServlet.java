@@ -24,6 +24,11 @@ public class MainServlet extends HttpServlet {
     }
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("jsp/main.jsp").forward(req, resp);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
@@ -42,9 +47,9 @@ public class MainServlet extends HttpServlet {
 
             session.setAttribute("quiz_id", quiz_id);
             session.setAttribute("game_id", game_id);
-            req.getRequestDispatcher(getServletContext().getContextPath() + "/waiting-of-quiz-jsp").forward(req, resp);
+            req.getRequestDispatcher("/waiting_of_quiz.jsp").forward(req, resp);
         } else {
-            req.getRequestDispatcher(getServletContext().getContextPath() + "/main-jsp").forward(req, resp);
+            resp.sendRedirect( "/main-servlet");
         }
     }
 }

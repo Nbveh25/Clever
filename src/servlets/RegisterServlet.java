@@ -24,6 +24,11 @@ public class RegisterServlet extends HttpServlet {
     }
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("jsp/register.jsp").forward(req, resp);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
@@ -45,11 +50,11 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("code", code);
             session.setAttribute("type_auth", Constants.REGISTER);
 
-            req.getRequestDispatcher(getServletContext().getContextPath() + "/auth-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/auth-servlet").forward(req, resp);
 
         } else {
 
-            req.getRequestDispatcher(getServletContext().getContextPath() + "/register-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/register-servlet").forward(req, resp);
 
         }
     }

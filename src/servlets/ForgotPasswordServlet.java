@@ -14,12 +14,18 @@ import java.util.Random;
 
 @WebServlet(name = "ForgotPassServlet", urlPatterns = "/forgot-pass-servlet")
 public class ForgotPasswordServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("jsp/forgot_password.jsp").forward(req,resp);
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
         if (session == null) {
-            req.getRequestDispatcher(getServletContext().getContextPath() + "/login-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/login-servlet").forward(req, resp);
             return;
         }
 
@@ -39,11 +45,11 @@ public class ForgotPasswordServlet extends HttpServlet {
             session.setAttribute("type_auth", Constants.FORGOT_PASSWORD);
             session.setAttribute("code", code);
 
-            req.getRequestDispatcher(getServletContext().getContextPath() + "/auth-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/auth-servlet").forward(req, resp);
         } else {
             String message = "Пароли не совпадают";
             req.setAttribute("errorMessage", message);
-            req.getRequestDispatcher(getServletContext().getContextPath() + "/forgot-pass-jsp").forward(req, resp);
+            req.getRequestDispatcher(getServletContext().getContextPath() + "/forgot-pass-servlet").forward(req, resp);
         }
     }
 }

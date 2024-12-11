@@ -20,7 +20,7 @@ import java.util.Map;
 
 import static utils.UploadUtil.getFile;
 
-@WebServlet(name = "CreateQuizServlet", urlPatterns = "/create-quiz")
+@WebServlet(name = "CreateQuizServlet", urlPatterns = "/create-quiz-servlet")
 @MultipartConfig(
         maxFileSize = 5 * 1024 * 1024,
         maxRequestSize = 10 * 1024 * 1024
@@ -37,6 +37,11 @@ public class CreateQuizServlet extends HttpServlet {
     public void init() throws ServletException {
         quizService = (QuizServiceImpl) getServletContext().getAttribute("quizService");
         cloudinary = CloudinaryUtil.getInstance();
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("jsp/create_quiz.jsp").forward(req, resp);
     }
 
     @Override
@@ -68,6 +73,6 @@ public class CreateQuizServlet extends HttpServlet {
         int quiz_id = quizService.addQuiz(quizDTO);
 
         req.getSession().setAttribute("quiz_id", quiz_id);
-        req.getRequestDispatcher(getServletContext().getContextPath() + "/create-question-jsp").forward(req, resp);
+        req.getRequestDispatcher("/create-question-servlet").forward(req, resp);
     }
 }

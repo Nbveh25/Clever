@@ -18,7 +18,7 @@
     <img class="logo" src="img/logo_brain_1.png" alt="logo">
     <div class="header_link_container">
         <a class="header_link" href="<c:url value="/login-servlet"/>">Войти</a>
-        <a class="header_link" href="<c:url value="/register-jsp"/>">Зарегистрироваться</a>
+        <a class="header_link" href="<c:url value="/register-servlet"/>">Зарегистрироваться</a>
         <a class="header_link" href="#">О нас</a>
     </div>
 </header>
@@ -116,7 +116,7 @@
     <div class="social-media">
         <a href="https://vk.com/nbveh25">VKontakte</a> |
         <a href="https://webk.telegram.org/#@BFG2005">Telegram</a> |
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">F******k</a>
+        <a href="https://youtu.be/oHg5SJYRHA0?si=gsYHSTNzNDm3ZNQm">F******k</a>
     </div>
 </footer>
 

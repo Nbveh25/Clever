@@ -14,7 +14,7 @@
 <header class="header">
     <img class="logo" src="<c:url value='../img/logo_brain_1.png'/>" alt="logo">
     <div class="header_link_container">
-        <a class="header_link" href="<c:url value='/create-quiz-jsp'/>">Создать квиз</a>
+        <a class="header_link" href="<c:url value='/create-quiz-servlet'/>">Создать квиз</a>
         <a class="header_link" href="<c:url value='/user-servlet'/>">Профиль</a>
         <a class="header_link" href="<c:url value='/logout-servlet'/>">Выйти</a>
     </div>

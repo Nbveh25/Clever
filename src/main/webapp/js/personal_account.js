@@ -55,7 +55,7 @@ function updateLogin() {
 }
 
 function deleteUser() {
-    window.location.href = '/login-jsp';
+    window.location.href = '/login-servlet';
     Swal.fire({
         title: 'Подтверждение удаления',
         text: "Вы уверены, что хотите удалить свой профиль?",
@@ -69,7 +69,7 @@ function deleteUser() {
                 method: 'DELETE'
             }).then(response => {
                 if (response.ok) {
-                    window.location.href = '/login-jsp';
+                    window.location.href = '/login-servlet';
                 } else {
                     return response.text().then(text => {
                         Swal.fire('Ошибка при удалении профиля: ' + text);

@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     startTimer();
                 } else {
                     console.log("Все вопросы были показаны.");
-                    window.location.href = "/end-of-quiz-jsp";
+                    window.location.href = "jsp/end_of_quiz.jsp";
                 }
             }
         }, 1000);

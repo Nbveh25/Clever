@@ -32,7 +32,7 @@
         </div>
 
         <div class="quiz-list" id="quiz-list">
-            <!-- Quizzes will be loaded here by JavaScript -->
+            <!-- Здесь будут прогружаться квизы инде -->
         </div>
     </main>
 

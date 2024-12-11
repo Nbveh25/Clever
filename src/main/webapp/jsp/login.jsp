@@ -37,7 +37,7 @@
     <div class="block_login">
         <div class="block_item_login">
             <h2 class="block_item_title_login">У вас нет аккаунта?</h2>
-            <form action="<c:url value='/register-jsp'/>">
+            <form action="<c:url value='/register-servlet'/>">
                 <button class="block_item_btn_login">Зарегистрироваться?</button>
             </form>
         </div>
@@ -63,7 +63,7 @@
                 <button type="submit" class="form_btn_login">Войти</button>
             </p>
             <p>
-                <a href="<c:url value='/forgot-pass-jsp'/>" class="form_forgot_login">Забыли пароль?</a>
+                <a href="<c:url value='/forgot-pass-servlet'/>" class="form_forgot_login">Забыли пароль?</a>
             </p>
             <p>
             <div class="error_message" style="display: none; color: red;"></div>

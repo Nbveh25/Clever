@@ -37,13 +37,13 @@ public class GameServlet extends HttpServlet {
 
         session.setAttribute("game_id", game_id);
 
-        req.getRequestDispatcher(getServletContext().getContextPath() + "/page-with-code-jsp").forward(req, resp);
+        req.getRequestDispatcher("jsp/page_with_code.jsp").forward(req, resp);
     }
 
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         QuizStartWebSocket.notifyQuizStarted();
-        resp.sendRedirect(getServletContext().getContextPath() + "/result-of-quiz-jsp");
+        resp.sendRedirect("jsp/result_of_quiz.jsp");
     }
 }
