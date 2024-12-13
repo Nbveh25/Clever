@@ -1,12 +1,23 @@
-FROM maven:3.9.9-amazoncorretto-21 as build
+FROM maven:3.9.4-eclipse-temurin-21 AS build
 
-COPY src /home/app/src
-COPY pom.xml home/app
-RUN mvn -f /home/app/pom.xml clean package
+WORKDIR /app
 
-FROM tomcat:9.0.65-jdk17-corretto
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
 
-COPY --from=build /home/app/target/Clever.war /usr/local/tomcat/webapps/ROOT.war
+COPY src ./src
+
+RUN mvn clean package -DskipTests
+
+FROM tomee:10.0.0-M3-jre17-plume
+
+WORKDIR /usr/local/tomee
+
+RUN rm -rf /usr/local/tomee/webapps/ROOT
+
+COPY --from=build /app/target/*.war ./webapps/ROOT.war
+COPY --from=build /app/target/Clever ./webapps/ROOT
+
 EXPOSE 8080
 
 CMD ["catalina.sh", "run"]

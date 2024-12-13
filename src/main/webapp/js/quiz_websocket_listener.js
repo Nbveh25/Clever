@@ -3,7 +3,6 @@ const socket = new WebSocket('ws://localhost:8080/quiz-start-websocket');
 socket.onmessage = function (event) {
     const data = JSON.parse(event.data);
     if (data.quizStarted) {
-        //window.location.href = "/quiz-jsp"
-        window.location.href = "jsp/quiz.jsp"
+        window.location.href = "/quiz-show-servlet"
     }
 }

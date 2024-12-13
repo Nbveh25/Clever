@@ -11,8 +11,8 @@
     <properties>
         <project.recording.outputEncoding>UTF-8</project.recording.outputEncoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <cloudinary.version>1.29.0</cloudinary.version>
         <slf4j.version>2.0.13</slf4j.version>
     </properties>
