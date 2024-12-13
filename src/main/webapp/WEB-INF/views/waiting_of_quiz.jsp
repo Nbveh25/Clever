@@ -5,14 +5,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Ожидание начала квиза</title>
-    <script src="../../js/quiz_websocket_listener.js"></script>
-    <link rel="shortcut icon" href="<c:url value="/main/webapp/img/logo_without_name_1.png"/>"/>
-    <link rel="stylesheet" href="../../css/waiting_of_quiz.css"/>
+    <script src="<c:url value='../../js/quiz_websocket_listener.js'/>"></script>
+    <link rel="shortcut icon" href="<c:url value='/main/webapp/img/logo_without_name_1.png'/>"/>
+    <link rel="stylesheet" href="<c:url value='../../css/waiting_of_quiz.css'/>"/>
 </head>
+
 <body>
 <div class="container">
     <h1>Ожидание начала квиза</h1>
-    <img src="../../gif/emoji-thinking.gif" alt="Thinking Emoji">
+    <img src="<c:url value='../../gif/emoji-thinking.gif'/>" alt="Thinking Emoji">
 </div>
+
 </body>
 </html>

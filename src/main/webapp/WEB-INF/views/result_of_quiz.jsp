@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <title>Результаты квиза</title>
     <link rel="shortcut icon" href="<c:url value='../../img/logo_without_name_1.png'/>">
-    <link rel="stylesheet" href="../../css/result_of_quiz.css">
-    <script src="../../js/result_of_quiz.js"></script>
+    <link rel="stylesheet" href="<c:url value='../../css/result_of_quiz.css'/>">
+    <script src="<c:url value='../../js/result_of_quiz.js'/>"></script>
 </head>
+
 
 <body>
 <h2>Результаты квиза</h2>

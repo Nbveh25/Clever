@@ -18,13 +18,15 @@ public class PlayerDAOImpl implements PlayerDAO {
 
     @Override
     public void addPlayer(Player player) {
-        String INSERT_PLAYER_SQL = "INSERT INTO players (user_id, game_id, login, total_score) VALUES(?,?,?,?)";
+        String INSERT_PLAYER_SQL = "INSERT INTO players (user_id, game_id, login, total_score, icon_url) VALUES(?,?,?,?,?)";
 
         try (PreparedStatement ps = connection.prepareStatement(INSERT_PLAYER_SQL)) {
             ps.setInt(1, player.getUser_id());
             ps.setInt(2, player.getGame_id());
             ps.setString(3, player.getLogin());
             ps.setInt(4, player.getTotal_score());
+            ps.setString(5, player.getIcon_url());
+
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

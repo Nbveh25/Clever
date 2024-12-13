@@ -8,9 +8,9 @@
     <meta charset="UTF-8">
     <title>Вход</title>
     <link rel="shortcut icon" href="<c:url value='../../img/logo_without_name_1.png'/>"/>
-    <link rel="stylesheet" href="../../css/login.css"/>
-    <script src="../../js/login_validator.js"></script>
-    <script src="../../js/eye_pass.js"></script>
+    <link rel="stylesheet" href="<c:url value='../../css/login.css'/>"/>
+    <script src="<c:url value='../../js/login_validator.js'/>"></script>
+    <script src="<c:url value='../../js/eye_pass.js'/>"></script>
 </head>
 
 <body>

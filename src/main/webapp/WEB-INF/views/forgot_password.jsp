@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <title>Восстановление доступа</title>
     <link rel="shortcut icon" href="<c:url value='../../img/logo_without_name_1.png'/>">
-    <link rel="stylesheet" href="../../css/forgot_password.css">
-    <script src="../../js/forgot_password_validator.js"></script>
+    <link rel="stylesheet" href="<c:url value='../../css/forgot_password.css'/>">
+    <script src="<c:url value='../../js/forgot_password_validator.js'/>"></script>
 </head>
 
 <body>

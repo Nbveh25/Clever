@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Аутентификация</title>
-    <link rel="shortcut icon" href="<c:url value='../../img/logo_without_name_1.png'/>" />
-    <link rel="stylesheet" href="<c:url value='/main/webapp/css/end_of_quiz.css'/>">
+    <title>Ошибка</title>
+    <link rel="shortcut icon" href="<c:url value='/main/webapp/img/logo_without_name_1.png'/>"/>
+    <link rel="stylesheet" href="<c:url value='../../css/end_of_quiz.css'/>"/>
 </head>
 
 <body>

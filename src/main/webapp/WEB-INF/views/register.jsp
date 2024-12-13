@@ -7,10 +7,11 @@
     <meta charset="UTF-8">
     <title>Регистрация</title>
     <link rel="shortcut icon" href="<c:url value='../../img/logo_without_name_2.png'/>"/>
-    <link rel="stylesheet" href="../../css/register.css">
-    <script src="../../js/register_validator.js"></script>
+    <link rel="stylesheet" href="<c:url value='../../css/register.css'/>">
+    <script src="<c:url value='../../js/register_validator.js'/>"></script>
     <script src="<c:url value='/main/webapp/js/eye_pass.js'/>"></script>
 </head>
+
 
 <body>
 

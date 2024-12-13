@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Личный кабинет</title>
     <link rel="shortcut icon" href="<c:url value='../../img/logo_without_name_1.png'/>">
-    <link rel="stylesheet" href="../../css/personal_account.css">
-    <script src="../../js/personal_account.js" defer></script>
+    <link rel="stylesheet" href="<c:url value='../../css/personal_account.css'/>">
+    <script src="<c:url value='../../js/personal_account.js'/>" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+
 <body>
 <header class="header">
     <img class="logo" src="../../img/logo_brain_1.png" alt="Логотип">

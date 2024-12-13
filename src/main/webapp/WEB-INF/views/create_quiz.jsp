@@ -6,10 +6,9 @@
     <meta charset="UTF-8">
     <title>Создание квиза</title>
     <link rel="shortcut icon" href="<c:url value='../../img/logo_without_name_1.png'/>">
-    <link rel="stylesheet" href="../../css/create_quiz.css">
-    <script src="../../js/create_quiz_validator.js"></script>
+    <link rel="stylesheet" href="<c:url value='../../css/create_quiz.css'/>">
+    <script src="<c:url value='../../js/create_quiz_validator.js'/>"></script>
 </head>
-
 <body>
 
 <div class="create-container">

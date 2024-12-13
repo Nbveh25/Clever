@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Выбор квизов</title>
     <link rel="shortcut icon" href="<c:url value='../../img/logo_without_name_1.png'/>">
-    <link rel="stylesheet" href="../../css/choose_quiz.css">
-    <script src="../../js/choose_quiz.js"></script>
-    <script src="../../js/search_quiz.js"></script>
-    <script src="../../js/filter_quiz.js"></script>
+    <link rel="stylesheet" href="<c:url value='../../css/choose_quiz.css'/>">
+    <script src="<c:url value='../../js/choose_quiz.js'/>"></script>
+    <script src="<c:url value='../../js/search_quiz.js'/>"></script>
+    <script src="<c:url value='../../js/filter_quiz.js'/>"></script>
 </head>
 <body>
 <div class="container">

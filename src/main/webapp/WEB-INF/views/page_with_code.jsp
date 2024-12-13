@@ -6,8 +6,9 @@
     <meta charset="UTF-8">
     <title>Код игры</title>
     <link rel="shortcut icon" href="<c:url value='../../img/logo_without_name_1.png'/>"/>
-    <link rel="stylesheet" href="../../css/page_with_code.css">
+    <link rel="stylesheet" href="<c:url value='../../css/page_with_code.css'/>"/>
 </head>
+
 <body>
 <div class="code_container">
     <h2 class="title">Код игры</h2>

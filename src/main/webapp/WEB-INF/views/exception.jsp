@@ -7,9 +7,8 @@
     <meta charset="UTF-8">
     <title>Ошибка</title>
     <link rel="shortcut icon" href="<c:url value='/main/webapp/img/logo_without_name_1.png'/>"/>
-    <link rel="stylesheet" href="../../css/exception.css"/>
+    <link rel="stylesheet" href="<c:url value='../../css/exception.css'/>"/>
 </head>
-
 <body>
 <h1 class="title_1">ОШИБКА</h1>
 <strong>Request URI: ${requestScope.uri}</strong><br>

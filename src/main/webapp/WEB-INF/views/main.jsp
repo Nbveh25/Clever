@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clever</title>
     <link rel="shortcut icon" href="<c:url value='../../img/logo_without_name_1.png'/>">
-    <link rel="stylesheet" href="../../css/main.css">
-    <script src="../../js/connect_to_game_form_validator.js"></script>
+    <link rel="stylesheet" href="<c:url value='../../css/main.css'/>">
+    <script src="<c:url value='../../js/connect_to_game_form_validator.js'/>"></script>
 </head>
 
 <header class="header">

@@ -5,9 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Успех!</title>
-    <link rel="shortcut icon" href="<c:url value="/main/webapp/img/logo_without_name_1.png"/>"/>
-    <link rel="stylesheet" href="../../css/congrat.css"/>
+    <link rel="shortcut icon" href="<c:url value='/main/webapp/img/logo_without_name_1.png'/>"/>
+    <link rel="stylesheet" href="<c:url value='../../css/congrat.css'/>"/>
 </head>
+
 <body>
 <div class="congrat">
     <h1>Пароль изменен!</h1>

@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <title>Создание вопросов</title>
     <link rel="shortcut icon" href="<c:url value='../../img/logo_without_name_1.png'/>">
-    <link rel="stylesheet" href="../../css/create_question.css">
-    <script src="../../js/create_question_validator.js"></script>
+    <link rel="stylesheet" href="<c:url value='../../css/create_question.css'/>">
+    <script src="<c:url value='../../js/create_question_validator.js'/>"></script>
 </head>
 
 <body>
