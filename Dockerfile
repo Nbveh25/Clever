@@ -18,6 +18,6 @@ RUN rm -rf /usr/local/tomee/webapps/ROOT
 COPY --from=build /app/target/*.war ./webapps/ROOT.war
 COPY --from=build /app/target/Clever ./webapps/ROOT
 
-EXPOSE 80
+EXPOSE 8080
 
 CMD ["catalina.sh", "run"]
