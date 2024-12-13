@@ -20,7 +20,7 @@
         <h1 class="header-create">Вопрос ${number}</h1>
 
         <p>
-            <textarea name="question_quiz" class="textarea" placeholder="Введите вопрос" maxlength="50"></textarea>
+            <textarea name="question_quiz" class="textarea" placeholder="Введите вопрос" maxlength="250"></textarea>
         </p>
 
         <p>
@@ -39,14 +39,14 @@
         </p>
 
         <p>
-            <textarea name="right_answer" class="textarea" placeholder="Правильный ответ" maxlength="50"
+            <textarea name="right_answer" class="textarea" placeholder="Правильный ответ" maxlength="250"
                       required></textarea>
             <textarea name="wrong_answer1" class="textarea" placeholder="Неправильный ответ 1"
-                      maxlength="50" required></textarea>
+                      maxlength="250" required></textarea>
             <textarea name="wrong_answer2" class="textarea" placeholder="Неправильный ответ 2"
-                      maxlength="50" required></textarea>
+                      maxlength="250" required></textarea>
             <textarea name="wrong_answer3" class="textarea" placeholder="Неправильный ответ 3"
-                      maxlength="50" required></textarea>
+                      maxlength="250" required></textarea>
         </p>
 
         <p>
