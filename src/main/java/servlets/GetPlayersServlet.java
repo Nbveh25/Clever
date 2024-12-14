@@ -34,6 +34,7 @@ public class GetPlayersServlet extends HttpServlet {
         int game_id = (int) session.getAttribute("game_id");
         try (PrintWriter out = resp.getWriter()) {
             List<PlayerDTO> players = playerService.getAllPlayers(game_id);
+            players.sort((p1, p2) -> Integer.compare(p2.getTotal_score(), p1.getTotal_score()));
             Gson gson = new Gson();
             String json = gson.toJson(players);
             out.print(json);
