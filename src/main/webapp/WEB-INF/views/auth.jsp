@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <form action="<c:url value="/auth-servlet"/>" method="post" class="auth_form">
+    <form action="<c:url value="/auth"/>" method="post" class="auth_form">
         <h1 class="auth_form_h">Ещё щуть-щуть...</h1>
         <p>Мы отправили письмо с кодом на указанную почту</p>
         <input type="text" name="input_code" placeholder="Введите код" class="input_code" required>

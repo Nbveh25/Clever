@@ -19,7 +19,7 @@ public class AuthorizationFilter implements Filter {
         if (session != null) {
             Set<String> roles = (Set<String>) session.getAttribute("roles");
             if (uri.contains("create") && (roles == null || !roles.contains(Constants.PRO))) {
-                servletRequest.getRequestDispatcher("/main-servlet").forward(servletRequest, servletResponse);
+                servletRequest.getRequestDispatcher("/main").forward(servletRequest, servletResponse);
                 return;
             }
         }

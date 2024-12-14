@@ -12,7 +12,7 @@
 <body>
 
 <div class="create-container">
-    <form action="<c:url value='/create-quiz-servlet'/>" method="post" enctype="multipart/form-data"
+    <form action="<c:url value='/create-quiz'/>" method="post" enctype="multipart/form-data"
           id="create-quiz-form">
 
         <h2 class="header-create">Создание квиза</h2>

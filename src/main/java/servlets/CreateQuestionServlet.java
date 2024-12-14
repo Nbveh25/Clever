@@ -19,7 +19,7 @@ import java.util.Map;
 
 import static utils.UploadUtil.*;
 
-@WebServlet(name = "CreateQuestionServlet", urlPatterns = "/create-question-servlet")
+@WebServlet(name = "CreateQuestionServlet", urlPatterns = "/create-question")
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024 * 10,
         maxFileSize = 1024 * 1024 * 1024,
@@ -102,8 +102,7 @@ public class CreateQuestionServlet extends HttpServlet {
             saveQuestion(right_answer, wrong_answer1, wrong_answer2, wrong_answer3, questionDTO);
             req.setAttribute("number", questionNumber);
 
-            resp.sendRedirect(req.getContextPath() + "/create-question-servlet");
-//            getServletContext().getRequestDispatcher("/create-question-servlet").forward(req, resp);
+            resp.sendRedirect(req.getContextPath() + "/create-question");
         } else if (req.getParameter("save_quiz") != null) {
             saveQuestion(right_answer, wrong_answer1, wrong_answer2, wrong_answer3, questionDTO);
             session.setAttribute("questionNumber", 1);

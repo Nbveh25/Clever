@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 function updateScores() {
-    fetch("/get-players-servlet")
+    fetch("/get-players")
         .then(response => response.json())
         .then(data => {
             const resultList = document.querySelector('.result_container');

@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.List;
 
-@WebServlet(name = "GetAnswersServlet", urlPatterns = "/get-answers-servlet")
+@WebServlet(name = "GetAnswersServlet", urlPatterns = "/get-answers")
 public class GetAnswersServlet extends HttpServlet {
     private AnswerService answerService;
 

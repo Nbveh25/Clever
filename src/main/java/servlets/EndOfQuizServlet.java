@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "EndOfQuizServlet", urlPatterns = "/end-of-quiz-servlet")
+@WebServlet(name = "EndOfQuizServlet", urlPatterns = "/end-of-quiz")
 public class EndOfQuizServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

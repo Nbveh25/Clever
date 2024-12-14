@@ -15,7 +15,7 @@ import utils.PasswordUtil;
 import java.io.IOException;
 import java.util.Set;
 
-@WebServlet(name = "AuthServlet", urlPatterns = "/auth-servlet")
+@WebServlet(name = "AuthServlet", urlPatterns = "/auth")
 public class AuthenticationServlet extends HttpServlet {
     private UserService userService;
     private RoleService roleService;
@@ -36,7 +36,7 @@ public class AuthenticationServlet extends HttpServlet {
         HttpSession session = req.getSession(false);
 
         if (session == null) {
-            resp.sendRedirect("/login-servlet");
+            resp.sendRedirect(req.getContextPath() + "/login");
             return;
         }
 
@@ -63,7 +63,7 @@ public class AuthenticationServlet extends HttpServlet {
                     session.setAttribute("roles", roles);
                     session.setAttribute("icon_url", icon_url);
 
-                    getServletContext().getRequestDispatcher("/main-servlet").forward(req, resp);
+                    getServletContext().getRequestDispatcher(req.getContextPath() + "/main").forward(req, resp);
                     break;
                 }
                 case Constants.REGISTER: {
@@ -81,7 +81,7 @@ public class AuthenticationServlet extends HttpServlet {
                 }
             }
         } else {
-            resp.sendRedirect("/auth-servlet");
+            resp.sendRedirect(req.getContextPath() + "/auth");
         }
     }
 }

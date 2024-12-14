@@ -16,7 +16,7 @@
 <header class="header">
     <img class="logo" src="../../img/logo_brain_1.png" alt="Логотип">
     <div class="header_link_container">
-        <a class="header_link" href="<c:url value='/logout-servlet'/>">Выйти</a>
+        <a class="header_link" href="<c:url value='/logout'/>">Выйти</a>
     </div>
 </header>
 
@@ -26,7 +26,7 @@
         <div class="img_and_upload">
             <img class="icon_of_user" alt="icon_of_user" src='<%= session.getAttribute("icon_url").toString() %>'>
             <!--<img class="icon_of_user" alt="icon_of_user" src="../img/ic_profile.png">-->
-            <form action="<c:url value='/upload-icon-servlet'/>" method="post" enctype="multipart/form-data">
+            <form action="<c:url value='/upload-icon'/>" method="post" enctype="multipart/form-data">
                 <input type="file" accept="image/*" class="upload_btn" name="profilePic">
                 <button type="submit" class="link_btn">Загрузить фото</button>
             </form>

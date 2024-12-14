@@ -20,14 +20,14 @@
     <div class="block">
         <div class="block_item">
             <h2 class="block_item_title">У вас уже есть аккаунт?</h2>
-            <form action="<c:url value='/login-servlet'/>">
+            <form action="<c:url value='/login'/>">
                 <button class="block_item_btn">Войти</button>
             </form>
         </div>
     </div>
 
     <div class="form_box">
-        <form action="<c:url value='/register-servlet'/>" method="post" class="form">
+        <form action="<c:url value='/register'/>" method="post" class="form">
             <h3 class="form_title">Регистрация</h3>
             <p>
                 <input id="login" type="text" name="login" placeholder="Логин" class="form_input" required>

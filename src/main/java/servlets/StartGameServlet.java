@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "StartGameServlet", urlPatterns = "/start-game-servlet")
+@WebServlet(name = "StartGameServlet", urlPatterns = "/start-game")
 public class StartGameServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

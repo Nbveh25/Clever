@@ -17,8 +17,8 @@
 <header class="header_tab">
     <img class="logo" src="<c:url value='img/logo_brain_1.png' />" alt="logo">
     <div class="header_link_container">
-        <a class="header_link" href="<c:url value='/login-servlet'/>">Войти</a>
-        <a class="header_link" href="<c:url value='/register-servlet'/>">Зарегистрироваться</a>
+        <a class="header_link" href="<c:url value='/login'/>">Войти</a>
+        <a class="header_link" href="<c:url value='/register'/>">Зарегистрироваться</a>
         <a class="header_link" href="#">О нас</a>
     </div>
 </header>

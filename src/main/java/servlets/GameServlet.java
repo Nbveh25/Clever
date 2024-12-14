@@ -13,7 +13,7 @@ import websockets.QuizStartWebSocket;
 import java.io.IOException;
 import java.util.Random;
 
-@WebServlet(name = "GameServlet", urlPatterns = "/game-servlet")
+@WebServlet(name = "GameServlet", urlPatterns = "/game")
 public class GameServlet extends HttpServlet {
     private GameService gameService;
 
@@ -44,6 +44,6 @@ public class GameServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         QuizStartWebSocket.notifyQuizStarted();
-        resp.sendRedirect("/result-of-quiz-servlet");
+        resp.sendRedirect(req.getContextPath() + "/result-of-quiz");
     }
 }

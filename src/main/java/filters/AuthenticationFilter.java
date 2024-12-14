@@ -29,7 +29,7 @@ public class AuthenticationFilter implements Filter {
         boolean isIndex = uri.equals("/") || uri.isEmpty();
 
         if (!isUser && !isLoginRequest && !isRegistrationRequest && !isStaticResource && !isIndex) {
-            response.sendRedirect("/login-servlet");
+            response.sendRedirect("/login");
         } else {
             filterChain.doFilter(request, response);
         }

@@ -12,7 +12,7 @@ import utils.Constants;
 
 import java.io.IOException;
 
-@WebServlet(name = "SubmitAnswerServlet", urlPatterns = "/submit-answer-servlet")
+@WebServlet(name = "SubmitAnswerServlet", urlPatterns = "/submit-answer")
 public class SubmitAnswerServlet extends HttpServlet {
     private AnswerService answerService;
     private PlayerService playerService;

@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "QuizServlet", urlPatterns = "/quiz-servlet")
+@WebServlet(name = "QuizServlet", urlPatterns = "/quiz")
 public class QuizServlet extends HttpServlet {
     private QuestionService questionService;
     private GameService gameService;
@@ -50,6 +50,6 @@ public class QuizServlet extends HttpServlet {
 
         gameService.deleteGame(game_id);
 
-        req.getRequestDispatcher("/main-servlet").forward(req, resp);
+        req.getRequestDispatcher(req.getContextPath() + "/main").forward(req, resp);
     }
 }

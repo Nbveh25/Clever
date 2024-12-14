@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Set;
 
-@WebServlet(name = "UserServlet", urlPatterns = "/user-servlet")
+@WebServlet(name = "UserServlet", urlPatterns = "/user")
 public class UserServlet extends HttpServlet {
     private UserService userService;
     private RoleService roleService;

@@ -12,7 +12,7 @@ import services.PlayerService;
 
 import java.io.IOException;
 
-@WebServlet(name = "MainServlet", urlPatterns = "/main-servlet")
+@WebServlet(name = "MainServlet", urlPatterns = "/main")
 public class MainServlet extends HttpServlet {
     private GameService gameService;
     private PlayerService playerService;
@@ -50,7 +50,7 @@ public class MainServlet extends HttpServlet {
 
             getServletContext().getRequestDispatcher("/WEB-INF/views/waiting_of_quiz.jsp").forward(req, resp);
         } else {
-            resp.sendRedirect( "/main-servlet");
+            resp.sendRedirect(req.getContextPath() + "/main");
         }
     }
 }

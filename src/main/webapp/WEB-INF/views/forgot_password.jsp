@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<form action="<c:url value='/forgot-pass-servlet'/>" method="post" class="forgot_pass_form">
+<form action="<c:url value='/forgot-pass'/>" method="post" class="forgot_pass_form">
     <h1 class="forgot_pass_form_h">Восстановление доступа</h1>
     <input type="email" name="email" placeholder="Введите email" class="input_code" required>
     <input type="password" name="password" placeholder="Новый пароль" class="input_code" required>

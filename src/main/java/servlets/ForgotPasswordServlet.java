@@ -12,7 +12,7 @@ import utils.EmailSenderUtil;
 import java.io.IOException;
 import java.util.Random;
 
-@WebServlet(name = "ForgotPassServlet", urlPatterns = "/forgot-pass-servlet")
+@WebServlet(name = "ForgotPassServlet", urlPatterns = "/forgot-pass")
 public class ForgotPasswordServlet extends HttpServlet {
 
     @Override
@@ -25,7 +25,7 @@ public class ForgotPasswordServlet extends HttpServlet {
         HttpSession session = req.getSession();
 
         if (session == null) {
-            resp.sendRedirect("/login-servlet");
+            resp.sendRedirect("/login");
             return;
         }
 
@@ -45,11 +45,11 @@ public class ForgotPasswordServlet extends HttpServlet {
             session.setAttribute("type_auth", Constants.FORGOT_PASSWORD);
             session.setAttribute("code", code);
 
-            getServletContext().getRequestDispatcher("/auth-servlet").forward(req, resp);
+            getServletContext().getRequestDispatcher(req.getContextPath() + "/auth").forward(req, resp);
         } else {
             String message = "Пароли не совпадают";
             req.setAttribute("errorMessage", message);
-            resp.sendRedirect("/forgot-pass-servlet");
+            resp.sendRedirect(req.getContextPath() + "/forgot-pass");
         }
     }
 }

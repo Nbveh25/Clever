@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet("/get-players-servlet")
+@WebServlet(name = "GetPlayersServlet", urlPatterns = "/get-players")
 public class GetPlayersServlet extends HttpServlet {
     private PlayerService playerService;
 

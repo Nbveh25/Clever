@@ -14,7 +14,7 @@ import utils.EmailSenderUtil;
 import java.io.IOException;
 import java.util.Random;
 
-@WebServlet(name = "RegisterServlet", urlPatterns = "/register-servlet")
+@WebServlet(name = "RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
     private UserService userService;
 
@@ -50,10 +50,10 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("code", code);
             session.setAttribute("type_auth", Constants.REGISTER);
 
-            resp.sendRedirect("/auth-servlet");
+            resp.sendRedirect(req.getContextPath() + "/auth");
 
         } else {
-            req.getRequestDispatcher("/register-servlet").forward(req, resp);
+            req.getRequestDispatcher(req.getContextPath() + "/register").forward(req, resp);
         }
     }
 }

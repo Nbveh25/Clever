@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let timerInterval;
 
     function loadQuestions() {
-        fetch('/quiz-servlet')
+        fetch('/quiz')
             .then(response => response.json())
             .then(data => {
                 questions = data;
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
             container.insertAdjacentHTML('beforeend', questionHtml);
 
             // Получение ответов для текущего вопроса
-            fetch(`/get-answers-servlet?questionId=${question.id}`)
+            fetch(`/get-answers?questionId=${question.id}`)
                 .then(response => response.json())
                 .then(answers => {
                     const buttonContainer = document.querySelector('.button_container'); // Получаем контейнер кнопок
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         data.append('questionId', questionId);
         data.append('answerText', answerText);
 
-        fetch(`/submit-answer-servlet`, {
+        fetch(`/submit-answer`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     startTimer();
                 } else {
                     console.log("Все вопросы были показаны.");
-                    window.location.href = "/end-of-quiz-servlet";
+                    window.location.href = "/end-of-quiz";
                 }
             }
         }, 1000);

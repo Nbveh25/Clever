@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "ChooseQuizServlet", urlPatterns = "/choose-quiz-servlet")
+@WebServlet(name = "ChooseQuizServlet", urlPatterns = "/choose-quiz")
 public class ChooseQuizServlet extends HttpServlet {
     private QuizService quizService;
 

@@ -37,14 +37,14 @@
     <div class="block_login">
         <div class="block_item_login">
             <h2 class="block_item_title_login">У вас нет аккаунта?</h2>
-            <form action="<c:url value='/register-servlet'/>">
+            <form action="<c:url value='/register'/>">
                 <button class="block_item_btn_login">Зарегистрироваться?</button>
             </form>
         </div>
     </div>
 
     <div class="form_box_login">
-        <form action="<c:url value='/login-servlet'/>" method="post" class="form_login form_signin_login">
+        <form action="<c:url value='/login'/>" method="post" class="form_login form_signin_login">
             <h3 class="form_title_login">Вход</h3>
             <p>
                 <input id="login" name="login" type="text" placeholder="Логин" class="form_input_login"
@@ -63,7 +63,7 @@
                 <button type="submit" class="form_btn_login">Войти</button>
             </p>
             <p>
-                <a href="<c:url value='/forgot-pass-servlet'/>" class="form_forgot_login">Забыли пароль?</a>
+                <a href="<c:url value='/forgot-pass'/>" class="form_forgot_login">Забыли пароль?</a>
             </p>
             <p>
             <div class="error_message" style="display: none; color: red;"></div>

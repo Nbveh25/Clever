@@ -15,7 +15,7 @@ import utils.PasswordUtil;
 import java.io.IOException;
 import java.util.Random;
 
-@WebServlet(name = "LoginServlet", urlPatterns = "/login-servlet")
+@WebServlet(name = "LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     private UserService userService;
 
@@ -60,9 +60,9 @@ public class LoginServlet extends HttpServlet {
                 resp.addCookie(passwordCookie);
             }
 
-            resp.sendRedirect("/auth-servlet");
+            resp.sendRedirect(req.getContextPath() + "/auth");
         } else {
-            resp.sendRedirect("/login-servlet");
+            resp.sendRedirect(req.getContextPath() + "/login");
         }
     }
 }

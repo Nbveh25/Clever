@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(name = "UploadIconServlet", urlPatterns = "/upload-icon-servlet")
+@WebServlet(name = "UploadIconServlet", urlPatterns = "/upload-icon")
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024 * 10,
         maxFileSize = 1024 * 1024 * 1024,

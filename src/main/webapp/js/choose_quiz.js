@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('/choose-quiz-servlet')
+    fetch('/choose-quiz')
         .then(response => response.json())
         .then(data => {
             const quizList = document.querySelector('.quiz-list');
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <h2 id="title_of_quiz">${quiz.quizName}</h2><br>
                 <p>${quiz.quizDescription}</p>
                 <h3 id="quiz_type">${quiz.quizType}</h3>
-                <a href="/game-servlet?id=${quiz.id}" class="quiz-button">Начать квиз</a>
+                <a href="/game?id=${quiz.id}" class="quiz-button">Начать квиз</a>
               </div>
             `;
                 quizList.appendChild(quizTag);

@@ -1,5 +1,5 @@
 function upgradePermission() {
-    fetch('/user-servlet', {
+    fetch('/user', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -34,7 +34,7 @@ function updateLogin() {
             console.log('Полученный логин:', newLogin);
 
             if (newLogin !== null && newLogin.trim() !== '') {
-                fetch('/user-servlet', {
+                fetch('/user', {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ function updateLogin() {
 }
 
 function deleteUser() {
-    window.location.href = '/login-servlet';
+    window.location.href = '/login';
     Swal.fire({
         title: 'Подтверждение удаления',
         text: "Вы уверены, что хотите удалить свой профиль?",
@@ -65,11 +65,11 @@ function deleteUser() {
         cancelButtonText: 'Отмена'
     }).then((result) => {
         if (result.isConfirmed) {
-            fetch('/user-servlet', {
+            fetch('/user', {
                 method: 'DELETE'
             }).then(response => {
                 if (response.ok) {
-                    window.location.href = '/login-servlet';
+                    window.location.href = '/login';
                 } else {
                     return response.text().then(text => {
                         Swal.fire('Ошибка при удалении профиля: ' + text);

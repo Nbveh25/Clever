@@ -20,7 +20,7 @@ import java.util.Map;
 
 import static utils.UploadUtil.getFile;
 
-@WebServlet(name = "CreateQuizServlet", urlPatterns = "/create-quiz-servlet")
+@WebServlet(name = "CreateQuizServlet", urlPatterns = "/create-quiz")
 @MultipartConfig(
         maxFileSize = 5 * 1024 * 1024,
         maxRequestSize = 10 * 1024 * 1024
@@ -73,6 +73,6 @@ public class CreateQuizServlet extends HttpServlet {
         int quiz_id = quizService.addQuiz(quizDTO);
 
         req.getSession().setAttribute("quiz_id", quiz_id);
-        resp.sendRedirect("/create-question-servlet");
+        resp.sendRedirect(req.getContextPath() + "/create-question");
     }
 }
