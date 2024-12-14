@@ -106,6 +106,7 @@ public class CreateQuestionServlet extends HttpServlet {
 //            getServletContext().getRequestDispatcher("/create-question-servlet").forward(req, resp);
         } else if (req.getParameter("save_quiz") != null) {
             saveQuestion(right_answer, wrong_answer1, wrong_answer2, wrong_answer3, questionDTO);
+            session.setAttribute("questionNumber", 1);
             getServletContext().getRequestDispatcher("/WEB-INF/views/choose_quiz.jsp").forward(req, resp);
         }
     }

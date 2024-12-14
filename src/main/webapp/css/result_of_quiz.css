@@ -1,27 +1,23 @@
-.result_container {
-    display: flex;
-    justify-content: center;
-}
-
 h2 {
     text-align: center;
 }
 
-.result_item {
-    width: auto;
-    height: auto;
-    background-color: #28a745;
+.result_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .result_item {
     width: 500px;
-    height: 70px;
+    height: auto;
     background-color: #cccccc;
     border-radius: 4px;
     display: flex;
     align-items: center;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.06);
     padding: 8px;
+    margin-bottom: 10px; 
 }
 
 .icon_of_user {
